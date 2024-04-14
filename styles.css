@@ -75,7 +75,7 @@
     transition: all 0.3s ease;
 }
 
-@media screen and (max-width: 860px) {
+@media screen and (max-width: 960px) {
     .navbar_container{
         display: flex;
         justify-content: space-between;
@@ -113,6 +113,7 @@
     }
 
     #navbar_logo {
+        font-size: 1.9rem;
         padding-left: 25px;
         justify-content: space-between;
     }
@@ -194,12 +195,7 @@
     height: 525px;
     width: 800px;
     border-radius: 4px;
-    background-image: linear-gradient(
-        to bottom,
-        rgba(0,0,0,0) 0%, 
-        rgba(17,17,17,0.6) 100%
-        ), 
-        url('images/Whistler.jpeg');
+    background-image: url('images/Whistler.jpeg');
     background-size: cover;
     position: relative;
     color: #fff;
@@ -208,38 +204,117 @@
 }
 
 .locations_card:nth-child(2) {
-    background-image: linear-gradient(
-        to bottom,
-        rgba(0,0,0,0) 0%, 
-        rgba(17,17,17,0.6) 100%
-        ), 
-        url('images/Queenstown.jpeg');
+    background-image: url('images/Queenstown.jpeg');
 }
 
 .locations_card:nth-child(3) {
-    background-image: linear-gradient(
-        to bottom,
-        rgba(0,0,0,0) 0%, 
-        rgba(17,17,17,0.6) 100%
-        ), 
-        url('images/Finale_Ligure.jpeg');
+    background-image: url('images/Finale_Ligure.jpeg');
 }
 
 .locations_card:nth-child(4) {
-    background-image: linear-gradient(
-        to bottom,
-        rgba(0,0,0,0) 0%, 
-        rgba(17,17,17,0.6) 100%
-        ), 
-        url('images/Bellingham.jpeg');
+    background-image: url('images/Bellingham.jpeg');
 }
 
 .locations_card p {
     padding-top: 475px;
+    color: white;
+    text-decoration: none;
 }
 
 .locations_card:hover {
     transform: scale(1.050);
     transition: 0.2s ease-in;
     cursor: pointer;
+}
+
+.explore_btn {
+    font-size: 1rem;
+    background-color: rgb(7, 30, 175);
+    /*background-image: linear-gradient(to left, rgb(8, 161, 0) 0%,rgb(7, 30, 175) 90% );*/
+    padding: 14px 32px;
+    margin: 10px 0px 30px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.35s;
+    outline: none;
+}
+
+.explore_btn a {
+    position: relative;
+    z-index: 2;
+    color: white;
+    text-decoration: none;
+}
+
+.explore_btn::after {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: rgb(8, 161, 0);
+    transition: all 0.35s;
+    border-radius: 4px;
+}
+
+.explore_btn:hover {
+    color: white;
+}
+
+.explore_btn:hover::after {
+    width: 100%;
+}
+
+@media screen and (max-width: 960px) {
+    .locations h1 {
+        font-size: 2rem;
+    }
+
+    .locations_card {
+        height: 350px;
+        width: 533px;
+    }
+
+    .locations_card p {
+        padding-top: 316px;
+    }
+
+    .explore_btn {
+        padding: 12px ;
+        font-size: 0.9rem;
+    }
+}
+
+/* Footer Section */
+.footer {
+    background-color: #141414;
+}
+
+.footer_container {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 120px 30px;
+}
+
+.footer_container p {
+    color: rgb(8, 161, 0);
+}
+
+.footer a {
+    text-decoration: none;
+    color: rgb(8, 161, 0);
+}
+
+@media screen and (max-width: 960px) {
+    .footer_container {
+        font-size: 1rem;
+        padding: 0px 100px 30px;
+    }
+
+    .footer_container #navbar_logo {
+        font-size: 1.5rem;
+    }
 }
