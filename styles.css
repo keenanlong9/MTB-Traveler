@@ -230,7 +230,6 @@
 .explore_btn {
     font-size: 1rem;
     background-color: rgb(7, 30, 175);
-    /*background-image: linear-gradient(to left, rgb(8, 161, 0) 0%,rgb(7, 30, 175) 90% );*/
     padding: 14px 32px;
     margin: 10px 0px 30px;
     border: none;
@@ -319,6 +318,17 @@
     }
 }
 
+@media screen and (max-width: 715px) {
+    .footer_container {
+        font-size: 1rem;
+        padding: 0px 0px 30px;
+    }
+
+    .footer_container #navbar_logo {
+        font-size: 1.5rem;
+    }
+}
+
 /* Explore.html Body Section */
 .explore_locations {
     background: #141414;
@@ -391,4 +401,62 @@
     background-image: url('images/Bellingham.jpeg');
 }
 
-/* Add more locations and smaller media size */
+.explore_locations_card:nth-child(5) {
+    background-image: url('images/Jamaica.jpeg');
+}
+
+.explore_locations_card:nth-child(6) {
+    background-image: url('images/Loudenvielle.jpeg');
+}
+
+.explore_locations_card:nth-child(7) {
+    background-image: url('images/Oaxaca.jpeg');
+}
+
+.explore_locations_card:nth-child(8) {
+    background-image: url('images/South_Africa.jpeg');
+}
+
+.explore_locations_card:nth-child(9) {
+    background-image: url('images/Tasmania.jpeg');
+}
+
+.explore_locations_card:nth-child(10) {
+    background-image: url('images/Zermatt.jpeg');
+}
+
+@media screen and (max-width: 960px) {
+    .explore_locations h1 {
+        font-size: 2rem;
+    }
+
+    .explore_locations_container {
+        padding: 0px 0px 40px 60px;
+    }
+}
+
+@media screen and (max-width: 715px) {
+    .explore_locations h1 {
+        font-size: 1.5rem;
+        padding-top: 20px;
+    }
+
+    .explore_locations_container {
+        padding: 0px 0px 40px 20px;
+    }
+
+    .explore_locations_card {
+        height: 87px;
+        width: 133px;
+    }
+
+    .explore_locations_card p {
+        color: white;
+        padding: 20px 0px 0px 150px;
+    }
+
+    .explore_location_name {
+        height: 131;
+        width: 300px;
+    }
+}
