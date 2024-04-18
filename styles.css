@@ -497,6 +497,7 @@
     width: 125px;
     cursor: pointer;
     background-color: lightgray;
+    border-radius: 4px;
 }
 
 .input_output_voice p {
@@ -507,7 +508,7 @@
     display: grid;
     grid-template-columns: auto auto;
     flex-wrap: wrap;
-    padding: 0px 0px 80px 0px;
+    padding: 0px 0px 60px 0px;
 }
 
 .input_output_textbox input {
@@ -515,6 +516,7 @@
     width: 400px;
     overflow-wrap: break-word;
     background-color: lightgray;
+    border-radius: 8px;
 }
 
 .input_output_textbox input::placeholder {
