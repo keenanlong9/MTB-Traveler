@@ -162,7 +162,61 @@
     }
 }
 
-/* Locations Section */
+/* Footer Section Shared with all html files */
+.footer {
+    background-color: #141414;
+}
+
+.footer_container {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 120px 30px;
+}
+
+.footer_container p {
+    color: rgb(8, 161, 0);
+}
+
+.footer a {
+    text-decoration: none;
+    color: rgb(8, 161, 0);
+}
+
+@media screen and (max-width: 960px) {
+    .footer_container {
+        font-size: 1rem;
+        padding: 0px 100px 30px;
+    }
+
+    .footer_container #navbar_logo {
+        font-size: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 715px) {
+    .footer_container {
+        font-size: 1rem;
+        padding: 0px 0px 30px;
+    }
+
+    .footer_container #navbar_logo {
+        font-size: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 612px) {
+    .footer_container {
+        font-size: 0.8rem;
+        padding: 0px 0px 30px;
+    }
+
+    .footer_container #navbar_logo {
+        font-size: 1.3rem;
+    }
+}
+/* FOR FOOTER: Fix white space under footer im some cases */
+
+/* Index.html Section */
 .locations {
     background: #141414;
     display: flex;
@@ -192,8 +246,8 @@
 
 .locations_card {
     margin: 1rem;
-    height: 525px;
-    width: 800px;
+    height: 420px;
+    width: 640px;
     border-radius: 4px;
     background-image: url('images/Whistler.jpeg');
     background-size: cover;
@@ -216,9 +270,10 @@
 }
 
 .locations_card p {
-    padding-top: 475px;
+    padding-top: 380px;
     color: white;
     text-decoration: none;
+    font-size: 1.2rem;
 }
 
 .locations_card:hover {
@@ -267,7 +322,7 @@
     width: 100%;
 }
 
-@media screen and (max-width: 960px) {
+@media screen and (max-width: 1359px) {
     .locations h1 {
         font-size: 2rem;
     }
@@ -287,45 +342,44 @@
     }
 }
 
-/* Footer Section Shared with all html files */
-.footer {
-    background-color: #141414;
-}
+@media screen and (max-width: 1142px) {
+    .locations h1 {
+        font-size: 2rem;
+    }
 
-.footer_container {
-    display: flex;
-    justify-content: space-between;
-    padding: 0px 120px 30px;
-}
+    .locations_card {
+        height: 233px;
+        width: 355px;
+    }
 
-.footer_container p {
-    color: rgb(8, 161, 0);
-}
+    .locations_card p {
+        padding-top: 200px;
+        font-size: 1rem;
+    }
 
-.footer a {
-    text-decoration: none;
-    color: rgb(8, 161, 0);
+    .explore_btn {
+        padding: 12px ;
+        font-size: 0.9rem;
+    }
 }
 
 @media screen and (max-width: 960px) {
-    .footer_container {
-        font-size: 1rem;
-        padding: 0px 100px 30px;
+    .locations h1 {
+        font-size: 2rem;
     }
 
-    .footer_container #navbar_logo {
-        font-size: 1.5rem;
-    }
-}
-
-@media screen and (max-width: 715px) {
-    .footer_container {
-        font-size: 1rem;
-        padding: 0px 0px 30px;
+    .locations_card {
+        height: 350px;
+        width: 533px;
     }
 
-    .footer_container #navbar_logo {
-        font-size: 1.5rem;
+    .locations_card p {
+        padding-top: 316px;
+    }
+
+    .explore_btn {
+        padding: 12px ;
+        font-size: 0.9rem;
     }
 }
 
@@ -461,6 +515,7 @@
     }
 }
 
+/* Speech.html Body Section */
 .speech_translator {
     background: #141414;
     display: block;
@@ -507,7 +562,6 @@
 .input_output_text {
     display: grid;
     grid-template-columns: auto auto;
-    flex-wrap: wrap;
     padding: 0px 0px 60px 0px;
 }
 
@@ -545,5 +599,106 @@
 
     .footer_container {
         padding: 0px 20px 30px 0px;
+    }
+}
+
+@media screen and (max-width: 588px) {
+    .speech_translator h1{
+        font-size: 2rem;
+    }
+
+    .input_output_textbox input {
+        height: 200px;
+        width: 200px;
+    }
+
+    .input_output_textbox input::placeholder {
+        padding-left: 50px;
+    }
+
+    .footer_container {
+        padding: 0px 20px 30px 0px;
+    }
+}
+
+/* Currency.html Body Section */
+.currency {
+    background: #141414;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+}
+
+.currency h1 {
+    background-color: rgb(51, 128, 0);
+    background-image: linear-gradient(to left, rgb(8, 161, 0) 0%,rgb(7, 30, 175) 90% );
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-size: 2.4rem;
+}
+
+.currency_card {
+    margin: 1rem;
+    height: 363px;
+    width: 700px;
+    border-radius:20px;
+    background-image: url('images/Whistler.jpeg');
+    background-size: cover;
+    position: relative;
+    color: #fff;
+    text-align: center;
+}
+
+.currency_card p {
+    padding-top: 300px;
+    font-size: 1.3rem;
+}
+
+.input_output_currency {
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 100px;
+    padding: 30px 0px 60px 0px;
+}
+
+.input_output_currency input {
+    height: 40px;
+    width: 100px;
+    overflow-wrap: break-word;
+    background-color: lightgray;
+    border-radius: 8px;
+}
+
+.input_output_currency input::placeholder {
+    padding-left: 10px;
+    font-size: 1.0rem;
+}
+
+@media screen and (max-width:732px) {
+
+    .currency_card {
+        margin: 1rem;
+        height: 242px;
+        width: 467px;
+    }
+
+    .currency_card p {
+        padding-top: 200px;
+        font-size: 1.1rem;
+    } 
+
+    .currency h1 {
+        font-size: 2rem;
+    }
+
+    .input_output_currency input {
+        height: 30px;
+        width: 90px;
     }
 }
