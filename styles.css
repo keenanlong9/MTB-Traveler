@@ -1,6 +1,6 @@
 * {
     box-sizing: border-box;
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
     font-family: 'Kumbh Sans', sans-serif;
 }
@@ -165,6 +165,7 @@
 /* Footer Section Shared with all html files */
 .footer {
     background-color: #141414;
+    overflow: auto;
 }
 
 .footer_container {
@@ -737,19 +738,20 @@
 }
 
 .about_us_photo img {
-    height: 350px;
+    height: 467px;
 }
 
 .about_us_text p {
     color: white;
-    width: 550px;
-    padding: 20px 80px;
+    width: 690px;
+    padding: 20px 20px 0px;
+    font-size: 1.2rem;
 }
 
 .about_us_container ul {
     list-style-type: none;
     padding: 30px 0px 30px 200px;
-    font-size: 1.3rem;
+    font-size: 1.7rem;
 }
 
 .about_us_container li {
@@ -757,7 +759,27 @@
 }
 
 .about_us_container a {
-    color: rgb(7, 30, 175)
+    color: rgb(7, 30, 175);
+}
+
+.about_us_container a:hover {
+    transition: all 0.35s;
+    color: rgb(8, 161, 0);
+}
+
+@media screen and (max-width: 1500px) {
+    .about_us_photo img {
+        height: 350px;
+    }
+
+    .about_us_text p {
+        font-size: 1.0rem;
+        width: 500px;
+    }
+
+    .about_us_container ul {
+        padding: 30px 0px 0px 200px;
+    }
 }
 
 @media screen and (max-width: 1194px) {
@@ -804,7 +826,7 @@
     -webkit-text-fill-color: transparent;
     -moz-text-fill-color: transparent;
     margin-top: 1rem;
-    font-size: 2rem;
+    font-size: 2.4rem;
 }
 
 .location_card {
@@ -835,6 +857,7 @@
     color: white;
     margin: 10px;
     padding-left: 20px;
+    font-size: 1.3rem;
 }
 
 .location_services p {
@@ -853,6 +876,7 @@
 
 .location_service_item_container p {
     padding: 8px 0px 0px 30px;
+    font-size: 1.3rem;
 }
 
 .location_service_btn {
