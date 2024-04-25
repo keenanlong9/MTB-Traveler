@@ -174,12 +174,17 @@
 }
 
 .footer_container p {
+    padding-top: 30px;
     color: rgb(8, 161, 0);
 }
 
 .footer a {
     text-decoration: none;
     color: rgb(8, 161, 0);
+}
+
+.footer a#about_us {
+    padding-top: 30px;
 }
 
 @media screen and (max-width: 960px) {
@@ -656,7 +661,7 @@
 }
 
 .currency_card p {
-    padding-top: 300px;
+    padding-top: 320px;
     font-size: 1.3rem;
 }
 
@@ -778,5 +783,139 @@
     
     .about_us_container ul {
         padding: 10px 0px; 
+    }
+}
+
+/* Location.html Body Section */
+.location {
+    background: #141414;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+}
+
+.location h2 {
+    background-color: rgb(51, 128, 0);
+    background-image: linear-gradient(to left, rgb(8, 161, 0) 0%,rgb(7, 30, 175) 90% );
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+    margin-top: 1rem;
+    font-size: 2rem;
+}
+
+.location_card {
+    margin: 0.5rem;
+    height: 363px;
+    width: 700px;
+    border-radius:20px;
+    background-image: url('images/Whistler.jpeg');
+    background-size: cover;
+    position: relative;
+    color: #fff;
+    text-align: center;
+}
+
+.location_card p {
+    padding-top: 320px;
+    font-size: 1.3rem;
+}
+
+.location_info {
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 200px;
+}
+
+.popular_trail_name {
+    list-style-type: decimal;
+    color: white;
+    margin: 10px;
+    padding-left: 20px;
+}
+
+.location_services p {
+    color: white;
+}
+
+.location_service_item_container {
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 120px;
+}
+
+.location_service_item_container{
+    padding-top: 8px;
+}
+
+.location_service_item_container p {
+    padding: 8px 0px 0px 30px;
+}
+
+.location_service_btn {
+    font-size: 1rem;
+    background-color: rgb(7, 30, 175);
+    padding: 14px 25px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.35s;
+    outline: none;
+}
+
+.location_service_btn::after {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: rgb(8, 161, 0);
+    transition: all 0.35s;
+    border-radius: 4px;
+}
+
+.location_service_btn a {
+    position: relative;
+    z-index: 2;
+    color: white;
+    text-decoration: none;
+}
+
+.location_service_btn:hover {
+    color: white;
+}
+
+.location_service_btn:hover::after {
+    width: 100%;
+}
+
+@media screen and (max-width: 761px) {
+    .location_card {
+        height: 242px;
+        width: 466px;
+    }
+
+    .location h2 {
+        font-size: 1.8rem;
+    }
+
+    .location_card p {
+        padding-top: 213px;
+        font-size: 1.0rem;
+    }
+    
+    .location_info {
+        column-gap: 133px;
+    }
+}
+
+@media screen and (max-width: 652px) {
+    .location_info {
+        column-gap: 70px;
     }
 }
