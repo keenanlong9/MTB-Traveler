@@ -27,4 +27,4 @@ async function translateText() {
 }
 
 // Add event listener to the Translate button
-window.getElementById("translate_btn").addEventListener("click", translateText);
+document.getElementById("translate_btn").addEventListener("click", translateText);
