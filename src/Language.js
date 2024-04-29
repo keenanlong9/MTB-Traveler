@@ -1,4 +1,4 @@
-import { TranslateClient, TranslateTextCommand } from "/@aws-sdk/client-translate";
+import { TranslateClient, TranslateTextCommand } from "/node_modules/@aws-sdk/client-translate";
 
 // Function to handle translation
 async function translateText() {
