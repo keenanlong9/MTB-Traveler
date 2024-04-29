@@ -1,4 +1,4 @@
-import { TranslateClient, TranslateTextCommand } from "@aws-sdk/client-translate";
+import { TranslateClient, TranslateTextCommand } from "/@aws-sdk/client-translate";
 
 // Function to handle translation
 async function translateText() {
@@ -27,4 +27,4 @@ async function translateText() {
 }
 
 // Add event listener to the Translate button
-document.getElementById("translate_btn").addEventListener("click", translateText);
+window.getElementById("translate_btn").addEventListener("click", translateText);
