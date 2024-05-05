@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MTB Traveler</title>
-    <link rel="icon" href="Images/globe-icon.png" />
+    <link rel="icon" href="../Images/globe-icon.png" />
     <link rel="stylesheet" href="styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -17,7 +17,7 @@
     <!-- NavBar Section -->
     <nav class="navbar">
       <div class="navbar_container">
-        <a href="index.html" id="navbar_logo"
+        <a href="../index.html" id="navbar_logo"
           ><i class="fas fa-globe"></i>
           <p>&nbsp;</p>
           MTB Traveler
@@ -38,49 +38,39 @@
       </div>
     </nav>
 
-    <!-- Currency Section -->
-    <div class="currency">
-      <div class="currency_card">
-        <!-- TODO make location dynamic-->
-        <p>Whistler, Britsh Columbia</p>
+    <div class="language_translator">
+      <h1>Communicate with Locals</h1>
+      <div class="language_translator_btns">
+        <button>
+          <p>Voice Input</p>
+        </button>
+        <button id="translate_btn">
+          <p>Translate</p>
+        </button>
+        <button>
+          <p>Voice Output</p>
+        </button>
       </div>
-      <h1>Convert Your Currency</h1>
-      <div class="input_output_currency">
-        <div class="input_currency">
-          <input
-            type="text"
-            name="input_currency_num"
-            id="input_currency_num"
-            placeholder="100"
-          />
-          <input
-            type="text"
-            name="input_currency_type"
-            id="input_currency_type"
-            placeholder="$"
-          />
-        </div>
-        <div class="output_currency">
-          <input
-            type="text"
-            name="output_currency_num"
-            id="output_currency_num"
-            placeholder="93.75"
-          />
-          <input
-            type="text"
-            name="output_currency_type"
-            id="output_currency_type"
-            placeholder="€"
-          />
-        </div>
+      <div class="language_translator_textbox">
+        <input
+          type="text"
+          name="input_text"
+          id="input_text"
+          placeholder="Text Input"
+        />
+        <input
+          type="text"
+          name="output_text"
+          id="output_text"
+          placeholder="Text Output"
+        />
       </div>
     </div>
 
     <!-- Footer Section -->
     <div class="footer">
       <div class="footer_container">
-        <a href="index.html" id="navbar_logo"
+        <a href="../index.html" id="navbar_logo"
           ><i class="fas fa-globe"></i>
           <p>&nbsp;</p>
           MTB Traveler

@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MTB Traveler</title>
-    <link rel="icon" href="Images/globe-icon.png" />
+    <link rel="icon" href="../Images/globe-icon.png" />
     <link rel="stylesheet" href="styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -17,7 +17,7 @@
     <!-- NavBar Section -->
     <nav class="navbar">
       <div class="navbar_container">
-        <a href="index.html" id="navbar_logo"
+        <a href="../index.html" id="navbar_logo"
           ><i class="fas fa-globe"></i>
           <p>&nbsp;</p>
           MTB Traveler
@@ -38,51 +38,41 @@
       </div>
     </nav>
 
-    <!-- Location Section -->
-    <div class="location">
-      <div class="location_card">
+    <!-- Currency Section -->
+    <div class="currency">
+      <div class="currency_card">
         <!-- TODO make location dynamic-->
-        <p>Whistler, British Columbia</p>
+        <p>Whistler, Britsh Columbia</p>
       </div>
-      <div class="location_info">
-        <ul class="popular_trails">
-          <h2>Popular Trails</h2>
-          <!-- Make trail names dynamic -->
-          <li class="popular_trail_name">
-            <p>Dirt Merchant</p>
-          </li>
-          <li class="popular_trail_name">
-            <p>High Hopes</p>
-          </li>
-          <li class="popular_trail_name">
-            <p>Crank It Up</p>
-          </li>
-          <li class="popular_trail_name">
-            <p>Samurai Pizza Cat</p>
-          </li>
-          <li class="popular_trail_name">
-            <p>A-Line</p>
-          </li>
-        </ul>
-        <div class="location_services">
-          <div class="location_service_item">
-            <h2>Currency</h2>
-            <div class="location_service_item_container">
-              <p>CA$</p>
-              <button class="location_service_btn">
-                <a href="/Currency.html">Convert</a>
-              </button>
-            </div>
-          </div>
-          <div class="location_service_item">
-            <h2>Language</h2>
-            <div class="location_service_item_container">
-              <p>English</p>
-              <button class="location_service_btn">
-                <a href="/Language.html">Translate</a>
-              </button>
-            </div>
-          </div>
+      <h1>Convert Your Currency</h1>
+      <div class="input_output_currency">
+        <div class="input_currency">
+          <input
+            type="text"
+            name="input_currency_num"
+            id="input_currency_num"
+            placeholder="100"
+          />
+          <input
+            type="text"
+            name="input_currency_type"
+            id="input_currency_type"
+            placeholder="$"
+          />
+        </div>
+        <div class="output_currency">
+          <input
+            type="text"
+            name="output_currency_num"
+            id="output_currency_num"
+            placeholder="93.75"
+          />
+          <input
+            type="text"
+            name="output_currency_type"
+            id="output_currency_type"
+            placeholder="€"
+          />
         </div>
       </div>
     </div>
@@ -90,7 +80,7 @@
     <!-- Footer Section -->
     <div class="footer">
       <div class="footer_container">
-        <a href="index.html" id="navbar_logo"
+        <a href="../index.html" id="navbar_logo"
           ><i class="fas fa-globe"></i>
           <p>&nbsp;</p>
           MTB Traveler
