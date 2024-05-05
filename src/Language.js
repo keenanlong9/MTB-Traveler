@@ -5,7 +5,6 @@ import { TranslateClient, TranslateTextCommand } from "@aws-sdk/client-translate
 const translateText = async () => {
     const inputText = document.getElementById("input_text").value;
     const outputText = document.getElementById("output_text");
-
     const translateClient = new TranslateClient({
         region: "us-east-1",
         credentials: fromCognitoIdentityPool({
@@ -23,10 +22,10 @@ const translateText = async () => {
     const translateTextCommand = new TranslateTextCommand(translateParams);
     try{
         const data = await translateClient.send(translateTextCommand);
-        outputText.textContent = data.TranslatedText;
+        outputText.value = data.TranslatedText;
     } catch (error) {
         console.error("Error", error);
-        outputText.textContent = "Error";
+        outputText.value = "Error";
     }
 }
 
