@@ -1,0 +1,21 @@
+{
+  "name": "mtb-traveler",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webpack.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@aws-sdk/client-cognito-identity": "^3.569.0",
+    "@aws-sdk/client-translate": "^3.569.0",
+    "@aws-sdk/credential-provider-cognito-identity": "^3.569.0"
+  },
+  "devDependencies": {
+    "webpack": "^5.91.0",
+    "webpack-cli": "^5.1.4"
+  }
+}
