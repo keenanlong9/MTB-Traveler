@@ -2,6 +2,7 @@ import { CognitoIdentityClient } from "@aws-sdk/client-cognito-identity";
 import { fromCognitoIdentityPool } from "@aws-sdk/credential-provider-cognito-identity";
 import { TranslateClient, TranslateTextCommand } from "@aws-sdk/client-translate";
 
+document.addEventListener("DOMContentLoaded", function() {
 const translateText = async () => {
     const inputText = document.getElementById("input_text").value;
     const outputText = document.getElementById("output_text");
@@ -31,3 +32,4 @@ const translateText = async () => {
 }
 
 document.getElementById("translate_btn").addEventListener("click", translateText);
+});
