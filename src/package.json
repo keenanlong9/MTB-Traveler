@@ -1,0 +1,14 @@
+{
+  "name": "mtb-traveler",
+  "version": "1.0.0",
+  "description": "A mountain bike travel website.",
+  "main": "Language.js",
+  "type": "module",
+  "scripts": {
+    "start": "node Language.js"
+  },
+  "dependencies": {
+    "@aws-sdk/client-translate": "^3.564.0"
+  },
+  "author": "Keenan Long"
+}
