@@ -48,9 +48,14 @@
         <button id="translate_btn" onclick="translateText()">
           <p>Translate</p>
         </button>
-        <button>
-          <p>Voice Output</p>
-        </button>
+        <div class="language_translator_voice_output">
+          <!--<button>
+            <p>Voice Output</p>
+          </button>-->
+          <audio id="translate_audio" controls>
+            <source id="translate_audio_src" type="audio/mp3" src="" />
+          </audio>
+        </div>
       </div>
       <div class="language_translator_textbox">
         <input

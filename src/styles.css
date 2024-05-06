@@ -548,7 +548,7 @@
 
 .language_translator_btns {
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: auto auto 120px;
     column-gap: 200px;
     padding-bottom: 30px;
 }
@@ -574,11 +574,12 @@
     overflow-wrap: break-word;
     background-color: lightgray;
     border-radius: 8px;
+    text-align: center;
 }
 
-.language_translator_textbox input::placeholder {
-    padding-left: 150px;
-    font-size: 1.2rem;
+.language_translator_voice_output audio {
+    height: 30px;
+    width: 200px;
 }
 
 @media screen and (max-width: 1010px) {
