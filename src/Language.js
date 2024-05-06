@@ -1,30 +1,32 @@
-import { TranslateClient, TranslateTextCommand } from "/node_modules/@aws-sdk/client-translate";
+import { CognitoIdentityClient } from "@aws-sdk/client-cognito-identity";
+import { fromCognitoIdentityPool } from "@aws-sdk/credential-provider-cognito-identity";
+import { TranslateClient, TranslateTextCommand } from "@aws-sdk/client-translate";
 
-// Function to handle translation
-async function translateText() {
-  const inputText = document.getElementById("input_text").value;
-  const outputTextElement = document.getElementById("output_text");
+const translateText = async () => {
+    const inputText = document.getElementById("input_text").value;
+    const outputText = document.getElementById("output_text");
+    const translateClient = new TranslateClient({
+        region: "us-east-1",
+        credentials: fromCognitoIdentityPool({
+            client: new CognitoIdentityClient({region: "us-east-1"}),
+            identityPoolId: "us-east-1:891d8d0f-1caf-4b14-81f7-71114388deb6"
+        }),
+    });
 
-  // Create a TranslateClient
-  const translateClient = new TranslateClient({ region: "us-east-1" });
+    const translateParams = {
+        Text: inputText,
+        SourceLanguageCode: "auto",
+        TargetLanguageCode: "fr"
+    };
 
-  // Set up parameters for the TranslateTextCommand
-  const params = {
-    Text: inputText,
-    SourceLanguageCode: "auto",
-    TargetLanguageCode: "fr" 
-  };
-
-  // Create a TranslateTextCommand and execute it
-  const command = new TranslateTextCommand(params);
-  try {
-    const data = await translateClient.send(command);
-    outputTextElement.value = data.TranslatedText;
-  } catch (error) {
-    console.error("Error translating text:", error);
-    outputTextElement.value = "Translation Error";
-  }
+    const translateTextCommand = new TranslateTextCommand(translateParams);
+    try{
+        const data = await translateClient.send(translateTextCommand);
+        outputText.value = data.TranslatedText;
+    } catch (error) {
+        console.error("Error", error);
+        outputText.value = "Error";
+    }
 }
 
-// Add event listener to the Translate button
-document.getElementById("translate_btn").addEventListener("click", translateText);
+window.translateText = translateText;

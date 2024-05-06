@@ -255,7 +255,7 @@
     height: 420px;
     width: 640px;
     border-radius: 4px;
-    background-image: url('../images/Whistler.jpeg');
+    background-image: url('../Images/Whistler.jpeg');
     background-size: cover;
     position: relative;
     color: #fff;
@@ -264,15 +264,15 @@
 }
 
 .locations_card:nth-child(2) {
-    background-image: url('../images/Queenstown.jpeg');
+    background-image: url('../Images/Queenstown.jpeg');
 }
 
 .locations_card:nth-child(3) {
-    background-image: url('../images/Finale_Ligure.jpeg');
+    background-image: url('../Images/Finale_Ligure.jpeg');
 }
 
 .locations_card:nth-child(4) {
-    background-image: url('../images/Bellingham.jpeg');
+    background-image: url('../Images/Bellingham.jpeg');
 }
 
 .locations_card p {
@@ -426,7 +426,7 @@
     height: 131px;
     width: 200px;
     border-radius: 4px;
-    background-image: url('../images/Whistler.jpeg');
+    background-image: url('../Images/Whistler.jpeg');
     background-size: cover;
     position: relative;
     color: #fff;
@@ -450,39 +450,39 @@
 }
 
 .explore_locations_card:nth-child(2) {
-    background-image: url('../images/Queenstown.jpeg');
+    background-image: url('../Images/Queenstown.jpeg');
 }
 
 .explore_locations_card:nth-child(3) {
-    background-image: url('../images/Finale_Ligure.jpeg');
+    background-image: url('../Images/Finale_Ligure.jpeg');
 }
 
 .explore_locations_card:nth-child(4) {
-    background-image: url('../images/Bellingham.jpeg');
+    background-image: url('../Images/Bellingham.jpeg');
 }
 
 .explore_locations_card:nth-child(5) {
-    background-image: url('../images/Jamaica.jpeg');
+    background-image: url('../Images/Jamaica.jpeg');
 }
 
 .explore_locations_card:nth-child(6) {
-    background-image: url('../images/Loudenvielle.jpeg');
+    background-image: url('../Images/Loudenvielle.jpeg');
 }
 
 .explore_locations_card:nth-child(7) {
-    background-image: url('../images/Oaxaca.jpeg');
+    background-image: url('../Images/Oaxaca.jpeg');
 }
 
 .explore_locations_card:nth-child(8) {
-    background-image: url('../images/South_Africa.jpeg');
+    background-image: url('../Images/South_Africa.jpeg');
 }
 
 .explore_locations_card:nth-child(9) {
-    background-image: url('../images/Tasmania.jpeg');
+    background-image: url('../Images/Tasmania.jpeg');
 }
 
 .explore_locations_card:nth-child(10) {
-    background-image: url('../images/Zermatt.jpeg');
+    background-image: url('../Images/Zermatt.jpeg');
 }
 
 @media screen and (max-width: 960px) {
@@ -655,7 +655,7 @@
     height: 363px;
     width: 700px;
     border-radius:20px;
-    background-image: url('../images/Whistler.jpeg');
+    background-image: url('../Images/Whistler.jpeg');
     background-size: cover;
     position: relative;
     color: #fff;
@@ -835,7 +835,7 @@
     height: 363px;
     width: 700px;
     border-radius:20px;
-    background-image: url('../images/Whistler.jpeg');
+    background-image: url('../Images/Whistler.jpeg');
     background-size: cover;
     position: relative;
     color: #fff;
