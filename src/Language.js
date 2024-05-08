@@ -1,8 +1,9 @@
 import { CognitoIdentityClient } from "@aws-sdk/client-cognito-identity";
 import { fromCognitoIdentityPool } from "@aws-sdk/credential-provider-cognito-identity";
 import { TranslateClient, TranslateTextCommand } from "@aws-sdk/client-translate";
-import { LanguageCode, Polly } from "@aws-sdk/client-polly";
+import { Polly } from "@aws-sdk/client-polly";
 import { getSynthesizeSpeechUrl } from "@aws-sdk/polly-request-presigner";
+//import { TranscribeClient } from "@aws-sdk/client-transcribe";
 
 const translateText = async () => {
     const inputText = document.getElementById("input_text").value;
@@ -65,4 +66,59 @@ const audioTranslateText = async () => {
       }
 };
 
+// Setup for transcribing audio 
+
+let canRecord = false;
+let isRecording = false;
+let recorder = null;
+let chunks = [];
+
+if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia){
+    console.log("Setting up audio");
+    navigator.mediaDevices.getUserMedia({
+        audio: true
+    })
+    .then(streamAudio)
+    .catch(err => {
+        console.error(err)
+    });
+}
+
+
+function streamAudio(stream) {
+    recorder = new MediaRecorder(stream);
+
+    recorder.ondataavailable = e => {
+        chunks.push(e.data);
+    }
+
+    recorder.onstop = e => {
+        const blob = new Blob(chunks, {type: "audio/ogg; codecs=opus"})
+        chunks = [];
+        const audioURL = window.URL.createObjectURL(blob);
+        // send audio to transcribe client
+        // Testing block
+        document.getElementById("translate_audio_src").src = audioURL;
+        document.getElementById("translate_audio").load();
+        // Testing block
+    }
+    canRecord = true;
+}
+
+const transcribeAudio = async () => {
+    if (!canRecord) return;
+
+    isRecording = !isRecording;
+
+    if (isRecording){
+        recorder.start();
+        // toggle button color
+    } else {
+        recorder.stop();
+        // toggle button color
+    }
+
+};
+
 window.translateText = translateText;
+window.transcribeAudio = transcribeAudio;
