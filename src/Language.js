@@ -3,7 +3,7 @@ import { fromCognitoIdentityPool } from "@aws-sdk/credential-provider-cognito-id
 import { TranslateClient, TranslateTextCommand } from "@aws-sdk/client-translate";
 import { Polly } from "@aws-sdk/client-polly";
 import { getSynthesizeSpeechUrl } from "@aws-sdk/polly-request-presigner";
-//import { TranscribeClient } from "@aws-sdk/client-transcribe";
+import { TranscribeClient, StartTranscriptionJobCommand } from "@aws-sdk/client-transcribe";
 
 const translateText = async () => {
     const inputText = document.getElementById("input_text").value;
@@ -26,6 +26,7 @@ const translateText = async () => {
     try{
         const data = await translateClient.send(translateTextCommand);
         outputText.value = data.TranslatedText;
+        // Send translated text to Polly for speech output
         audioTranslateText();
     } catch (error) {
         console.error("Error", error);
@@ -57,7 +58,6 @@ const audioTranslateText = async () => {
           client: pollyClient,
           params: speechParams,
         });
-        console.log(url);
         // Load the URL of the voice recording into the browser
         document.getElementById("translate_audio_src").src = url;
         document.getElementById("translate_audio").load();
@@ -67,7 +67,6 @@ const audioTranslateText = async () => {
 };
 
 // Setup for transcribing audio 
-
 let canRecord = false;
 let isRecording = false;
 let recorder = null;
@@ -96,16 +95,40 @@ function streamAudio(stream) {
         const blob = new Blob(chunks, {type: "audio/ogg; codecs=opus"})
         chunks = [];
         const audioURL = window.URL.createObjectURL(blob);
-        // send audio to transcribe client
-        // Testing block
-        document.getElementById("translate_audio_src").src = audioURL;
-        document.getElementById("translate_audio").load();
-        // Testing block
+        // Send audio to transcribe client
+        transcribeAudio(audioURL);
     }
     canRecord = true;
 }
 
-const transcribeAudio = async () => {
+async function transcribeAudio(URL) {
+    const transcribeParams = {
+        LanguageCode: "en-US",
+        Media: {
+            MediaFileUri: URL
+        },
+        MediaFormat: "ogg"
+    }
+
+    try {
+        
+
+
+
+
+
+        const data = await TranscribeClient.send(
+            new StartTranscriptionJobCommand(transcribeParams)
+        );
+        const transcriptionResultUri = await data.TranscriptionJob.Transcript.TranscriptFileUri;
+        document.getElementById("input_text").value = transcriptionResultUri.json().results.transcripts[0].transcript;
+    } catch (error) {
+        console.error(error);
+        document.getElementById("input_text").value = "Error";
+    }
+}
+
+const recordVoice = async () => {
     if (!canRecord) return;
 
     isRecording = !isRecording;
@@ -121,4 +144,4 @@ const transcribeAudio = async () => {
 };
 
 window.translateText = translateText;
-window.transcribeAudio = transcribeAudio;
+window.recordVoice = recordVoice;
