@@ -11,11 +11,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@aws-sdk/client-cognito-identity": "^3.569.0",
-    "@aws-sdk/client-polly": "^3.569.0",
-    "@aws-sdk/client-translate": "^3.569.0",
-    "@aws-sdk/credential-provider-cognito-identity": "^3.569.0",
-    "@aws-sdk/polly-request-presigner": "^3.569.0"
+    "@aws-sdk/client-cognito-identity": "^3.572.0",
+    "@aws-sdk/client-polly": "^3.572.0",
+    "@aws-sdk/client-transcribe": "^3.574.0",
+    "@aws-sdk/client-translate": "^3.572.0",
+    "@aws-sdk/credential-provider-cognito-identity": "^3.572.0",
+    "@aws-sdk/polly-request-presigner": "^3.572.0"
   },
   "devDependencies": {
     "webpack": "^5.91.0",

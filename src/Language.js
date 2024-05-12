@@ -3,7 +3,7 @@ import { fromCognitoIdentityPool } from "@aws-sdk/credential-provider-cognito-id
 import { TranslateClient, TranslateTextCommand } from "@aws-sdk/client-translate";
 import { Polly } from "@aws-sdk/client-polly";
 import { getSynthesizeSpeechUrl } from "@aws-sdk/polly-request-presigner";
-//import { TranscribeClient } from "@aws-sdk/client-transcribe";
+import { TranscribeClient, StartTranscriptionJobCommand, GetTranscriptionJobCommand } from "@aws-sdk/client-transcribe";
 
 const translateText = async () => {
     const inputText = document.getElementById("input_text").value;
@@ -100,12 +100,13 @@ function streamAudio(stream) {
         // Testing block
         document.getElementById("translate_audio_src").src = audioURL;
         document.getElementById("translate_audio").load();
+        transcribeAudio(audioURL);
         // Testing block
     }
     canRecord = true;
 }
 
-const transcribeAudio = async () => {
+const recordAudio = async () => {
     if (!canRecord) return;
 
     isRecording = !isRecording;
@@ -120,5 +121,66 @@ const transcribeAudio = async () => {
 
 };
 
+const transcribeAudio = async (audioFile) => { 
+    const transcribeClient = new TranscribeClient({
+        region: "us-east-1",
+        credentials: fromCognitoIdentityPool({
+            client: new CognitoIdentityClient({region: "us-east-1"}),
+            identityPoolId: "us-east-1:891d8d0f-1caf-4b14-81f7-71114388deb6"
+        }),
+    });
+
+    const params = {
+        LanguageCode: 'en-US',
+        Media: {
+            MediaFileUri: audioFile
+        },
+        MediaFormat: "ogg",
+        TranscriptionJobName: 'TranscriptionJob-' + Date.now()
+    };
+
+    try {
+        const startTranscriptionJobCommand = new StartTranscriptionJobCommand(params);
+        const data = await transcribeClient.send(startTranscriptionJobCommand);
+        console.log('Transcription Job Response:', data);
+        pollTranscriptionJob(data.TranscriptionJob.TranscriptionJobName);
+    } catch (err) {
+        console.error('Error:', err);
+        alert('An error occurred while transcribing the audio.');
+    }
+}
+
+async function pollTranscriptionJob(jobName) {
+    const transcribeClient = new TranscribeClient({
+        region: "us-east-1",
+        credentials: fromCognitoIdentityPool({
+            client: new CognitoIdentityClient({region: "us-east-1"}),
+            identityPoolId: "us-east-1:891d8d0f-1caf-4b14-81f7-71114388deb6"
+        }),
+    });
+
+    const interval = setInterval(async function() {
+        try {
+            const getTranscriptionJobCommand = new GetTranscriptionJobCommand(jobName);
+            const data = await transcribeClient.send(getTranscriptionJobCommand);
+            console.log('Transcription Job Status:', data.TranscriptionJob.TranscriptionJobStatus);
+            if (data.TranscriptionJob.TranscriptionJobStatus === 'COMPLETED') {
+                clearInterval(interval);
+                const transcriptionResultUri = data.TranscriptionJob.Transcript.TranscriptFileUri;
+                const response = await fetch(transcriptionResultUri);
+                const json = await response.json();
+                document.getElementById('input_text').value = json.results.transcripts[0].transcript;
+            } else if (data.TranscriptionJob.TranscriptionJobStatus === 'FAILED') {
+                clearInterval(interval);
+                alert('Transcription job failed.');
+            }
+        } catch (err) {
+            console.error('Error:', err);
+            clearInterval(interval);
+            alert('An error occurred while getting the transcription job status.');
+        }
+    }, 5000); // Poll every 5 seconds
+}
+
 window.translateText = translateText;
-window.transcribeAudio = transcribeAudio;
+window.transcribeAudio = recordAudio;
