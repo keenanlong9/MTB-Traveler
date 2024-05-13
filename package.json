@@ -13,6 +13,7 @@
   "dependencies": {
     "@aws-sdk/client-cognito-identity": "^3.572.0",
     "@aws-sdk/client-polly": "^3.572.0",
+    "@aws-sdk/client-s3": "^3.574.0",
     "@aws-sdk/client-transcribe": "^3.574.0",
     "@aws-sdk/client-translate": "^3.572.0",
     "@aws-sdk/credential-provider-cognito-identity": "^3.572.0",

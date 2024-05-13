@@ -4,6 +4,7 @@ import { TranslateClient, TranslateTextCommand } from "@aws-sdk/client-translate
 import { Polly } from "@aws-sdk/client-polly";
 import { getSynthesizeSpeechUrl } from "@aws-sdk/polly-request-presigner";
 import { TranscribeClient, StartTranscriptionJobCommand, GetTranscriptionJobCommand } from "@aws-sdk/client-transcribe";
+import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
 
 const translateText = async () => {
     const inputText = document.getElementById("input_text").value;
@@ -100,8 +101,11 @@ function streamAudio(stream) {
         // Testing block
         document.getElementById("translate_audio_src").src = audioURL;
         document.getElementById("translate_audio").load();
-        transcribeAudio(audioURL);
         // Testing block
+
+        const file = new File([blob], "transcribeAudio.ogg", {type: blob.type});
+        uploadS3(file);
+        //transcribeAudio(file);
     }
     canRecord = true;
 }
@@ -120,6 +124,33 @@ const recordAudio = async () => {
     }
 
 };
+
+const uploadS3 = async (file) => {
+    console.log("Uploading file to S3: ", file);
+    const s3Client = new S3Client({
+        region: "us-east-1",
+        credentials: fromCognitoIdentityPool({
+            client: new CognitoIdentityClient({region: "us-east-1"}),
+            identityPoolId: "us-east-1:891d8d0f-1caf-4b14-81f7-71114388deb6"
+        }),
+    });
+
+    const params = {
+        Bucket: "mtbtraveler-transcribeaudio",
+        Key: "transcribeAudio.ogg",
+        Body: file,
+        ContentType: "audio/ogg"
+    };
+
+    try {
+        await s3Client.send(new PutObjectCommand(params));
+        const audioFileUri = "s3://${params.Bucket}/${params.Key}";
+        console.log("Successfully uploaded file to s3 ", audioFileUri);
+        // transcribeAudio(audioFileUri);
+    } catch (err) {
+        console.error("Error uploading file to S3 ", err)
+    }
+}
 
 const transcribeAudio = async (audioFile) => { 
     const transcribeClient = new TranscribeClient({
