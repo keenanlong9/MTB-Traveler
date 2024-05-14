@@ -144,9 +144,9 @@ const uploadS3 = async (file) => {
 
     try {
         await s3Client.send(new PutObjectCommand(params));
-        const audioFileUri = "s3://${params.Bucket}/${params.Key}";
-        console.log("Successfully uploaded file to s3 ", audioFileUri);
-        // transcribeAudio(audioFileUri);
+        const audioFileUri = `s3://${params.Bucket}/${params.Key}`;
+        console.log("Successfully uploaded file to s3", audioFileUri);
+        transcribeAudio(audioFileUri);
     } catch (err) {
         console.error("Error uploading file to S3 ", err)
     }
@@ -192,8 +192,13 @@ async function pollTranscriptionJob(jobName) {
 
     const interval = setInterval(async function() {
         try {
-            const getTranscriptionJobCommand = new GetTranscriptionJobCommand(jobName);
+            console.log(jobName);
+            const input = {
+                TranscriptionJobName: jobName
+            }
+            const getTranscriptionJobCommand = new GetTranscriptionJobCommand(input);
             const data = await transcribeClient.send(getTranscriptionJobCommand);
+            console.log("Get data", data);
             console.log('Transcription Job Status:', data.TranscriptionJob.TranscriptionJobStatus);
             if (data.TranscriptionJob.TranscriptionJobStatus === 'COMPLETED') {
                 clearInterval(interval);
