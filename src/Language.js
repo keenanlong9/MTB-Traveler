@@ -4,7 +4,7 @@ import { TranslateClient, TranslateTextCommand } from "@aws-sdk/client-translate
 import { Polly } from "@aws-sdk/client-polly";
 import { getSynthesizeSpeechUrl } from "@aws-sdk/polly-request-presigner";
 import { TranscribeClient, StartTranscriptionJobCommand, GetTranscriptionJobCommand } from "@aws-sdk/client-transcribe";
-import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
+import { S3Client, PutObjectCommand, GetObjectCommand } from "@aws-sdk/client-s3";
 
 const translateText = async () => {
     const inputText = document.getElementById("input_text").value;
@@ -98,14 +98,8 @@ function streamAudio(stream) {
         chunks = [];
         const audioURL = window.URL.createObjectURL(blob);
         // send audio to transcribe client
-        // Testing block
-        document.getElementById("translate_audio_src").src = audioURL;
-        document.getElementById("translate_audio").load();
-        // Testing block
-
         const file = new File([blob], "transcribeAudio.ogg", {type: blob.type});
         uploadS3(file);
-        //transcribeAudio(file);
     }
     canRecord = true;
 }
@@ -167,7 +161,9 @@ const transcribeAudio = async (audioFile) => {
             MediaFileUri: audioFile
         },
         MediaFormat: "ogg",
-        TranscriptionJobName: 'TranscriptionJob-' + Date.now()
+        TranscriptionJobName: 'TranscriptionJob-' + Date.now(),
+        OutputBucketName: "mtbtraveler-transcribeaudio",
+        OutputKey: "transcribeTranscript.json"
     };
 
     try {
@@ -189,6 +185,18 @@ async function pollTranscriptionJob(jobName) {
             identityPoolId: "us-east-1:891d8d0f-1caf-4b14-81f7-71114388deb6"
         }),
     });
+    const s3Client = new S3Client({
+        region: "us-east-1",
+        credentials: fromCognitoIdentityPool({
+            client: new CognitoIdentityClient({region: "us-east-1"}),
+            identityPoolId: "us-east-1:891d8d0f-1caf-4b14-81f7-71114388deb6"
+        }),
+    });
+
+    const params = {
+        Bucket: "mtbtraveler-transcribeaudio",
+        Key: "transcribeTranscript.json"
+    };
 
     const interval = setInterval(async function() {
         try {
@@ -202,10 +210,13 @@ async function pollTranscriptionJob(jobName) {
             console.log('Transcription Job Status:', data.TranscriptionJob.TranscriptionJobStatus);
             if (data.TranscriptionJob.TranscriptionJobStatus === 'COMPLETED') {
                 clearInterval(interval);
-                const transcriptionResultUri = data.TranscriptionJob.Transcript.TranscriptFileUri;
-                const response = await fetch(transcriptionResultUri);
-                const json = await response.json();
-                document.getElementById('input_text').value = json.results.transcripts[0].transcript;
+                const response = await s3Client.send(new GetObjectCommand(params));
+                console.log(response);
+                const body = await response.Body.transformToString();
+                console.log("Body String", body);
+                const jsonData = JSON.parse(body);
+                console.log("Json", jsonData);
+                document.getElementById('input_text').value = jsonData.results.transcripts[0].transcript;
             } else if (data.TranscriptionJob.TranscriptionJobStatus === 'FAILED') {
                 clearInterval(interval);
                 alert('Transcription job failed.');
