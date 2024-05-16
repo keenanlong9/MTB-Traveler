@@ -831,7 +831,7 @@
     font-size: 2.4rem;
 }
 
-.location_card {
+#Whistler {
     margin: 0.5rem;
     height: 363px;
     width: 700px;
@@ -842,6 +842,120 @@
     color: #fff;
     text-align: center;
 }
+
+#Finale_Ligure {
+    margin: 0.5rem;
+    height: 363px;
+    width: 700px;
+    border-radius:20px;
+    background-image: url('../Images/Finale_Ligure.jpeg');
+    background-size: cover;
+    background-position-y: -100px;
+    position: relative;
+    color: #fff;
+    text-align: center;
+}
+
+#Bellingham {
+    margin: 0.5rem;
+    height: 363px;
+    width: 700px;
+    border-radius:20px;
+    background-image: url('../Images/Bellingham.jpeg');
+    background-size: cover;
+    position: relative;
+    color: #fff;
+    text-align: center;
+}
+
+#Jamaica {
+    margin: 0.5rem;
+    height: 363px;
+    width: 700px;
+    border-radius:20px;
+    background-image: url('../Images/Jamaica.jpeg');
+    background-size: cover;
+    background-position-y: -50px;
+    position: relative;
+    color: #fff;
+    text-align: center;
+}
+
+#Loudenvielle {
+    margin: 0.5rem;
+    height: 363px;
+    width: 700px;
+    border-radius:20px;
+    background-image: url('../Images/Loudenvielle.jpeg');
+    background-size: cover;
+    background-position-y: -100px;
+    position: relative;
+    color: #fff;
+    text-align: center;
+}
+
+#Oaxaca {
+    margin: 0.5rem;
+    height: 363px;
+    width: 700px;
+    border-radius:20px;
+    background-image: url('../Images/Oaxaca.jpeg');
+    background-size: cover;
+    position: relative;
+    color: #fff;
+    text-align: center;
+}
+
+#Queenstown {
+    margin: 0.5rem;
+    height: 363px;
+    width: 700px;
+    border-radius:20px;
+    background-image: url('../Images/Queenstown.jpeg');
+    background-size: cover;
+    position: relative;
+    color: #fff;
+    text-align: center;
+}
+
+
+#South_Africa {
+    margin: 0.5rem;
+    height: 363px;
+    width: 700px;
+    border-radius:20px;
+    background-image: url('../Images/South_Africa.jpeg');
+    background-size: cover;
+    position: relative;
+    color: #fff;
+    text-align: center;
+}
+
+#Tasmania {
+    margin: 0.5rem;
+    height: 363px;
+    width: 700px;
+    border-radius:20px;
+    background-image: url('../Images/Tasmania.jpeg');
+    background-size: cover;
+    background-position-y: -70px;
+    position: relative;
+    color: #fff;
+    text-align: center;
+}
+
+#Zermatt {
+    margin: 0.5rem;
+    height: 363px;
+    width: 700px;
+    border-radius:20px;
+    background-image: url('../Images/Zermatt.jpeg');
+    background-size: cover;
+    position: relative;
+    color: #fff;
+    text-align: center;
+}
+
 
 .location_card p {
     padding-top: 320px;
