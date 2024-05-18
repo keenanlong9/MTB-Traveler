@@ -53,12 +53,15 @@
             id="input_currency_num"
             placeholder="100"
           />
-          <input
-            type="text"
-            name="input_currency_type"
-            id="input_currency_type"
-            placeholder="$"
-          />
+          <select name="input_currency_type" id="input_currency_type">
+            <option value="USD">$USD</option>
+            <option value="EUR">$EUR</option>
+            <option value="CAD">$CAD</option>
+            <option value="JMD">$JMD</option>
+            <option value="MXN">$MXN</option>
+            <option value="ZAR">$ZAR</option>
+            <option value="AUD">$AUD</option>
+          </select>
         </div>
         <div class="output_currency">
           <input
@@ -67,13 +70,17 @@
             id="output_currency_num"
             placeholder="93.75"
           />
-          <input
-            type="text"
-            name="output_currency_type"
-            id="output_currency_type"
-            placeholder="€"
-          />
+          <select name="output_currency_type" id="output_currency_type">
+            <option value="EUR">$EUR</option>
+            <option value="CAD">$CAD</option>
+            <option value="JMD">$JMD</option>
+            <option value="MXN">$MXN</option>
+            <option value="ZAR">$ZAR</option>
+            <option value="AUD">$AUD</option>
+            <option value="USD">$USD</option>
+          </select>
         </div>
+        <button class="convert_btn" onclick="convertCurrency()">Convert</button>
       </div>
     </div>
 
@@ -91,6 +98,7 @@
     </div>
 
     <script src="MTB-Traveler.js"></script>
+    <script src="Currency.js"></script>
     <script
       src="https://kit.fontawesome.com/c4250432e0.js"
       crossorigin="anonymous"
