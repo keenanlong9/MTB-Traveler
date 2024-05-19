@@ -42,16 +42,21 @@
     <div class="language_translator">
       <h1>Communicate with Locals</h1>
       <div class="language_translator_btns">
-        <button id="transcribe_btn" onclick="transcribeAudio()">
+        <button
+          class="language_translator_btn"
+          id="transcribe_btn"
+          onclick="transcribeAudio()"
+        >
           <p>Voice Input</p>
         </button>
-        <button id="translate_btn" onclick="translateText()">
+        <button
+          class="language_translator_btn"
+          id="translate_btn"
+          onclick="translateText()"
+        >
           <p>Translate</p>
         </button>
         <div class="language_translator_voice_output">
-          <!--<button>
-            <p>Voice Output</p>
-          </button>-->
           <audio id="translate_audio" controls>
             <source id="translate_audio_src" type="audio/mp3" src="" />
           </audio>

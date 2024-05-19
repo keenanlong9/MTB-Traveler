@@ -423,8 +423,8 @@
 /* Need to fix clickable region*/
 .explore_locations_card {
     margin: 1rem;
-    height: 131px;
-    width: 200px;
+    height: 200px;
+    width: 300px;
     border-radius: 4px;
     background-image: url('../Images/Whistler.jpeg');
     background-size: cover;
@@ -435,18 +435,20 @@
 }
 /* Need to fix clickable region*/
 .explore_locations_card a {
-    height: 200px;
-    width: 200px;
+    height: 300px;
+    width: 300px;
 }
 /* Need to fix clickable region*/
 .explore_location_name {
-    height: 131;
-    width: 370px;
+    width: 580px;
+    text-align: left;
+    align-items: center;
 }
 
 .explore_locations_card p {
     color: white;
-    padding: 60px 0px 0px 200px;
+    padding: 90px 0px 0px 320px;
+    font-size: 1.25rem;
 }
 
 .explore_locations_card:nth-child(2) {
@@ -560,12 +562,37 @@
     padding-bottom: 30px;
 }
 
-.language_translator_btns button {
-    height: 30px;
-    width: 125px;
+.language_translator_btn {
+    font-size: 1rem;
+    background-color: rgb(7, 30, 175);
+    padding: 14px 25px;
+    border: none;
+    border-radius: 4px;
     cursor: pointer;
-    background-color: lightgray;
-    border-radius: 4px; 
+    position: relative;
+    transition: all 0.35s ease;
+    outline: none;
+}
+
+.language_translator_btn a {
+    position: relative;
+    z-index: 2;
+    color: white;
+    text-decoration: none;
+}
+
+.language_translator_btn:hover {
+    background-color: rgb(8, 161, 0);
+}
+
+.language_translator_btn:hover::after {
+    width: 100%;
+}
+
+.language_translator_btn p {
+    position: relative;
+    color: white;
+    z-index: 2;
 }
 
 .language_translator_textbox input {
@@ -575,6 +602,7 @@
     background-color: lightgray;
     border-radius: 8px;
     text-align: center;
+    font-size: 1.25rem;
 }
 
 .language_translator_voice_output audio {
@@ -676,15 +704,63 @@
 }
 
 .input_output_currency input {
-    height: 40px;
-    width: 100px;
+    height: 50px;
+    width: 110px;
+    font-size: 1rem;
     overflow-wrap: break-word;
     background-color: lightgray;
     border-radius: 8px;
+    text-align: center;
+}
+
+.input_output_currency select {
+    height: 50px;
+    width: 110px;
+    font-size: 1rem;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.convert_btn {
+    font-size: 1rem;
+    background-color: rgb(7, 30, 175);
+    height: 50px;
+    width: 110px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.35s;
+    outline: none;
+}
+
+.convert_btn::after {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: rgb(8, 161, 0);
+    transition: all 0.35s;
+    border-radius: 4px;
+}
+
+.convert_btn:hover {
+    color: white;
+}
+
+.convert_btn:hover::after {
+    width: 100%;
+}
+
+.convert_btn p {
+    position: relative;
+    color: white;
+    z-index: 2;
 }
 
 .input_output_currency input::placeholder {
-    padding-left: 10px;
     font-size: 1.0rem;
 }
 
@@ -733,10 +809,18 @@
     font-size: 2.4rem;
 }
 
-.about_us_container {
+.about_us_container_photos {
     display: grid;
     grid-template-columns: auto auto;
     column-gap: 90px;
+}
+
+.about_us_container_info {
+    align-self: left;
+    display: grid;
+    grid-template-columns: auto 350px;
+    column-gap: 200px;
+    margin-left: 150px;
 }
 
 .about_us_photo img {
@@ -750,22 +834,21 @@
     font-size: 1.2rem;
 }
 
-.about_us_container ul {
+.about_us_container_info ul {
     list-style-type: none;
-    padding: 30px 0px 30px 200px;
     font-size: 1.7rem;
 }
 
-.about_us_container li {
+.about_us_container_info li {
     margin: 10px 0px;
 }
 
-.about_us_container a {
+.about_us_container_info a {
     color: rgb(7, 30, 175);
 }
 
-.about_us_container a:hover {
-    transition: all 0.35s;
+.about_us_container_info a:hover {
+    transition: all 0.35s ease;
     color: rgb(8, 161, 0);
 }
 
@@ -810,7 +893,7 @@
     }
 }
 
-/* Location.html Body Section */
+/* Location-*.html Body Section */
 .location {
     background: #141414;
     display: flex;
