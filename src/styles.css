@@ -540,7 +540,7 @@
     -moz-background-clip: text;
     -webkit-text-fill-color: transparent;
     -moz-text-fill-color: transparent;
-    margin-top: 1rem;
+    margin-top: -0.5rem;
     margin-bottom: 1rem;
     font-size: 2.5rem;
     align-items: center;
@@ -552,14 +552,21 @@
     display: grid;
     grid-template-columns: auto auto 120px;
     column-gap: 200px;
-    padding-bottom: 30px;
+    padding-bottom: 20px;
+}
+
+.language_translator_selections {
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 550px;
+    padding-bottom: 20px;
 }
 
 .language_translator_textbox {
     display: grid;
     grid-template-columns: auto auto;
     column-gap: 200px;
-    padding-bottom: 30px;
+    padding-bottom: 10px;
 }
 
 .language_translator_btn {
@@ -608,6 +615,12 @@
 .language_translator_voice_output audio {
     height: 30px;
     width: 200px;
+}
+
+.language_translator_selection {
+    height: 30px;
+    width: 80px;
+    text-align: center;
 }
 
 @media screen and (max-width: 1010px) {
