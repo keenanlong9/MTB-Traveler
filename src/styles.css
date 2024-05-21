@@ -602,14 +602,14 @@
     z-index: 2;
 }
 
-.language_translator_textbox input {
+.language_translator_textbox textarea {
     height: 400px;
     width: 400px;
-    overflow-wrap: break-word;
     background-color: lightgray;
     border-radius: 8px;
     text-align: center;
     font-size: 1.25rem;
+    padding-top: 180px;
 }
 
 .language_translator_voice_output audio {

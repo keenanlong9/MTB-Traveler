@@ -1,7 +1,7 @@
 import { CognitoIdentityClient } from "@aws-sdk/client-cognito-identity";
 import { fromCognitoIdentityPool } from "@aws-sdk/credential-provider-cognito-identity";
 import { TranslateClient, TranslateTextCommand } from "@aws-sdk/client-translate";
-import { Polly } from "@aws-sdk/client-polly";
+import { LanguageCode, Polly } from "@aws-sdk/client-polly";
 import { getSynthesizeSpeechUrl } from "@aws-sdk/polly-request-presigner";
 import { TranscribeClient, StartTranscriptionJobCommand, GetTranscriptionJobCommand } from "@aws-sdk/client-transcribe";
 import { S3Client, PutObjectCommand, GetObjectCommand } from "@aws-sdk/client-s3";
@@ -20,7 +20,8 @@ const translateText = async () => {
     const translateParams = {
         Text: inputText,
         SourceLanguageCode: "auto",
-        TargetLanguageCode: "fr"
+        TargetLanguageCode: getOutputLanguage()
+        //TargetLanguageCode: "fr"
     };
 
     const translateTextCommand = new TranslateTextCommand(translateParams);
@@ -48,7 +49,8 @@ const audioTranslateText = async () => {
         Text: "",
         TextType: "text",
         VoiceId: "Matthew",
-        LanguageCode: "fr-FR"
+        LanguageCode: convertLanguageCode(getOutputLanguage())
+        //LanguageCode: "fr-FR"
       };
 
 
@@ -156,7 +158,8 @@ const transcribeAudio = async (audioFile) => {
     });
 
     const params = {
-        LanguageCode: 'en-US',
+        LanguageCode: convertLanguageCode(getOutputLanguage()),
+        //LanguageCode: 'en-US',
         Media: {
             MediaFileUri: audioFile
         },
@@ -227,6 +230,32 @@ async function pollTranscriptionJob(jobName) {
             alert('An error occurred while getting the transcription job status.');
         }
     }, 5000); // Poll every 5 seconds
+}
+
+function convertLanguageCode (input) {
+    var languageCode;
+    switch (input) {
+        case "fr":
+            languageCode = "fr-FR";
+            break;
+        case "en":
+            languageCode = "en-US";
+            break;
+        case "de":
+            languageCode = "de-DE";
+            break;
+        case "es":
+            languageCode = "es-ES";
+            break;
+    }
+    return languageCode;
+}
+
+function getOutputLanguage () {
+    const outputLanguage = document.getElementById("output_language");
+    const index = outputLanguage.selectedIndex;
+    const languageCode = outputLanguage[index].value;
+    return languageCode;
 }
 
 window.translateText = translateText;
