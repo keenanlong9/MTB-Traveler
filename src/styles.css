@@ -572,7 +572,8 @@
 .language_translator_btn {
     font-size: 1rem;
     background-color: rgb(7, 30, 175);
-    padding: 14px 25px;
+    height: 50px;
+    width: 125px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -629,7 +630,7 @@
     }
 
     .language_translator_btns {
-        column-gap: 100px;
+        column-gap: 150px;
     }
 
     .language_translator_textbox {
@@ -637,17 +638,25 @@
     }
 
     .language_translator_btns button {
-        height: 30px;
+        height: 40px;
         width: 125px;
     }
 
-    .language_translator_textbox input {
+    .language_translator_textbox textarea {
         height: 300px;
         width: 300px;
     }
 
-    .language_translator_textbox input::placeholder {
-        padding-left: 100px;
+    .language_translator_btn {
+        font-size: 0.9rem;
+    }
+
+    .language_translator_selections {
+        column-gap: 450px;
+    }
+
+    .language_translator_textbox textarea {
+        padding-top: 140px;
     }
 
     .footer_container {
@@ -657,16 +666,15 @@
 
 @media screen and (max-width: 805px) {
     .language_translator_btns {
-        column-gap: 40px;
+        column-gap: 80px;
     }
 
     .language_translator_textbox {
         column-gap: 20px;
     }
 
-    .language_translator_textbox input::placeholder {
-        padding-left: 110px;
-        font-size: 1rem;
+    .language_translator_selections {
+        column-gap: 350px;
     }
 }
 
@@ -777,7 +785,7 @@
     font-size: 1.0rem;
 }
 
-@media screen and (max-width:732px) {
+@media screen and (max-width:775px) {
 
     .currency_card {
         margin: 1rem;
@@ -798,6 +806,24 @@
         height: 30px;
         width: 90px;
     }
+
+    .input_output_currency select {
+        height: 30px;
+        width: 90px;
+    }
+
+    .convert_btn {
+        height: 38px;
+        width: 83px;
+    }    
+}
+
+@media screen and (max-width:660px) {
+    .input_output_currency {
+        display: grid;
+        grid-template-columns: auto auto auto;
+        column-gap: 50px;
+    }   
 }
 
 /* About.html Body Section */
