@@ -5,21 +5,20 @@
   "main": "webpack.config.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --mode development"
+    "build": "webpack --mode development",
+    "install": "npm install @aws-sdk/client-cognito-identity @aws-sdk/client-polly @aws-sdk/client-s3 @aws-sdk/client-transcribe @aws-sdk/client-translate @aws-sdk/credential-provider-cognito-identity @aws-sdk/polly-request-presigner --save-dev webpack --save-dev webpack-cli"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "@aws-sdk/client-cognito-identity": "^3.583.0",
-    "@aws-sdk/client-polly": "^3.583.0",
-    "@aws-sdk/client-s3": "^3.583.0",
-    "@aws-sdk/client-transcribe": "^3.583.0",
-    "@aws-sdk/client-translate": "^3.583.0",
-    "@aws-sdk/credential-provider-cognito-identity": "^3.583.0",
-    "@aws-sdk/polly-request-presigner": "^3.583.0"
-  },
   "devDependencies": {
+    "@aws-sdk/client-cognito-identity": "^3.590.0",
+    "@aws-sdk/client-polly": "^3.590.0",
+    "@aws-sdk/client-s3": "^3.591.0",
+    "@aws-sdk/client-transcribe": "^3.590.0",
+    "@aws-sdk/client-translate": "^3.590.0",
+    "@aws-sdk/credential-provider-cognito-identity": "^3.590.0",
+    "@aws-sdk/polly-request-presigner": "^3.590.0",
     "webpack": "^5.91.0",
     "webpack-cli": "^5.1.4"
   }
