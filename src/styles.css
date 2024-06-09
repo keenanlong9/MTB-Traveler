@@ -5,6 +5,16 @@
     font-family: 'Kumbh Sans', sans-serif;
 }
 
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #141414;
+}
+
 /* Navbar Section Shared with all html files */
 .navbar {
     background: black;

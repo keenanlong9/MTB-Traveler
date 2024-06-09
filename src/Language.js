@@ -105,7 +105,9 @@ function streamAudio(stream) {
 }
 
 const recordAudio = async () => {
+    console.log("In record audio");
     if (!canRecord) return;
+    console.log("Able to record");
 
     isRecording = !isRecording;
 
