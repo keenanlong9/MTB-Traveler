@@ -38,31 +38,40 @@ const convertCurrency = async () => {
 function USDCurrency(inputCurrency, outputCurrency, outputCurrencyType) {
     switch (outputCurrencyType) {
         case "USD":
-            outputCurrency.value = inputCurrency * 1.0;
+            convertedCurrency = inputCurrency * 1.0;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break;
         case "CAD":
-            outputCurrency.value = inputCurrency * 1.36;
+            convertedCurrency = inputCurrency * 1.36;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break;
         case "EUR":
-            outputCurrency.value = inputCurrency * 0.92;
+            convertedCurrency = inputCurrency * 0.92;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break;
         case "JMD":
-            outputCurrency.value = inputCurrency * 155.24;
+            convertedCurrency = inputCurrency * 155.24;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break;
         case "MXN":
-            outputCurrency.value = inputCurrency * 16.61;
+            convertedCurrency = inputCurrency * 16.61;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break;
         case "ZAR":
-            outputCurrency.value = inputCurrency * 18.18;
+            convertedCurrency = inputCurrency * 18.18;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break;
         case "AUD":
-            outputCurrency.value = inputCurrency * 1.49;
+            convertedCurrency = inputCurrency * 1.49;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break;
         case "NZD":
-            outputCurrency.value = inputCurrency * 1.63;
+            convertedCurrency = inputCurrency * 1.63;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break;
         case "CHF":
-            outputCurrency.value = inputCurrency * 0.91;
+            convertedCurrency = inputCurrency * 0.91;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break; 
     }
 }
@@ -70,31 +79,40 @@ function USDCurrency(inputCurrency, outputCurrency, outputCurrencyType) {
 function CADCurrency(inputCurrency, outputCurrency, outputCurrencyType) {
     switch (outputCurrencyType) {
         case "USD":
-            outputCurrency.value = inputCurrency * 0.73;
+            convertedCurrency = inputCurrency * 0.73;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break;
         case "CAD":
-            outputCurrency.value = inputCurrency * 1.0;
+            convertedCurrency = inputCurrency * 1.0;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break;
         case "EUR":
-            outputCurrency.value = inputCurrency * 0.68;
+            convertedCurrency = inputCurrency * 0.68;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break;
         case "JMD":
-            outputCurrency.value = inputCurrency * 114.0;
-            break;
+            convertedCurrency = inputCurrency * 114.0;
+            outputCurrency.value = roundNumber(convertedCurrency);
+            break; 
         case "MXN":
-            outputCurrency.value = inputCurrency * 12.20;
+            convertedCurrency = inputCurrency * 12.20;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break;
         case "ZAR":
-            outputCurrency.value = inputCurrency * 13.35;
+            convertedCurrency = inputCurrency * 13.35;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break;
         case "AUD":
-            outputCurrency.value = inputCurrency * 1.10;
+            convertedCurrency = inputCurrency * 1.10;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break; 
         case "NZD":
-            outputCurrency.value = inputCurrency * 1.20;
+            convertedCurrency = inputCurrency * 1.20;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break;
         case "CHF":
-            outputCurrency.value = inputCurrency * 0.67;
+            convertedCurrency = inputCurrency * 0.67;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break; 
     }
 }
@@ -102,31 +120,40 @@ function CADCurrency(inputCurrency, outputCurrency, outputCurrencyType) {
 function EURCurrency(inputCurrency, outputCurrency, outputCurrencyType) {
     switch (outputCurrencyType) {
         case "USD":
-            outputCurrency.value = inputCurrency * 1.09;
+            convertedCurrency = inputCurrency * 1.09;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break;
         case "CAD":
-            outputCurrency.value = inputCurrency * 1.48;
+            convertedCurrency = inputCurrency * 1.48;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break;
         case "EUR":
-            outputCurrency.value = inputCurrency * 1.0;
+            convertedCurrency = inputCurrency * 1.0;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break;
         case "JMD":
-            outputCurrency.value = inputCurrency * 169.06;
+            convertedCurrency = inputCurrency * 169.06;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break;
         case "MXN":
-            outputCurrency.value = inputCurrency * 18.03;
+            convertedCurrency = inputCurrency * 18.03;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break;
         case "ZAR":
-            outputCurrency.value = inputCurrency * 19.76;
+            convertedCurrency = inputCurrency * 19.76;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break;
         case "AUD":
-            outputCurrency.value = inputCurrency * 1.63;
+            convertedCurrency = inputCurrency * 1.63;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break; 
         case "NZD":
-            outputCurrency.value = inputCurrency * 1.77;
+            convertedCurrency = inputCurrency * 1.77;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break;
         case "CHF":
-            outputCurrency.value = inputCurrency * 0.99;
+            convertedCurrency = inputCurrency * 0.99;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break;
     }
 }
@@ -134,31 +161,40 @@ function EURCurrency(inputCurrency, outputCurrency, outputCurrencyType) {
 function JMDCurrency(inputCurrency, outputCurrency, outputCurrencyType) {
     switch (outputCurrencyType) {
         case "USD":
-            outputCurrency.value = inputCurrency * 0.0064;
+            convertedCurrency = inputCurrency * 0.0064;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break;
         case "CAD":
-            outputCurrency.value = inputCurrency * 0.0088;
+            convertedCurrency = inputCurrency * 0.0088;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break;
         case "EUR":
-            outputCurrency.value = inputCurrency * 0.0059;
+            convertedCurrency = inputCurrency * 0.0059;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break;
         case "JMD":
-            outputCurrency.value = inputCurrency * 1.0;
+            convertedCurrency = inputCurrency * 1.0;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break;
         case "MXN":
-            outputCurrency.value = inputCurrency * 0.11;
+            convertedCurrency = inputCurrency * 0.11;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break;
         case "ZAR":
-            outputCurrency.value = inputCurrency * 0.12;
+            convertedCurrency = inputCurrency * 0.12;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break;
         case "AUD":
-            outputCurrency.value = inputCurrency * 0.0096;
+            convertedCurrency = inputCurrency * 0.0096;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break; 
         case "NZD":
-            outputCurrency.value = inputCurrency * 0.011;
+            convertedCurrency = inputCurrency * 0.011;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break;
         case "CHF":
-            outputCurrency.value = inputCurrency * 0.0059;
+            convertedCurrency = inputCurrency * 0.0059;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break;
     }
 }
@@ -166,31 +202,40 @@ function JMDCurrency(inputCurrency, outputCurrency, outputCurrencyType) {
 function MXNCurrency(inputCurrency, outputCurrency, outputCurrencyType) {
     switch (outputCurrencyType) {
         case "USD":
-            outputCurrency.value = inputCurrency * 0.060;
+            convertedCurrency = inputCurrency * 0.060;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break;
         case "CAD":
-            outputCurrency.value = inputCurrency * 0.082;
+            convertedCurrency = inputCurrency * 0.082;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break;
         case "EUR":
-            outputCurrency.value = inputCurrency * 0.055;
+            convertedCurrency = inputCurrency * 0.055;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break;
         case "JMD":
-            outputCurrency.value = inputCurrency * 9.35;
+            convertedCurrency = inputCurrency * 9.35;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break;
         case "MXN":
-            outputCurrency.value = inputCurrency * 1.0;
+            convertedCurrency = inputCurrency * 1.0;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break;
         case "ZAR":
-            outputCurrency.value = inputCurrency * 1.09;
+            convertedCurrency = inputCurrency * 1.09;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break;
         case "AUD":
-            outputCurrency.value = inputCurrency * 0.090;
+            convertedCurrency = inputCurrency * 0.090;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break;
         case "NZD":
-            outputCurrency.value = inputCurrency * 0.098;
+            convertedCurrency = inputCurrency * 0.098;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break;
         case "CHF":
-            outputCurrency.value = inputCurrency * 0.055;
+            convertedCurrency = inputCurrency * 0.055;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break;
     }
 }
@@ -198,31 +243,40 @@ function MXNCurrency(inputCurrency, outputCurrency, outputCurrencyType) {
 function ZARCurrency(inputCurrency, outputCurrency, outputCurrencyType) {
     switch (outputCurrencyType) {
         case "USD":
-            outputCurrency.value = inputCurrency * 0.055;
+            convertedCurrency = inputCurrency * 0.055;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break;
         case "CAD":
-            outputCurrency.value = inputCurrency * 0.075;
+            convertedCurrency = inputCurrency * 0.075;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break;
         case "EUR":
-            outputCurrency.value = inputCurrency * 0.051;
+            convertedCurrency = inputCurrency * 0.051;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break;
         case "JMD":
-            outputCurrency.value = inputCurrency * 8.54;
+            convertedCurrency = inputCurrency * 8.54;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break;
         case "MXN":
-            outputCurrency.value = inputCurrency * 0.91;
+            convertedCurrency = inputCurrency * 0.91;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break;
         case "ZAR":
-            outputCurrency.value = inputCurrency * 1.0;
+            convertedCurrency = inputCurrency * 1.0;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break;
         case "AUD":
-            outputCurrency.value = inputCurrency * 0.082;
+            convertedCurrency = inputCurrency * 0.082;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break;
         case "NZD":
-            outputCurrency.value = inputCurrency * 0.090;
+            convertedCurrency = inputCurrency * 0.090;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break;
         case "CHF":
-            outputCurrency.value = inputCurrency * 0.050;
+            convertedCurrency = inputCurrency * 0.050;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break;
     }
 }
@@ -230,31 +284,40 @@ function ZARCurrency(inputCurrency, outputCurrency, outputCurrencyType) {
 function AUDCurrency(inputCurrency, outputCurrency, outputCurrencyType) {
     switch (outputCurrencyType) {
         case "USD":
-            outputCurrency.value = inputCurrency * 0.67;
+            convertedCurrency = inputCurrency * 0.67;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break;
         case "CAD":
-            outputCurrency.value = inputCurrency * 0.91;
+            convertedCurrency = inputCurrency * 0.91;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break;
         case "EUR":
-            outputCurrency.value = inputCurrency * 0.61;
+            convertedCurrency = inputCurrency * 0.61;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break;
         case "JMD":
-            outputCurrency.value = inputCurrency * 104.03;
+            convertedCurrency = inputCurrency * 104.03;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break;
         case "MXN":
-            outputCurrency.value = inputCurrency * 11.13;
+            convertedCurrency = inputCurrency * 11.13;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break;
         case "ZAR":
-            outputCurrency.value = inputCurrency * 12.17;
+            convertedCurrency = inputCurrency * 12.17;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break;
         case "AUD":
-            outputCurrency.value = inputCurrency * 1.0;
+            convertedCurrency = inputCurrency * 1.0;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break; 
         case "NZD":
-            outputCurrency.value = inputCurrency * 1.09;
+            convertedCurrency = inputCurrency * 1.09;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break;
         case "CHF":
-            outputCurrency.value = inputCurrency * 0.61;
+            convertedCurrency = inputCurrency * 0.61;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break;
     }
 }
@@ -262,31 +325,40 @@ function AUDCurrency(inputCurrency, outputCurrency, outputCurrencyType) {
 function NZDCurrency(inputCurrency, outputCurrency, outputCurrencyType) {
     switch (outputCurrencyType) {
         case "USD":
-            outputCurrency.value = inputCurrency * 0.61;
+            convertedCurrency = inputCurrency * 0.61;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break;
         case "CAD":
-            outputCurrency.value = inputCurrency * 0.83;
+            convertedCurrency = inputCurrency * 0.83;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break;
         case "EUR":
-            outputCurrency.value = inputCurrency * 0.56;
+            convertedCurrency = inputCurrency * 0.56;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break;
         case "JMD":
-            outputCurrency.value = inputCurrency * 95.20;
+            convertedCurrency = inputCurrency * 95.20;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break;
         case "MXN":
-            outputCurrency.value = inputCurrency * 10.18;
+            convertedCurrency = inputCurrency * 10.18;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break;
         case "ZAR":
-            outputCurrency.value = inputCurrency * 11.15;
+            convertedCurrency = inputCurrency * 11.15;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break;
         case "AUD":
-            outputCurrency.value = inputCurrency * 0.92;
+            convertedCurrency = inputCurrency * 0.92;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break;
         case "NZD":
-            outputCurrency.value = inputCurrency * 1.0;
+            convertedCurrency = inputCurrency * 1.0;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break;
         case "CHF":
-            outputCurrency.value = inputCurrency * 0.56;
+            convertedCurrency = inputCurrency * 0.56;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break;
     }
 }
@@ -294,33 +366,52 @@ function NZDCurrency(inputCurrency, outputCurrency, outputCurrencyType) {
 function CHFCurrency(inputCurrency, outputCurrency, outputCurrencyType) {
     switch (outputCurrencyType) {
         case "USD":
-            outputCurrency.value = inputCurrency * 1.10;
+            convertedCurrency = inputCurrency * 1.10;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break;
         case "CAD":
-            outputCurrency.value = inputCurrency * 1.50;
+            convertedCurrency = inputCurrency * 1.50;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break;
         case "EUR":
-            outputCurrency.value = inputCurrency * 1.01;
+            convertedCurrency = inputCurrency * 1.01;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break;
         case "JMD":
-            outputCurrency.value = inputCurrency * 170.77;
+            convertedCurrency = inputCurrency * 170.77;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break;
         case "MXN":
-            outputCurrency.value = inputCurrency * 18.27;
+            convertedCurrency = inputCurrency * 18.27;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break;
         case "ZAR":
-            outputCurrency.value = inputCurrency * 20.00;
+            convertedCurrency = inputCurrency * 20.00;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break;
         case "AUD":
-            outputCurrency.value = inputCurrency * 1.64;
+            convertedCurrency = inputCurrency * 1.64;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break; 
         case "NZD":
-            outputCurrency.value = inputCurrency * 1.79;
+            convertedCurrency = inputCurrency * 1.79;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break;
         case "CHF":
-            outputCurrency.value = inputCurrency * 1.0;
+            convertedCurrency = inputCurrency * 1.0;
+            outputCurrency.value = roundNumber(convertedCurrency);
             break;
     }
 }
+
+function roundNumber(num){
+    return Number( num.toPrecision(countNonDecimalPlaces(num)+2));
+}
+
+function countNonDecimalPlaces(num) {
+    let numStr = num.toString();
+    let decimalIndex = numStr.indexOf('.');
+    return decimalIndex;
+  }
 
 window.convertCurrency = convertCurrency;

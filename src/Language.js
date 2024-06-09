@@ -21,7 +21,6 @@ const translateText = async () => {
         Text: inputText,
         SourceLanguageCode: "auto",
         TargetLanguageCode: getOutputLanguage()
-        //TargetLanguageCode: "fr"
     };
 
     const translateTextCommand = new TranslateTextCommand(translateParams);
@@ -50,7 +49,6 @@ const audioTranslateText = async () => {
         TextType: "text",
         VoiceId: "Matthew",
         LanguageCode: convertLanguageCode(getOutputLanguage())
-        //LanguageCode: "fr-FR"
       };
 
 
@@ -99,7 +97,7 @@ function streamAudio(stream) {
         const blob = new Blob(chunks, {type: "audio/ogg; codecs=opus"})
         chunks = [];
         const audioURL = window.URL.createObjectURL(blob);
-        // send audio to transcribe client
+        // uplaod audio to S3 for later transcription
         const file = new File([blob], "transcribeAudio.ogg", {type: blob.type});
         uploadS3(file);
     }
@@ -159,7 +157,6 @@ const transcribeAudio = async (audioFile) => {
 
     const params = {
         LanguageCode: convertLanguageCode(getOutputLanguage()),
-        //LanguageCode: 'en-US',
         Media: {
             MediaFileUri: audioFile
         },
