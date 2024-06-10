@@ -74,6 +74,15 @@ let isRecording = false;
 let recorder = null;
 let chunks = [];
 
+//Test code
+if(!navigator.mediaDevices){
+    console.log("mediaDevice not defined");
+}
+
+if(!navigator.mediaDevices.getUserMedia){
+    console.log("mediaDevice get UserMedia not defined");
+}
+
 if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia){
     console.log("Setting up audio");
     navigator.mediaDevices.getUserMedia({
@@ -87,7 +96,9 @@ if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia){
 
 
 function streamAudio(stream) {
+    console.log("Setting up recorder");
     recorder = new MediaRecorder(stream);
+    console.log("New recorder");
 
     recorder.ondataavailable = e => {
         chunks.push(e.data);
