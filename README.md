@@ -6,7 +6,7 @@
 
 A mountain bike specific travel web application to showcase popular travel destinations. Users will be able to gain information on the most popular trails, the native spoken language, and common currency in the area. Additionally, users will have the ability to translate speech or text and convert their currency to the common currency used in the place their traveling to.
 
-http://mtb-traveler.com
+https://mtb-traveler.com
 
 ## Technologies Used
 
