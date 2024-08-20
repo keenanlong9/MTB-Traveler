@@ -1,7 +1,7 @@
 import { CognitoIdentityClient } from "@aws-sdk/client-cognito-identity";
 import { fromCognitoIdentityPool } from "@aws-sdk/credential-provider-cognito-identity";
 import { TranslateClient, TranslateTextCommand } from "@aws-sdk/client-translate";
-import { LanguageCode, Polly } from "@aws-sdk/client-polly";
+import { Polly } from "@aws-sdk/client-polly";
 import { getSynthesizeSpeechUrl } from "@aws-sdk/polly-request-presigner";
 import { TranscribeClient, StartTranscriptionJobCommand, GetTranscriptionJobCommand } from "@aws-sdk/client-transcribe";
 import { S3Client, PutObjectCommand, GetObjectCommand } from "@aws-sdk/client-s3";
@@ -13,7 +13,7 @@ const translateText = async () => {
         region: "us-east-1",
         credentials: fromCognitoIdentityPool({
             client: new CognitoIdentityClient({region: "us-east-1"}),
-            identityPoolId: "us-east-1:891d8d0f-1caf-4b14-81f7-71114388deb6"
+            identityPoolId: process.env.IDENTITY_POOL_ID
         }),
     });
 
@@ -39,7 +39,7 @@ const audioTranslateText = async () => {
         region: "us-east-1",
         credentials: fromCognitoIdentityPool({
             client: new CognitoIdentityClient({region: "us-east-1"}),
-            identityPoolId: "us-east-1:891d8d0f-1caf-4b14-81f7-71114388deb6"
+            identityPoolId: process.env.IDENTITY_POOL_ID
         }),
     });
 
@@ -127,7 +127,7 @@ const uploadS3 = async (file) => {
         region: "us-east-1",
         credentials: fromCognitoIdentityPool({
             client: new CognitoIdentityClient({region: "us-east-1"}),
-            identityPoolId: "us-east-1:891d8d0f-1caf-4b14-81f7-71114388deb6"
+            identityPoolId: process.env.IDENTITY_POOL_ID
         }),
     });
 
@@ -153,7 +153,7 @@ const transcribeAudio = async (audioFile) => {
         region: "us-east-1",
         credentials: fromCognitoIdentityPool({
             client: new CognitoIdentityClient({region: "us-east-1"}),
-            identityPoolId: "us-east-1:891d8d0f-1caf-4b14-81f7-71114388deb6"
+            identityPoolId: process.env.IDENTITY_POOL_ID
         }),
     });
 
@@ -184,14 +184,14 @@ async function pollTranscriptionJob(jobName) {
         region: "us-east-1",
         credentials: fromCognitoIdentityPool({
             client: new CognitoIdentityClient({region: "us-east-1"}),
-            identityPoolId: "us-east-1:891d8d0f-1caf-4b14-81f7-71114388deb6"
+            identityPoolId: process.env.IDENTITY_POOL_ID
         }),
     });
     const s3Client = new S3Client({
         region: "us-east-1",
         credentials: fromCognitoIdentityPool({
             client: new CognitoIdentityClient({region: "us-east-1"}),
-            identityPoolId: "us-east-1:891d8d0f-1caf-4b14-81f7-71114388deb6"
+            identityPoolId: process.env.IDENTITY_POOL_ID
         }),
     });
 
