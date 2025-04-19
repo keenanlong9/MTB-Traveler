@@ -9,16 +9,16 @@ export default function Language () {
             <h1>Communicate with Locals</h1>
             <div class="language_translator_btns">
                 <button
-                class="language_translator_btn"
-                id="transcribe_btn"
-                onclick="transcribeAudio()"
+                    class="language_translator_btn"
+                    id="transcribe_btn"
+                    onclick="transcribeAudio()"
                 >
                 <p>Voice Input</p>
                 </button>
                 <button
-                class="language_translator_btn"
-                id="translate_btn"
-                onclick="translateText()"
+                    class="language_translator_btn"
+                    id="translate_btn"
+                    onclick="translateText()"
                 >
                 <p>Translate</p>
                 </button>
@@ -30,9 +30,9 @@ export default function Language () {
             </div>
             <div class="language_translator_selections">
                 <select
-                class="language_translator_selection"
-                name="input_language"
-                id="input_language"
+                    class="language_translator_selection"
+                    name="input_language"
+                    id="input_language"
                 >
                 <option value="en">English</option>
                 <option value="fr">French</option>
@@ -40,9 +40,9 @@ export default function Language () {
                 <option value="es-MX">Spanish</option>
                 </select>
                 <select
-                class="language_translator_selection"
-                name="output_language"
-                id="output_language"
+                    class="language_translator_selection"
+                    name="output_language"
+                    id="output_language"
                 >
                 <option value="fr">French</option>
                 <option value="en">English</option>
@@ -52,14 +52,15 @@ export default function Language () {
             </div>
             <div class="language_translator_textbox">
                 <textarea
-                name="input_text"
-                id="input_text"
-                placeholder="Text Input"
+                    name="input_text"
+                    id="input_text"
+                    placeholder="Text Input"
                 ></textarea>
                 <textarea
-                name="output_text"
-                id="output_text"
-                placeholder="Text Output"
+                    name="output_text"
+                    id="output_text"
+                    placeholder="Text Output"
+                    disabled
                 ></textarea>
             </div>
             </div>
