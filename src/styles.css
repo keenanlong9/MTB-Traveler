@@ -181,7 +181,7 @@ body {
 .footer_container {
     display: flex;
     justify-content: space-between;
-    padding: 0px 120px 30px;
+    padding: 30px 110px;
 }
 
 .footer_container p {
@@ -194,7 +194,7 @@ body {
     color: rgb(8, 161, 0);
 }
 
-.footer a#about_us {
+.footer :link#about_us {
     padding-top: 30px;
 }
 
@@ -873,8 +873,8 @@ body {
 
 .about_us_text p {
     color: white;
-    width: 690px;
-    padding: 20px 20px 0px;
+    width: 720px;
+    padding: 20px 5px 0px;
     font-size: 1.2rem;
 }
 
@@ -891,9 +891,19 @@ body {
     color: rgb(7, 30, 175);
 }
 
-.about_us_container_info a:hover {
+#about_us_strava_link:hover{
     transition: all 0.35s ease;
-    color: rgb(8, 161, 0);
+    color: rgb(255, 116, 3);
+}
+
+#about_us_github_link:hover{
+    transition: all 0.35s ease;
+    color: rgb(235, 235, 235);
+}
+
+#about_us_supported_by:hover{
+    transition: all 0.35s ease;
+    color: rgb(173, 0, 0);
 }
 
 @media screen and (max-width: 1500px) {

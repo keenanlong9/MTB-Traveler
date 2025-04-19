@@ -31,7 +31,7 @@ export default function About () {
                 <p>
                     Hi! My name is Keenan Long. I am an avid mountain biker that loves
                     to ride in the Frederick Watershed and my local trails in Patapsco
-                    State Park. This website idea was sparked from an upcoming trip to
+                    State Park. This website idea was sparked from an trip to
                     Finale Ligure, Italy to ride the world renowned trails they have in
                     the area. I love to travel to new places with my bike and hopefully
                     you will find new places to explore through out this website!
@@ -40,18 +40,18 @@ export default function About () {
                 <ul class="about_us_links">
                 <li class="about_us_item">
                     <a
-                    href="https://www.instagram.com/keenanlong9/"
-                    id="about_us_links"
+                    href="https://www.strava.com/athletes/19610783"
+                    id="about_us_strava_link"
                     style={{ textDecoration: 'none' }}
                     target="_blank"
                     rel="noopener noreferrer"
-                    >Instagram</a
+                    >Strava</a
                     >
                 </li>
                 <li class="about_us_item">
                     <a
                     href="https://github.com/keenanlong9"
-                    id="about_us_links"
+                    id="about_us_github_link"
                     style={{ textDecoration: 'none' }}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -61,7 +61,7 @@ export default function About () {
                 <li class="about_us_item">
                     <a
                     href="https://www.patapscobike.com/"
-                    id="about_us_links"
+                    id="about_us_supported_by"
                     style={{ textDecoration: 'none' }}
                     target="_blank"
                     rel="noopener noreferrer"
