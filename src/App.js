@@ -3,6 +3,7 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Currency from './pages/Currency';
 import Language from './pages/Language';
+import Explore from './pages/Explore';
 import './styles.css'
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
           <Route path='/about' element={<About />} />
           <Route path='/currency' element={<Currency />} />
           <Route path='/language' element={<Language />} />
+          <Route path='/explore' element={<Explore/>}/>
           <Route path='*' element={<Home />} />
         </Routes>
       </BrowserRouter>

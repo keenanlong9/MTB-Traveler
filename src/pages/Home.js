@@ -1,5 +1,6 @@
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
+import { Link } from 'react-router-dom';
 
 export default function Home () {
     return (
@@ -37,9 +38,14 @@ export default function Home () {
                         >
                     </div>
                 </div>
-                <a href="src/Explore.html">
+                <div class="explore_btn_container">
+                    <Link to="/explore" id="explore_btn">
+                        <button class="explore_btn"><p>Explore More</p></button>
+                    </Link> 
+                </div>
+                {/* <a href="src/Explore.html">
                     <button class="explore_btn"><span>Explore More</span></button>
-                </a>
+                </a> */}
             </div>
             <Footer></Footer>
         </div>
