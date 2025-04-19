@@ -10,11 +10,14 @@ export default function Home () {
                 <h1>Your adventure awaits</h1>
                 <div class="locations_container">
                     <div class="locations_card">
-                        <a
+                        <Link to="/location" style={{ textDecoration: 'none' }}>
+                            <p>Whistler, Britsh Columbia</p>
+                        </Link>
+                        {/* <a
                         href="src/Locations/Location-Whistler.html"
                         style={{ textDecoration: 'none' }}
                         ><p>Whistler, Britsh Columbia</p></a
-                        >
+                        > */}
                     </div>
                     <div class="locations_card">
                         <a

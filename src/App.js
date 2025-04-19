@@ -4,6 +4,7 @@ import About from './pages/About';
 import Currency from './pages/Currency';
 import Language from './pages/Language';
 import Explore from './pages/Explore';
+import Location from './pages/Location';
 import './styles.css'
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           <Route path='/currency' element={<Currency />} />
           <Route path='/language' element={<Language />} />
           <Route path='/explore' element={<Explore/>}/>
+          <Route path='/location' element={<Location/>}/>
           <Route path='*' element={<Home />} />
         </Routes>
       </BrowserRouter>
