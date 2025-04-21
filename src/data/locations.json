@@ -1,0 +1,142 @@
+[
+    {
+        "id": "whistler",
+        "Name": "Whistler, British Columbia",
+        "image": "Whistler.jpeg",
+        "trails": [
+            "Dirt Merchant",
+            "High Hopes",
+            "Crank It Up",
+            "Samurai Pizza Cat",
+            "A-Line"
+        ],
+        "currency": "CAD", 
+        "language": "English"
+    },
+    {
+        "id": "finale_ligure",
+        "Name": "Finale Ligure, Italy",
+        "image": "Finale_Ligure.jpeg",
+        "trails": [
+            "Roller Coaster",
+            "Ingegnere",
+            "Madre Natura",
+            "Base Nato",
+            "DH Uomini"
+        ],
+        "currency": "EUR", 
+        "language": "Italian"
+    },
+    {
+        "id": "bellingham",
+        "Name": "Bellingham, Washington",
+        "image": "Bellingham.jpeg",
+        "trails": [
+            "Unemployment Line",
+            "Atomic Dog",
+            "Evolution",
+            "Blue Steel",
+            "Mabel's Monkey-Wrench"
+        ],
+        "currency": "USD", 
+        "language": "English"
+    },
+    {
+        "id": "jamacia",
+        "Name": "Jamacia",
+        "image": "Jamacia.jpeg",
+        "trails": [
+            "Jangalee Graveyard Trail",
+            "Janky Jimmie's Duppy",
+            "Janky Jimmie's Jackson Enduro",
+            "Mount Airy DH",
+            "Scruba'a'Dub DH"
+        ],
+        "currency": "JMD", 
+        "language": "English"
+    },
+    {
+        "id": "loudenvielle",
+        "Name": "Loudenvielle, France",
+        "image": "Loudenvielle.jpeg",
+        "trails": [
+            "Black Sheep",
+            "Lapadé",
+            "Dolmens",
+            "Secrete Skyvall",
+            "Pourticou"
+        ],
+        "currency": "EUR", 
+        "language": "French"
+    },
+    {
+        "id": "oaxaca",
+        "Name": "Oaxaca, Mexico",
+        "image": "Oaxaca.jpeg",
+        "trails": [
+            "Mil Rios",
+            "Veredita",
+            "Cruz de Estacas",
+            "Veredita",
+            "Tierre blanca"
+        ],
+        "currency": "MXN", 
+        "language": "Spanish"
+    },
+    {
+        "id": "queenstown",
+        "Name": "Queenstown, New Zealand",
+        "image": "Queenstown.jpeg",
+        "trails": [
+            "Lazy Vertigo",
+            "Rude Rock",
+            "Thunder Goat",
+            "Salmon Run",
+            "Kachoong"
+        ],
+        "currency": "NZD", 
+        "language": "English"
+    },
+    {
+        "id": "south_africa",
+        "Name": "South Africa",
+        "image": "South_Africa.jpeg",
+        "trails": [
+            "Poor Fool",
+            "Cobra",
+            "Why Singletrack",
+            "Steve's Revenge",
+            "Fireball"
+        ],
+        "currency": "ZAR", 
+        "language": "isiZulu"
+    },
+    {
+        "id": "tasmania",
+        "Name": "Tasmania, Australia",
+        "image": "Tasmania.jpeg",
+        "trails": [
+            "Deadly Bugga",
+            "Flickity Sticks Upper",
+            "Air Ya Garn",
+            "Big Chook",
+            "Helter Smelter"
+        ],
+        "currency": "AUD", 
+        "language": "English"
+    },
+    {
+        "id": "zermatt",
+        "Name": "Zermatt, Switerland",
+        "image": "Zermatt.jpeg",
+        "trails": [
+            "Ze Seewjinen - Börter",
+            "Gornergrat",
+            "Europaweg - Bidemjini",
+            "Grüebje",
+            "Brich"
+        ],
+        "currency": "CHF", 
+        "language": "Swiss German"
+    }
+]
