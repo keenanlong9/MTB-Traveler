@@ -10,35 +10,24 @@ export default function Home () {
                 <h1>Your adventure awaits</h1>
                 <div class="locations_container">
                     <div class="locations_card">
-                        <Link to="/location" style={{ textDecoration: 'none' }}>
+                        <Link to="/location?id=whistler" style={{ textDecoration: 'none' }}>
                             <p>Whistler, Britsh Columbia</p>
                         </Link>
-                        {/* <a
-                        href="src/Locations/Location-Whistler.html"
-                        style={{ textDecoration: 'none' }}
-                        ><p>Whistler, Britsh Columbia</p></a
-                        > */}
                     </div>
                     <div class="locations_card">
-                        <a
-                        href="src/Locations/Location-Queenstown.html"
-                        style={{ textDecoration: 'none' }}
-                        ><p>Queenstown, New Zealand</p></a
-                        >
+                        <Link to="/location?id=queenstown" style={{ textDecoration: 'none' }}>
+                            <p>Queenstown, New Zealand</p>
+                        </Link>
                     </div>
                     <div class="locations_card">
-                        <a
-                        href="src/Locations/Location-Finale_Ligure.html"
-                        style={{ textDecoration: 'none' }}
-                        ><p>Finale Ligure, Italy</p></a
-                        >
+                        <Link to="/location?id=finale_ligure" style={{ textDecoration: 'none' }}>
+                            <p>Finale Ligure, Italy</p>
+                        </Link>
                     </div>
                     <div class="locations_card">
-                        <a
-                        href="src/Locations/Location-Bellingham.html"
-                        style={{ textDecoration: 'none' }}
-                        ><p>Bellingham, Washington</p></a
-                        >
+                        <Link to="/location?id=bellingham" style={{ textDecoration: 'none' }}>
+                            <p>Bellingham, Washington</p>
+                        </Link>
                     </div>
                 </div>
                 <div class="explore_btn_container">
@@ -46,9 +35,6 @@ export default function Home () {
                         <button class="explore_btn"><p>Explore More</p></button>
                     </Link> 
                 </div>
-                {/* <a href="src/Explore.html">
-                    <button class="explore_btn"><span>Explore More</span></button>
-                </a> */}
             </div>
             <Footer></Footer>
         </div>

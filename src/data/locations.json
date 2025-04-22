@@ -1,7 +1,7 @@
 [
     {
         "id": "whistler",
-        "Name": "Whistler, British Columbia",
+        "name": "Whistler, British Columbia",
         "image": "Whistler.jpeg",
         "trails": [
             "Dirt Merchant",
@@ -15,7 +15,7 @@
     },
     {
         "id": "finale_ligure",
-        "Name": "Finale Ligure, Italy",
+        "name": "Finale Ligure, Italy",
         "image": "Finale_Ligure.jpeg",
         "trails": [
             "Roller Coaster",
@@ -29,7 +29,7 @@
     },
     {
         "id": "bellingham",
-        "Name": "Bellingham, Washington",
+        "name": "Bellingham, Washington",
         "image": "Bellingham.jpeg",
         "trails": [
             "Unemployment Line",
@@ -43,7 +43,7 @@
     },
     {
         "id": "jamacia",
-        "Name": "Jamacia",
+        "name": "Jamacia",
         "image": "Jamacia.jpeg",
         "trails": [
             "Jangalee Graveyard Trail",
@@ -57,7 +57,7 @@
     },
     {
         "id": "loudenvielle",
-        "Name": "Loudenvielle, France",
+        "name": "Loudenvielle, France",
         "image": "Loudenvielle.jpeg",
         "trails": [
             "Black Sheep",
@@ -71,7 +71,7 @@
     },
     {
         "id": "oaxaca",
-        "Name": "Oaxaca, Mexico",
+        "name": "Oaxaca, Mexico",
         "image": "Oaxaca.jpeg",
         "trails": [
             "Mil Rios",
@@ -85,7 +85,7 @@
     },
     {
         "id": "queenstown",
-        "Name": "Queenstown, New Zealand",
+        "name": "Queenstown, New Zealand",
         "image": "Queenstown.jpeg",
         "trails": [
             "Lazy Vertigo",
@@ -99,7 +99,7 @@
     },
     {
         "id": "south_africa",
-        "Name": "South Africa",
+        "name": "South Africa",
         "image": "South_Africa.jpeg",
         "trails": [
             "Poor Fool",
@@ -113,7 +113,7 @@
     },
     {
         "id": "tasmania",
-        "Name": "Tasmania, Australia",
+        "name": "Tasmania, Australia",
         "image": "Tasmania.jpeg",
         "trails": [
             "Deadly Bugga",
@@ -127,7 +127,7 @@
     },
     {
         "id": "zermatt",
-        "Name": "Zermatt, Switerland",
+        "name": "Zermatt, Switerland",
         "image": "Zermatt.jpeg",
         "trails": [
             "Ze Seewjinen - Börter",

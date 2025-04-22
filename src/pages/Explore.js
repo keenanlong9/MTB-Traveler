@@ -1,114 +1,84 @@
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
-
+import { Link } from "react-router-dom";
 export default function Explore() {
     return (
         <div>
             <NavBar></NavBar>
             <div class="explore_locations">
-            <h1>Explore More Locations</h1>
-            <div class="explore_locations_container">
-                <div class="explore_locations_card">
-                <a
-                    href="Locations/Location-Whistler.html"
-                    style={{ textDecoration: 'none' }}
-                >
-                    <div class="explore_location_name">
-                    <p>Whistler, British Columbia</p>
+                <h1>Explore More Locations</h1>
+                <div class="explore_locations_container">
+                    <div class="explore_locations_card">
+                        <Link to="/location?id=whistler" style={{ textDecoration: 'none' }}>
+                            <div class="explore_location_name">
+                                <p>Whistler, British Columbia</p>
+                            </div> 
+                        </Link>     
                     </div>
-                </a>
-                </div>
-                <div class="explore_locations_card">
-                <a
-                    href="Locations/Location-Queenstown.html"
-                    style={{ textDecoration: 'none' }}
-                >
-                    <div class="explore_location_name">
-                    <p>Queenstown, New Zealand</p>
+                    <div class="explore_locations_card">
+                        <Link to="/location?id=queenstown" style={{ textDecoration: 'none' }}>
+                            <div class="explore_location_name">
+                                <p>Queenstown, New Zealand</p>
+                            </div> 
+                        </Link>
                     </div>
-                </a>
-                </div>
-                <div class="explore_locations_card">
-                <a
-                    href="Locations/Location-Finale_Ligure.html"
-                    style={{ textDecoration: 'none' }}
-                >
-                    <div class="explore_location_name">
-                    <p>Finale Ligure, Italy</p>
+                    <div class="explore_locations_card">
+                        <Link to="/location?id=finale_ligure" style={{ textDecoration: 'none' }}>
+                            <div class="explore_location_name">
+                                <p>Finale Ligure, Italy</p>
+                            </div> 
+                        </Link>
                     </div>
-                </a>
-                </div>
-                <div class="explore_locations_card">
-                <a
-                    href="Locations/Location-Bellingham.html"
-                    style={{ textDecoration: 'none' }}
-                >
-                    <div class="explore_location_name">
-                    <p>Bellingham, Washington</p>
+                    <div class="explore_locations_card">
+                        <Link to="/location?id=bellingham" style={{ textDecoration: 'none' }}>
+                            <div class="explore_location_name">
+                                <p>Bellingham, Washington</p>
+                            </div> 
+                        </Link>
                     </div>
-                </a>
-                </div>
-                <div class="explore_locations_card">
-                <a
-                    href="Locations/Location-Jamaica.html"
-                    style={{ textDecoration: 'none' }}
-                >
-                    <div class="explore_location_name">
-                    <p>Jamaica</p>
+                    <div class="explore_locations_card">
+                        <Link to="/location?id=jamacia" style={{ textDecoration: 'none' }}>
+                            <div class="explore_location_name">
+                                <p>Jamaica</p>
+                            </div> 
+                        </Link>
                     </div>
-                </a>
-                </div>
-                <div class="explore_locations_card">
-                <a
-                    href="Locations/Location-Loudenvielle.html"
-                    style={{ textDecoration: 'none' }}
-                >
-                    <div class="explore_location_name">
-                    <p>Loudenvielle, France</p>
+                    <div class="explore_locations_card">
+                        <Link to="/location?id=loudenvielle" style={{ textDecoration: 'none' }}>
+                            <div class="explore_location_name">
+                                <p>Loudenvielle, France</p>
+                            </div> 
+                        </Link>
                     </div>
-                </a>
-                </div>
-                <div class="explore_locations_card">
-                <a
-                    href="Locations/Location-Oaxaca.html"
-                    style={{ textDecoration: 'none' }}
-                >
-                    <div class="explore_location_name">
-                    <p>Oaxaca, Mexico</p>
+                    <div class="explore_locations_card">
+                        <Link to="/location?id=oaxaca" style={{ textDecoration: 'none' }}>
+                            <div class="explore_location_name">
+                                <p>Oaxaca, Mexico</p>
+                            </div> 
+                        </Link>
                     </div>
-                </a>
-                </div>
-                <div class="explore_locations_card">
-                <a
-                    href="Locations/Location-South_Africa.html"
-                    style={{ textDecoration: 'none' }}
-                >
-                    <div class="explore_location_name">
-                    <p>South Africa</p>
+                    <div class="explore_locations_card">
+                        <Link to="/location?id=south_africa" style={{ textDecoration: 'none' }}>
+                            <div class="explore_location_name">
+                                <p>South Africa</p>
+                            </div> 
+                        </Link>
                     </div>
-                </a>
-                </div>
-                <div class="explore_locations_card">
-                <a
-                    href="Locations/Location-Tasmania.html"
-                    style={{ textDecoration: 'none' }}
-                >
-                    <div class="explore_location_name">
-                    <p>Tasmania, Australia</p>
+                    <div class="explore_locations_card">
+                        <Link to="/location?id=tasmania" style={{ textDecoration: 'none' }}>
+                            <div class="explore_location_name">
+                                <p>Tasmania, Australia</p>
+                            </div> 
+                        </Link>
                     </div>
-                </a>
-                </div>
-                <div class="explore_locations_card">
-                <a
-                    href="Locations/Location-Zermatt.html"
-                    style={{ textDecoration: 'none' }}
-                >
-                    <div class="explore_location_name">
-                    <p>Zermatt, Switzerland</p>
+                    <div class="explore_locations_card">
+                        <Link to="/location?id=zermatt" style={{ textDecoration: 'none' }}>
+                            <div class="explore_location_name">
+                                <p>Zermatt, Switzerland</p>
+                            </div> 
+                        </Link>
                     </div>
-                </a>
                 </div>
-            </div>
             </div>
             <Footer></Footer>
         </div>
