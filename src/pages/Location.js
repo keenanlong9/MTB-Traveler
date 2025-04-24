@@ -17,7 +17,9 @@ export default function Location () {
                 <div>
                     <NavBar></NavBar>
                     <div class="location">
-                        <div class="location_card" id="Whistler">
+                        <div className="location_card" 
+                            style={{backgroundImage: 
+                            `url(/assets/images/${locationInfo?.image})`}}>
                             <p>{locationInfo?.name}</p>
                         </div>
                         <div class="location_info">
