@@ -5,32 +5,32 @@ export default function Language () {
     return (
         <div>
             <NavBar></NavBar>
-            <div class="language_translator">
+            <div className="language_translator">
             <h1>Communicate with Locals</h1>
-            <div class="language_translator_btns">
+            <div className="language_translator_btns">
                 <button
-                    class="language_translator_btn"
+                    className="language_translator_btn"
                     id="transcribe_btn"
                     onclick="transcribeAudio()"
                 >
                 <p>Voice Input</p>
                 </button>
                 <button
-                    class="language_translator_btn"
+                    className="language_translator_btn"
                     id="translate_btn"
                     onclick="translateText()"
                 >
                 <p>Translate</p>
                 </button>
-                <div class="language_translator_voice_output">
+                <div className="language_translator_voice_output">
                 <audio id="translate_audio" controls>
                     <source id="translate_audio_src" type="audio/mp3" src="" />
                 </audio>
                 </div>
             </div>
-            <div class="language_translator_selections">
+            <div className="language_translator_selections">
                 <select
-                    class="language_translator_selection"
+                    className="language_translator_selection"
                     name="input_language"
                     id="input_language"
                 >
@@ -40,7 +40,7 @@ export default function Language () {
                 <option value="es-MX">Spanish</option>
                 </select>
                 <select
-                    class="language_translator_selection"
+                    className="language_translator_selection"
                     name="output_language"
                     id="output_language"
                 >
@@ -50,7 +50,7 @@ export default function Language () {
                 <option value="es-MX">Spanish</option>
                 </select>
             </div>
-            <div class="language_translator_textbox">
+            <div className="language_translator_textbox">
                 <textarea
                     name="input_text"
                     id="input_text"

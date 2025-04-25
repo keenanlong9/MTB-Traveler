@@ -8,17 +8,17 @@ export default function About () {
     return (
         <div>
             <NavBar></NavBar>
-            <div class="about_us">
+            <div className="about_us">
             <h1>About Us</h1>
-            <div class="about_us_container_photos">
-                <div class="about_us_photo">
+            <div className="about_us_container_photos">
+                <div className="about_us_photo">
                 <img
                     src={headshot}
                     name="photo_1"
                     alt="A headshot of Keenan"
                 />
                 </div>
-                <div class="about_us_photo">
+                <div className="about_us_photo">
                 <img
                     src={ridingPhoto}
                     name="photo_2"
@@ -26,8 +26,8 @@ export default function About () {
                 />
                 </div>
             </div>
-            <div class="about_us_container_info">
-                <div class="about_us_text">
+            <div className="about_us_container_info">
+                <div className="about_us_text">
                 <p>
                     Hi! My name is Keenan Long. I am an avid mountain biker that loves
                     to ride in the Frederick Watershed and my local trails in Patapsco
@@ -37,8 +37,8 @@ export default function About () {
                     you will find new places to explore through out this website!
                 </p>
                 </div>
-                <ul class="about_us_links">
-                <li class="about_us_item">
+                <ul className="about_us_links">
+                <li className="about_us_item">
                     <a
                     href="https://www.strava.com/athletes/19610783"
                     id="about_us_strava_link"
@@ -48,7 +48,7 @@ export default function About () {
                     >Strava</a
                     >
                 </li>
-                <li class="about_us_item">
+                <li className="about_us_item">
                     <a
                     href="https://github.com/keenanlong9"
                     id="about_us_github_link"
@@ -58,7 +58,7 @@ export default function About () {
                     >GitHub</a
                     >
                 </li>
-                <li class="about_us_item">
+                <li className="about_us_item">
                     <a
                     href="https://www.patapscobike.com/"
                     id="about_us_supported_by"

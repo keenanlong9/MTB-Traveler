@@ -5,14 +5,14 @@ export default function Currency () {
     return (
         <div>
             <NavBar></NavBar>
-            <div class="currency">
-            <div class="currency_card">
+            <div className="currency">
+            <div className="currency_card">
                 {/* <!-- TODO make location dynamic--> */}
                 <p>Whistler, Britsh Columbia</p>
             </div>
             <h1>Convert Your Currency</h1>
-            <div class="input_output_currency">
-                <div class="input_currency">
+            <div className="input_output_currency">
+                <div className="input_currency">
                 <input
                     type="text"
                     name="input_currency_num"
@@ -31,7 +31,7 @@ export default function Currency () {
                     <option value="CHF">$CHF</option>
                 </select>
                 </div>
-                <div class="output_currency">
+                <div className="output_currency">
                 <input
                     type="text"
                     name="output_currency_num"
@@ -51,7 +51,7 @@ export default function Currency () {
                     <option value="CHF">$CHF</option>
                 </select>
                 </div>
-                <button class="convert_btn" onclick="convertCurrency()">
+                <button className="convert_btn" onclick="convertCurrency()">
                 <p>Convert</p>
                 </button>
             </div>
