@@ -12,7 +12,6 @@ export default function Location () {
 
     return (
         <div>
-            
             {locationInfo ? (
                 <div>
                     <NavBar></NavBar>
@@ -68,7 +67,6 @@ export default function Location () {
             ) : (
                 <h1 style={{color: "#fff"}}> Location Not Found </h1>
             )}
-            
         </div>
     )
 }
