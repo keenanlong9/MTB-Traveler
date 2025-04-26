@@ -1,7 +1,47 @@
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
+import { useRef, useState } from "react";
+import { translateText } from "../services/translate";
+import { synthesizeSpeechUrl } from "../services/polly";
+import { uploadAudioToS3, startTranscription, pollTranscriptionResult } from "../services/transcribe";
+import useAudioRecorder from "../hooks/useAudioRecorder";
+import { convertLanguageCode } from "../utils/languageUtils";
 
 export default function Language () {
+    const inputRef = useRef(null);
+    const outputRef = useRef(null);
+    const audioRef = useRef(null);
+    const audioSrcRef = useRef(null);
+    const [outputLang, setOutputLang] = useState("fr");
+  
+    const { toggleRecording, isRecording } = useAudioRecorder(async (file) => {
+        
+        console.log("Debug 0.5 - File Info", file);
+        console.log("Debug 1")
+      const uri = await uploadAudioToS3(file);
+      console.log("Debug 2")
+      const jobName = await startTranscription(uri, convertLanguageCode(outputLang));
+      console.log("Debug 3")
+      pollTranscriptionResult(jobName, (text) => {
+        inputRef.current.value = text;
+      });
+      console.log("Debug 4")
+    });
+  
+    const handleTranslate = async () => {
+      const inputText = inputRef.current.value;
+      try {
+        const translated = await translateText(inputText, outputLang);
+        outputRef.current.value = translated;
+        const url = await synthesizeSpeechUrl(translated, outputLang);
+        audioSrcRef.current.src = url;
+        audioRef.current.load();
+      } catch (err) {
+        console.error("Translate error:", err);
+        outputRef.current.value = "Error translating text.";
+      }
+    };
+
     return (
         <div>
             <NavBar></NavBar>
@@ -11,24 +51,25 @@ export default function Language () {
                 <button
                     className="language_translator_btn"
                     id="transcribe_btn"
-                    onclick="transcribeAudio()"
+                    onClick={toggleRecording}
                 >
-                <p>Voice Input</p>
+                <p>{isRecording ? "Stop Recording" : "Voice Input"}</p>
                 </button>
                 <button
                     className="language_translator_btn"
                     id="translate_btn"
-                    onclick="translateText()"
+                    onClick={handleTranslate}
                 >
                 <p>Translate</p>
                 </button>
                 <div className="language_translator_voice_output">
-                <audio id="translate_audio" controls>
-                    <source id="translate_audio_src" type="audio/mp3" src="" />
+                <audio id="translate_audio" controls ref={audioRef}>
+                    <source id="translate_audio_src" type="audio/mp3" ref={audioSrcRef} />
                 </audio>
                 </div>
             </div>
             <div className="language_translator_selections">
+                {/* Using auto input langauge
                 <select
                     className="language_translator_selection"
                     name="input_language"
@@ -38,11 +79,13 @@ export default function Language () {
                 <option value="fr">French</option>
                 <option value="de">German</option>
                 <option value="es-MX">Spanish</option>
-                </select>
+                </select> */}
                 <select
                     className="language_translator_selection"
                     name="output_language"
                     id="output_language"
+                    value={outputLang}
+                    onChange={(e) => setOutputLang(e.target.value)}
                 >
                 <option value="fr">French</option>
                 <option value="en">English</option>
@@ -55,11 +98,13 @@ export default function Language () {
                     name="input_text"
                     id="input_text"
                     placeholder="Text Input"
+                    ref={inputRef}
                 ></textarea>
                 <textarea
                     name="output_text"
                     id="output_text"
                     placeholder="Text Output"
+                    ref={outputRef}
                     disabled
                 ></textarea>
             </div>
