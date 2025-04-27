@@ -12,14 +12,14 @@ export default function useAudioRecorder(onStopCallback) {
     recorderRef.current = new MediaRecorder(stream);
 
     recorderRef.current.ondataavailable = (e) => {
-      chunksRef.current.push(e.data);
+        chunksRef.current.push(e.data);
     };
 
     recorderRef.current.onstop = () => {
-      const blob = new Blob(chunksRef.current, { type: "audio/ogg; codecs=opus" });
-      const file = new File([blob], "transcribeAudio.ogg", { type: blob.type });
-      chunksRef.current = [];
-      onStopCallback(file);
+        const blob = new Blob(chunksRef.current, { type: "audio/ogg; codecs=opus" });
+        const file = new File([blob], "transcribeAudio.ogg", { type: blob.type });
+        chunksRef.current = [];
+        onStopCallback(file);
     };
   };
 
@@ -27,9 +27,9 @@ export default function useAudioRecorder(onStopCallback) {
     if (!recorderRef.current) await startRecorder();
 
     if (isRecording) {
-      recorderRef.current.stop();
+        recorderRef.current.stop();
     } else {
-      recorderRef.current.start();
+        recorderRef.current.start();
     }
     setIsRecording(!isRecording);
   };

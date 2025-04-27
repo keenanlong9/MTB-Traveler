@@ -9,7 +9,6 @@ export const translateText = async (text, targetLang) => {
     SourceLanguageCode: "auto",
     TargetLanguageCode: targetLang,
   };
-  console.log(client.identityPoolId)
   const command = new TranslateTextCommand(params);
   const { TranslatedText } = await client.send(command);
   return TranslatedText;

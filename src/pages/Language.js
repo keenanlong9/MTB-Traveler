@@ -15,31 +15,25 @@ export default function Language () {
     const [outputLang, setOutputLang] = useState("fr");
   
     const { toggleRecording, isRecording } = useAudioRecorder(async (file) => {
-        
-        console.log("Debug 0.5 - File Info", file);
-        console.log("Debug 1")
-      const uri = await uploadAudioToS3(file);
-      console.log("Debug 2")
-      const jobName = await startTranscription(uri, convertLanguageCode(outputLang));
-      console.log("Debug 3")
-      pollTranscriptionResult(jobName, (text) => {
+        const uri = await uploadAudioToS3(file);
+        const jobName = await startTranscription(uri, convertLanguageCode(outputLang));
+        pollTranscriptionResult(jobName, (text) => {
         inputRef.current.value = text;
-      });
-      console.log("Debug 4")
+        });
     });
   
     const handleTranslate = async () => {
-      const inputText = inputRef.current.value;
-      try {
+        const inputText = inputRef.current.value;
+        try {
         const translated = await translateText(inputText, outputLang);
         outputRef.current.value = translated;
         const url = await synthesizeSpeechUrl(translated, outputLang);
         audioSrcRef.current.src = url;
         audioRef.current.load();
-      } catch (err) {
+        } catch (err) {
         console.error("Translate error:", err);
         outputRef.current.value = "Error translating text.";
-      }
+        }
     };
 
     return (
