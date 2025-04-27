@@ -63,17 +63,6 @@ export default function Language () {
                 </div>
             </div>
             <div className="language_translator_selections">
-                {/* Using auto input langauge
-                <select
-                    className="language_translator_selection"
-                    name="input_language"
-                    id="input_language"
-                >
-                <option value="en">English</option>
-                <option value="fr">French</option>
-                <option value="de">German</option>
-                <option value="es-MX">Spanish</option>
-                </select> */}
                 <select
                     className="language_translator_selection"
                     name="output_language"

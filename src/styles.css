@@ -570,10 +570,9 @@ body {
 }
 
 .language_translator_selections {
-    display: grid;
-    grid-template-columns: auto auto;
-    column-gap: 550px;
-    padding-bottom: 20px;
+    display: flex;
+    padding-left: 600px;
+    padding-bottom: 10px;
 }
 
 .language_translator_textbox {
@@ -665,10 +664,6 @@ body {
         font-size: 0.9rem;
     }
 
-    .language_translator_selections {
-        column-gap: 450px;
-    }
-
     .language_translator_textbox textarea {
         padding-top: 140px;
     }
@@ -685,10 +680,6 @@ body {
 
     .language_translator_textbox {
         column-gap: 20px;
-    }
-
-    .language_translator_selections {
-        column-gap: 350px;
     }
 }
 
