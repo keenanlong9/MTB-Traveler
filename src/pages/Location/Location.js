@@ -1,8 +1,9 @@
-import NavBar from "../components/NavBar";
-import Footer from "../components/Footer";
+import NavBar from "../../components/NavBar/NavBar";
+import Footer from "../../components/Footer/Footer";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-import locationData from "../data/locations.json"
+import locationData from "../../data/locations.json"
+import "./Location.css"
 
 export default function Location () {
     const location = useLocation();

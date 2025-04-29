@@ -1,10 +1,10 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
-import About from './pages/About';
-import Currency from './pages/Currency';
-import Language from './pages/Language';
-import Explore from './pages/Explore';
-import Location from './pages/Location';
+import Home from './pages/Home/Home';
+import About from './pages/About/About';
+import Currency from './pages/Currency/Currency';
+import Language from './pages/Language/Language';
+import Explore from './pages/Explore/Explore';
+import Location from './pages/Location/Location';
 import './styles.css'
 
 function App() {

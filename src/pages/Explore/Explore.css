@@ -1,0 +1,138 @@
+/* Could change to module.css in the future */
+.explore_locations {
+    background: #141414;
+    display: block;
+    text-align: center;
+    height: auto; 
+    margin: -16px;
+}
+
+.explore_locations_container {
+    display: grid;
+    grid-template-columns: auto auto;
+    flex-wrap: wrap;
+    padding: 0px 0px 40px 200px;
+}
+
+.explore_locations h1 {
+    background-color: rgb(51, 128, 0);
+    background-image: linear-gradient(to left, rgb(8, 161, 0) 0%,rgb(7, 30, 175) 90% );
+    background-size: 100%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-size: 2.5rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.explore_locations_card {
+    margin: 1rem;
+    height: 200px;
+    width: 300px;
+    border-radius: 4px;
+    background-image: url('/public/assets/images/Whistler.jpeg');
+    background-size: cover;
+    position: relative;
+    color: #fff;
+    cursor: pointer;
+    text-align: center;
+}
+
+.explore_locations_card a {
+    height: 300px;
+    width: 300px;
+}
+
+.explore_locations_card p:hover {
+    color: rgb(8, 161, 0);
+    transition: ease 0.5s;
+}
+
+.explore_location_name {
+    width: 580px;
+    text-align: left;
+    align-items: center;
+}
+
+.explore_locations_card p {
+    color: white;
+    padding: 90px 0px 0px 320px;
+    font-size: 1.25rem;
+}
+
+.explore_locations_card:nth-child(2) {
+    background-image: url('/public/assets/images/Queenstown.jpeg');
+}
+
+.explore_locations_card:nth-child(3) {
+    background-image: url('/public/assets/images/Finale_Ligure.jpeg');
+}
+
+.explore_locations_card:nth-child(4) {
+    background-image: url('/public/assets/images/Bellingham.jpeg');
+}
+
+.explore_locations_card:nth-child(5) {
+    background-image: url('/public/assets/images/Jamaica.jpeg');
+}
+
+.explore_locations_card:nth-child(6) {
+    background-image: url('/public/assets/images/Loudenvielle.jpeg');
+}
+
+.explore_locations_card:nth-child(7) {
+    background-image: url('/public/assets/images/Oaxaca.jpeg');
+}
+
+.explore_locations_card:nth-child(8) {
+    background-image: url('/public/assets/images/South_Africa.jpeg');
+}
+
+.explore_locations_card:nth-child(9) {
+    background-image: url('/public/assets/images/Tasmania.jpeg');
+}
+
+.explore_locations_card:nth-child(10) {
+    background-image: url('/public/assets/images/Zermatt.jpeg');
+}
+
+@media screen and (max-width: 960px) {
+    .explore_locations h1 {
+        font-size: 2rem;
+    }
+
+    .explore_locations_container {
+        padding: 0px 0px 40px 60px;
+    }
+}
+
+@media screen and (max-width: 715px) {
+    .explore_locations h1 {
+        font-size: 1.5rem;
+        padding-top: 20px;
+    }
+
+    .explore_locations_container {
+        padding: 0px 0px 40px 20px;
+    }
+
+    .explore_locations_card {
+        height: 87px;
+        width: 133px;
+    }
+
+    .explore_locations_card p {
+        color: white;
+        padding: 20px 0px 0px 150px;
+    }
+
+    .explore_location_name {
+        height: 131;
+        width: 300px;
+    }
+}

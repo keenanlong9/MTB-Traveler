@@ -1,7 +1,8 @@
-import NavBar from '../components/NavBar';
-import Footer from '../components/Footer';
-import headshot from '../assets/images/Headshot_2.jpg'
-import ridingPhoto from '../assets/images/Riding_Photo_2.jpg'
+import NavBar from '../../components/NavBar/NavBar';
+import Footer from '../../components/Footer/Footer';
+import headshot from '../../assets/images/Headshot_2.jpg'
+import ridingPhoto from '../../assets/images/Riding_Photo_2.jpg'
+import "./About.css"
 
 
 export default function About () {

@@ -1,6 +1,7 @@
-import NavBar from '../components/NavBar';
-import Footer from '../components/Footer';
+import NavBar from '../../components/NavBar/NavBar';
+import Footer from '../../components/Footer/Footer';
 import { useState } from 'react';
+import "./Currency.css"
 
 // Todo: Move this to a json file or pull from and API
 const exchangeRates = {

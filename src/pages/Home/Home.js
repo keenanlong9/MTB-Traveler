@@ -1,6 +1,7 @@
-import NavBar from '../components/NavBar';
-import Footer from '../components/Footer';
+import NavBar from "../../components/NavBar/NavBar";
+import Footer from "../../components/Footer/Footer";
 import { Link } from 'react-router-dom';
+import "./Home.css"
 
 export default function Home () {
     return (

@@ -1,11 +1,12 @@
-import NavBar from '../components/NavBar';
-import Footer from '../components/Footer';
+import NavBar from '../../components/NavBar/NavBar';
+import Footer from '../../components/Footer/Footer';
 import { useRef, useState } from "react";
-import { translateText } from "../services/translate";
-import { synthesizeSpeechUrl } from "../services/polly";
-import { uploadAudioToS3, startTranscription, pollTranscriptionResult } from "../services/transcribe";
-import useAudioRecorder from "../hooks/useAudioRecorder";
-import { convertLanguageCode } from "../utils/languageUtils";
+import { translateText } from "../../services/translate";
+import { synthesizeSpeechUrl } from "../../services/polly";
+import { uploadAudioToS3, startTranscription, pollTranscriptionResult } from "../../services/transcribe";
+import useAudioRecorder from "../../hooks/useAudioRecorder";
+import { convertLanguageCode } from "../../utils/languageUtils";
+import "./Language.css"
 
 export default function Language () {
     const inputRef = useRef(null);

@@ -1,0 +1,58 @@
+/* Could change to module.css in the future */
+.footer {
+    background-color: #141414;
+    overflow: auto;
+}
+
+.footer_container {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 110px;
+}
+
+.footer_container p {
+    padding-top: 30px;
+    color: rgb(8, 161, 0);
+}
+
+.footer a {
+    text-decoration: none;
+    color: rgb(8, 161, 0);
+}
+
+.footer :link#about_us {
+    padding-top: 30px;
+}
+
+@media screen and (max-width: 960px) {
+    .footer_container {
+        font-size: 1rem;
+        padding: 0px 100px 30px;
+    }
+
+    .footer_container #navbar_logo {
+        font-size: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 715px) {
+    .footer_container {
+        font-size: 1rem;
+        padding: 0px 0px 30px;
+    }
+
+    .footer_container #navbar_logo {
+        font-size: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 612px) {
+    .footer_container {
+        font-size: 0.8rem;
+        padding: 0px 0px 30px;
+    }
+
+    .footer_container #navbar_logo {
+        font-size: 1.3rem;
+    }
+}
