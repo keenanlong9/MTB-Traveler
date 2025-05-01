@@ -89,7 +89,6 @@
         top: -1000px;
         opacity: 0;
         transition: all 0.5s ease;
-        margin-bottom: 50vh;
         height: 20vh;
         z-index: -1;
         background: black;
@@ -97,17 +96,17 @@
 
     .navbar_menu.active {
         background: black;
-        top: 100%;
+        top: 70%;
         opacity: 1;
         transition: all 0.6s ease;
         z-index: 99;
-        margin-bottom: 50vh;
-        height: 20vh;
-        font-size: 1.6rem;
+        /* margin-bottom: 30vh; */
+        height: 25vh;
+        font-size: 2.0rem;
     }
 
     #navbar_logo {
-        font-size: 1.9rem;
+        font-size: 2.3rem;
         padding-left: 25px;
         justify-content: space-between;
     }
@@ -153,5 +152,15 @@
 
     #mobile-menu.is-active .bar:nth-child(3) {
         transform: translateY(-8px) rotate(-45deg);
+    }
+}
+
+@media screen and (max-width: 450px) {
+    #navbar_logo {
+        font-size: 1.9rem;
+    }
+
+    .navbar_menu.active {
+        font-size: 1.5rem;
     }
 }
