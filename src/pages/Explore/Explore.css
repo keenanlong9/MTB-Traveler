@@ -136,3 +136,21 @@
         width: 300px;
     }
 }
+
+@media screen and (max-width: 950px) {
+    .explore_locations_container {
+        grid-template-columns: auto;
+        justify-content: center;
+        margin-left: -150px;
+    }
+
+    .explore_locations_card p {
+        font-size: 1.7rem;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .explore_locations_card p {
+        font-size: 1.3rem;
+    }
+}
