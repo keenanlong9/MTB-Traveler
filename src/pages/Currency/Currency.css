@@ -156,9 +156,9 @@
     }
 
     /* Todo: this still needs to be fixed */
-    .input_output_currency {
-        /* display: flex;
+    /* .input_output_currency {
+        display: flex;
         flex-direction: row;
-        row-gap: 10px; */
-    }   
+        row-gap: 0px;
+    }    */
 }

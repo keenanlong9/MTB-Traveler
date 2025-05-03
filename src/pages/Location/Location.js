@@ -24,7 +24,7 @@ export default function Location () {
                         </div>
                         <div className="location_info">
                             <ul className="popular_trails">
-                            <h2>Popular Trails</h2>
+                            <h2 className="popular_trails">Popular Trails</h2>
                             <li className="popular_trail_name">
                                 <p>{locationInfo?.trails[0]}</p>
                             </li>

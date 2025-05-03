@@ -33,11 +33,16 @@
 
 .language_translator_selections {
     display: flex;
-    padding-left: 600px;
     padding-bottom: 10px;
+    justify-content: center;
+}
+.language_translator_selections p {
+    color: white;
+    padding-top: 5px;
+    margin-right: 0px;
 }
 
-.language_translator_textbox {
+.langauge_translator_container {
     display: grid;
     grid-template-columns: auto auto;
     column-gap: 200px;
@@ -96,20 +101,27 @@
 .language_translator_selection {
     height: 30px;
     width: 80px;
+    margin-left: 5px;
     text-align: center;
 }
 
-@media screen and (max-width: 1010px) {
-    .language_translator h1{
-        font-size: 2rem;
+@media screen and (max-width: 1100px) {
+    .langauge_translator_container {
+        column-gap: 100px;
     }
 
     .language_translator_btns {
         column-gap: 150px;
     }
+}
 
-    .language_translator_textbox {
-        column-gap: 100px;
+@media screen and (max-width: 1000px) {
+    .language_translator h1{
+        font-size: 2rem;
+    }
+
+    .language_translator_btns {
+        column-gap: 80px;
     }
 
     .language_translator_btns button {
@@ -135,12 +147,28 @@
     }
 }
 
-@media screen and (max-width: 805px) {
-    .language_translator_btns {
-        column-gap: 80px;
-    }
-
-    .language_translator_textbox {
+@media screen and (max-width: 700px) {
+    .langauge_translator_container {
         column-gap: 20px;
     }
+}
+
+@media screen and (max-width: 500px) {
+    .language_translator_btns {
+        grid-template-columns: auto;
+        row-gap: 10px;
+        /* This is to cancel out the margin-top for the input text area */
+        margin-bottom: -40px;
+        padding-bottom: 10px;
+    }
+    
+    .langauge_translator_container {
+        grid-template-columns: auto;
+    }       
+}
+
+@media screen and (max-width: 420px) {
+    .language_translator h1 {
+        font-size: 1.7rem;
+    }   
 }

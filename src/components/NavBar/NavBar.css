@@ -9,6 +9,7 @@
     position: sticky;
     top: 0;
     z-index: 999;
+    /* width: 100%; */
 }
 
 .navbar_container {
@@ -16,8 +17,8 @@
     justify-content: space-between;
     height: 80px;
     z-index: 1;
-    width: 100%;
-    max-width: 1800px;
+    width: 100vw;
+    /* max-width: 1800px; */
     margin: 0 auto;
     padding: 0 50px;
 }
@@ -75,8 +76,8 @@
         justify-content: space-between;
         height: 80px;
         z-index: 1;
-        width: 100%;
-        max-width: 1300px;
+        width: 100vw;
+        /* max-width: 1300px; */
         padding: 0;
     }
 
@@ -84,7 +85,7 @@
         display: grid;
         grid-template-columns: auto;
         margin: 0;
-        width: 100%;
+        width: 100vw;
         position: absolute;
         top: -1000px;
         opacity: 0;
@@ -125,7 +126,7 @@
     .navbar_links {
         text-align: center;
         padding: 2rem;
-        width: 100%;
+        width: 100vw;
         display: table;
     }
 
