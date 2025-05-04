@@ -147,6 +147,18 @@
     }
 }
 
+@media screen and (max-width: 1000px) {
+    .language_translator {
+        padding-bottom: 40px;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .language_translator {
+        padding-bottom: 0px;
+    }
+}
+
 @media screen and (max-width: 725px) {
     .language_translator_btns {
         column-gap: 40px;

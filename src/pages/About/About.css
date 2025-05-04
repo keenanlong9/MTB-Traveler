@@ -77,6 +77,18 @@
     }
 }
 
+@media screen and (max-width: 1000px) {
+    .about_us {
+        padding-bottom: 40px;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .about_us {
+        padding-bottom: 0px;
+    }
+}
+
 @media screen and (max-width: 1194px) {
     .about_us_container {
         column-gap: 30px;

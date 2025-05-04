@@ -105,6 +105,18 @@
     font-size: 1.0rem;
 }
 
+@media screen and (max-width: 1000px) {
+    .currency {
+        padding-bottom: 40px;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .currency {
+        padding-bottom: 0px;
+    }
+}
+
 @media screen and (max-width:775px) {
 
     .currency_card {

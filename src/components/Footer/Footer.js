@@ -7,10 +7,10 @@ export default function Footer () {
       <div className="footer_container">
         <Link to="/home" id="navbar_logo">
           <i className="fas fa-globe"></i>
-          <span style={{ paddingLeft: "5px" }}>MTB Traveler</span>
+          <span style={{ paddingLeft: "5px", paddingTop: "0px"}}>MTB Traveler</span>
         </Link> 
         <p>&copy; MTB Traveler 2024. All Right Reserved</p>
-        <Link to="/about" id="about_us">About Us</Link>
+        <Link to="/about" id="about_us"><p>About Us</p></Link>
       </div>
     </div>
     )

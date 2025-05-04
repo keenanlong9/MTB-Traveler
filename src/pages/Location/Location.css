@@ -111,6 +111,12 @@
     width: 100%;
 }
 
+@media screen and (max-width: 1000px) {
+    .location {
+        padding-bottom: 40px;
+    }
+}
+
 @media screen and (max-width: 761px) {
     .location_card {
         height: 242px;
