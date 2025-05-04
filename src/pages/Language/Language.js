@@ -58,9 +58,9 @@ export default function Language () {
                     <p>Translate</p>
                     </button>
                     <div className="language_translator_voice_output">
-                    <audio id="translate_audio" controls ref={audioRef}>
-                        <source id="translate_audio_src" type="audio/mp3" ref={audioSrcRef} />
-                    </audio>
+                        <audio id="translate_audio" controls ref={audioRef}>
+                            <source id="translate_audio_src" type="audio/mp3" ref={audioSrcRef} />
+                        </audio>
                     </div>
                 </div>
                 <div className='langauge_translator_container'>

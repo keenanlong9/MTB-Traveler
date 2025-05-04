@@ -42,7 +42,6 @@
     display: grid;
     grid-template-columns: auto auto auto;
     column-gap: 100px;
-    /* padding: 30px 0px 60px 0px; */
 }
 
 .input_output_currency input {

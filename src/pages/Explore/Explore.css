@@ -101,13 +101,56 @@
     background-image: url('/public/assets/images/Zermatt.jpeg');
 }
 
-@media screen and (max-width: 960px) {
+@media screen and (max-width: 1300px) {
     .explore_locations h1 {
         font-size: 2rem;
     }
 
     .explore_locations_container {
-        padding: 0px 0px 40px 60px;
+        padding: 0px 0px 40px 10px;
+    }
+}
+
+@media screen and (max-width: 1190px) {
+    .explore_locations_card {
+        height: 150px;
+        width: 225px;
+    }
+
+    .explore_locations_container {
+        padding: 0px 0px 40px 40px;
+    }    
+
+    .explore_locations_card p {
+        padding: 75px 0px 0px 245px;
+    }
+}
+
+@media screen and (max-width: 1060px) {
+    .explore_locations_card p {
+        font-size: 1.0rem;
+    }
+
+    .explore_locations_container {
+        padding: 0px 0px 40px 20px;
+    }    
+}
+
+@media screen and (max-width: 950px) {
+    .explore_locations_container {
+        grid-template-columns: auto;
+        justify-content: center;
+        margin-left: -150px;
+    }
+
+    .explore_locations_card p {
+        font-size: 1.7rem;
+    }
+}
+
+@media screen and (max-width: 820px) {
+    .explore_locations_card p {
+        font-size: 1.4rem;
     }
 }
 
@@ -127,7 +170,6 @@
     }
 
     .explore_locations_card p {
-        color: white;
         padding: 20px 0px 0px 150px;
     }
 
@@ -135,22 +177,12 @@
         height: 131;
         width: 300px;
     }
-}
-
-@media screen and (max-width: 950px) {
-    .explore_locations_container {
-        grid-template-columns: auto;
-        justify-content: center;
-        margin-left: -150px;
-    }
 
     .explore_locations_card p {
-        font-size: 1.7rem;
+        font-size: 1.2rem;
     }
 }
 
 @media screen and (max-width: 450px) {
-    .explore_locations_card p {
-        font-size: 1.3rem;
-    }
+    
 }

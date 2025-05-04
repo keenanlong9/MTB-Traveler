@@ -123,7 +123,6 @@
 
     .location_card p {
         padding-top: 213px;
-        /* font-size: 1.0rem; */
     }
     
     .location_info {
@@ -137,7 +136,7 @@
     }
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 680px) {
     .location_card {
         height: 182px;
         width: 350px;

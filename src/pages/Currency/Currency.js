@@ -45,51 +45,51 @@ export default function Currency () {
         <div>
             <NavBar></NavBar>
             <div className="currency">
-            <div className="currency_card">
-                {/* <!-- TODO make location dynamic--> */}
-                <p>Whistler, Britsh Columbia</p>
-            </div>
-            <h1>Convert Your Currency</h1>
-            <div className="input_output_currency">
-                <div className="input_currency">
-                <input
-                    type="text"
-                    name="input_currency_num"
-                    id="input_currency_num"
-                    placeholder="100"
-                    value={inputValue}
-                    onChange={(e) => setInputValue(e.target.value)}
-                />
-                <select name="input_currency_type" id="input_currency_type"
-                value={inputCurrency}
-                onChange={(e) => setInputCurrency(e.target.value)}>
-                    {currencies.map((cur) => (
-                        <option key={cur} value={cur}>${cur}</option>
-                    ))}
-                </select>
+                <div className="currency_card">
+                    {/* <!-- TODO make location dynamic--> */}
+                    <p>Whistler, Britsh Columbia</p>
                 </div>
-                <div className="output_currency">
-                <input
-                    type="text"
-                    name="output_currency_num"
-                    id="output_currency_num"
-                    placeholder="93.75"
-                    value={convertedValue}
-                    onChange={(e) => setConvertedValue(e.target.value)}
-                    disabled
-                />
-                <select name="output_currency_type" id="output_currency_type"
-                    value={outputCurrency}
-                    onChange={(e) => setOutputCurrency(e.target.value)}>
-                    {currencies.map((cur) => (
-                        <option key={cur} value={cur}>${cur}</option>
-                    ))}
-                </select>
+                <h1>Convert Your Currency</h1>
+                <div className="input_output_currency">
+                    <div className="input_currency">
+                        <input
+                            type="text"
+                            name="input_currency_num"
+                            id="input_currency_num"
+                            placeholder="100"
+                            value={inputValue}
+                            onChange={(e) => setInputValue(e.target.value)}
+                        />
+                        <select name="input_currency_type" id="input_currency_type"
+                        value={inputCurrency}
+                        onChange={(e) => setInputCurrency(e.target.value)}>
+                            {currencies.map((cur) => (
+                                <option key={cur} value={cur}>${cur}</option>
+                            ))}
+                        </select>
+                    </div>
+                    <div className="output_currency">
+                        <input
+                            type="text"
+                            name="output_currency_num"
+                            id="output_currency_num"
+                            placeholder="93.75"
+                            value={convertedValue}
+                            onChange={(e) => setConvertedValue(e.target.value)}
+                            disabled
+                        />
+                        <select name="output_currency_type" id="output_currency_type"
+                            value={outputCurrency}
+                            onChange={(e) => setOutputCurrency(e.target.value)}>
+                            {currencies.map((cur) => (
+                                <option key={cur} value={cur}>${cur}</option>
+                            ))}
+                        </select>
+                    </div>
+                    <button className="convert_btn" onClick={convertCurrency}>
+                        <p>Convert</p>
+                    </button>
                 </div>
-                <button className="convert_btn" onClick={convertCurrency}>
-                <p>Convert</p>
-                </button>
-            </div>
             </div>
             <Footer></Footer>
         </div>
