@@ -44,7 +44,7 @@ export default function Language () {
                 <h1>Communicate with Locals</h1>
                 <div className="language_translator_btns">
                     <button
-                        className="language_translator_btn"
+                        className={`language_translator_btn ${isRecording ? "recording" : ""}`}
                         id="transcribe_btn"
                         onClick={toggleRecording}
                     >
