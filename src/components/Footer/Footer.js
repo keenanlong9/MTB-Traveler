@@ -10,7 +10,7 @@ export default function Footer () {
           <span style={{ paddingLeft: "5px", paddingTop: "0px"}}>MTB Traveler</span>
         </Link> 
         <p>&copy; MTB Traveler 2024. All Right Reserved</p>
-        <Link to="/about" id="about_us"><p>About Us</p></Link>
+        <Link to="/about" className="footer_about_us">About Us</Link>
       </div>
     </div>
     )

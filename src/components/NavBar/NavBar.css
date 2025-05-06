@@ -1,6 +1,7 @@
 /* Could change to module.css in the future */
 .navbar {
-    background: black;
+    /* background: #181a1b; */
+    background: #3c4043;
     height: 80px;
     display: flex;
     justify-content: center;
@@ -22,8 +23,9 @@
 }
 
 #navbar_logo {
-    background-color: rgb(51, 128, 0);
-    background-image: linear-gradient(to top, rgb(8, 161, 0) 25%, rgb(7, 30, 175) 70%);
+    /* background-color: rgb(51, 128, 0);
+    background-image: linear-gradient(to top, rgb(8, 161, 0) 25%, rgb(7, 30, 175) 70%); */
+    background: rgba(255, 255, 255, 0.742);
     background-size: 100%;
     background-clip: text;
     -webkit-background-clip: text;
@@ -36,6 +38,11 @@
     text-decoration: none;
     font-size: 2rem;  
     justify-content: space-between;
+}
+
+#navbar_logo:hover{
+    background-color: rgba(8, 161, 0, 0.867);
+    transition: all 0.3s ease;
 }
 
 .fa-gem {
