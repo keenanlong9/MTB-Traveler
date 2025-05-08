@@ -1,17 +1,21 @@
-import { useRef, useState } from "react";
+import React, { useState, useEffect, useRef } from 'react';
 import { TranscribeStreamingClient, StartStreamTranscriptionCommand } from '@aws-sdk/client-transcribe-streaming';
 
-import { awsConfig } from "../services/awsClients";
+const transcribeClient = new TranscribeStreamingClient({ 
+  region: 'YOUR_AWS_REGION',
+  credentials: {
+    accessKeyId: 'YOUR_ACCESS_KEY',
+    secretAccessKey: 'YOUR_SECRET_KEY'
+  }
+});
 
-const transcribeClient = new TranscribeStreamingClient(awsConfig);
+function App() {
+  const [transcription, setTranscription] = useState('');
+  const mediaRecorder = useRef(null);
 
-export default function useAudioRecorder(transcription) {
-  const [isRecording, setIsRecording] = useState(false);
-  // const [transcription, setTranscription] = useState('')
-  const recorderRef = useRef(null);
-
-  const startRecorder = async () => {
-    const stream = new MediaStream();
+  useEffect(() => {
+    async function startTranscription() {
+      const stream = new MediaStream();
       try {
         stream = await navigator.mediaDevices.getUserMedia({ audio: true });
       } catch (error) {
@@ -19,8 +23,8 @@ export default function useAudioRecorder(transcription) {
         return;
       }
 
-      recorderRef.current = new MediaRecorder(stream, { mimeType: 'audio/webm' });
-      recorderRef.current.ondataavailable = async (event) => {
+      mediaRecorder.current = new MediaRecorder(stream, { mimeType: 'audio/webm' });
+      mediaRecorder.current.ondataavailable = async (event) => {
         if (event.data.size > 0) {
           const audioChunk = await event.data.arrayBuffer();
 
@@ -38,7 +42,7 @@ export default function useAudioRecorder(transcription) {
             for await (const event of response.TranscriptResultStream) {
               event.Transcript?.Results?.forEach((result) => {
                 if (!result.IsPartial) {
-                  transcription(prevTranscription => prevTranscription + result.Alternatives[0].Transcript + ' ');
+                  setTranscription(prevTranscription => prevTranscription + result.Alternatives[0].Transcript + ' ');
                 }
               });
             }
@@ -48,20 +52,24 @@ export default function useAudioRecorder(transcription) {
         }
       };
 
-      // recorderRef.current.start(1000);
-  };
-
-  const toggleRecording = async () => {
-    if (!recorderRef.current) await startRecorder();
-
-    if (isRecording) {
-        recorderRef.current.stop();
-    } else {
-        // recorderRef.current.start();
-        recorderRef.current.start(1000);
+      mediaRecorder.current.start(1000);
     }
-    setIsRecording(!isRecording);
-  };
 
-  return { toggleRecording, isRecording };
+    startTranscription();
+
+    return () => {
+      if (mediaRecorder.current?.state === 'recording') {
+        mediaRecorder.current.stop();
+      }
+    };
+  }, []);
+
+  return (
+    <div>
+      <h1>Real-time Transcription</h1>
+      <p>{transcription}</p>
+    </div>
+  );
 }
+
+export default App;

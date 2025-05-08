@@ -15,13 +15,15 @@ export default function Language () {
     const audioSrcRef = useRef(null);
     const [outputLang, setOutputLang] = useState("fr");
   
-    const { toggleRecording, isRecording } = useAudioRecorder(async (file) => {
-        const uri = await uploadAudioToS3(file);
-        const jobName = await startTranscription(uri, convertLanguageCode(outputLang));
-        pollTranscriptionResult(jobName, (text) => {
-        inputRef.current.value = text;
-        });
+    const { toggleRecording, isRecording } = useAudioRecorder((transcription) => {
+        // const uri = await uploadAudioToS3(file);
+        // const jobName = await startTranscription(uri, convertLanguageCode(outputLang));
+        // pollTranscriptionResult(jobName, (text) => {
+        inputRef.current.value = transcription;
+        // });
     });
+
+    // const { toggleRecording, isRecording } = useAudioRecorder(async (file) => {};
   
     const handleTranslate = async () => {
         const inputText = inputRef.current.value;
