@@ -3,9 +3,7 @@ import Footer from '../../components/Footer/Footer';
 import { useRef, useState } from "react";
 import { translateText } from "../../services/translate";
 import { synthesizeSpeechUrl } from "../../services/polly";
-import { uploadAudioToS3, startTranscription, pollTranscriptionResult } from "../../services/transcribe";
 import useAudioRecorder from "../../hooks/useAudioRecorder";
-import { convertLanguageCode } from "../../utils/languageUtils";
 import "./Language.css"
 
 export default function Language () {
@@ -15,14 +13,10 @@ export default function Language () {
     const audioSrcRef = useRef(null);
     const [outputLang, setOutputLang] = useState("fr");
   
-    const { toggleRecording, isRecording } = useAudioRecorder(async (file) => {
-        const uri = await uploadAudioToS3(file);
-        const jobName = await startTranscription(uri, convertLanguageCode(outputLang));
-        pollTranscriptionResult(jobName, (text) => {
-        inputRef.current.value = text;
-        });
+    const { toggleRecording, isRecording } = useAudioRecorder((transcriptionCallback) => {
+        inputRef.current.value = transcriptionCallback;
     });
-  
+ 
     const handleTranslate = async () => {
         const inputText = inputRef.current.value;
         try {
@@ -44,7 +38,7 @@ export default function Language () {
                 <h1>Communicate with Locals</h1>
                 <div className="language_translator_btns">
                     <button
-                        className="language_translator_btn"
+                        className={`language_translator_btn ${isRecording ? "recording" : ""}`}
                         id="transcribe_btn"
                         onClick={toggleRecording}
                     >
