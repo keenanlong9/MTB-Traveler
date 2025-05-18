@@ -75,6 +75,10 @@
     background-color: rgba(8, 161, 0, 0.867);
 }
 
+#transcribe_btn:hover {
+    background-color: rgba(255, 0, 0, 0.709); 
+}
+
 .language_translator_btn.recording {
     background-color: rgba(255, 0, 0, 0.709);
 }
