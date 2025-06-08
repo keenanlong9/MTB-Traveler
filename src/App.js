@@ -1,7 +1,6 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Amplify } from 'aws-amplify';
 import awsConfig from './aws-exports';
-import { withAuthenticator } from '@aws-amplify/ui-react';
 import Home from './pages/Home/Home';
 import About from './pages/About/About';
 import Currency from './pages/Currency/Currency';
@@ -52,4 +51,4 @@ function App() {
   return <RouterProvider router={router} />;
 }
 
-export default withAuthenticator(App);
+export default App;
