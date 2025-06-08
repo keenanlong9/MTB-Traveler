@@ -1,11 +1,17 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { Amplify } from 'aws-amplify';
+import awsConfig from './aws-exports';
+import { withAuthenticator } from '@aws-amplify/ui-react';
 import Home from './pages/Home/Home';
 import About from './pages/About/About';
 import Currency from './pages/Currency/Currency';
 import Language from './pages/Language/Language';
 import Explore from './pages/Explore/Explore';
 import Location from './pages/Location/Location';
+import Profile from './pages/Profile/Profile';
 import './styles.css'
+
+Amplify.configure(awsConfig)
 
 const router = createBrowserRouter([
   {
@@ -36,10 +42,14 @@ const router = createBrowserRouter([
     path: "*",
     element: <Home />,
   },
+  {
+    path: "/Profile",
+    element: <Profile />
+  }
 ]);
 
 function App() {
   return <RouterProvider router={router} />;
 }
 
-export default App;
+export default withAuthenticator(App);

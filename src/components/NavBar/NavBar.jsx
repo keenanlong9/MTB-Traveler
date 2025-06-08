@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import { useState } from "react"
+import { signOut } from '@aws-amplify/auth'
 import "./NavBar.css"
 
 export default function NavBar () {
@@ -8,6 +9,16 @@ export default function NavBar () {
   const handleMenuToggle = () => {
     setMenuActive(!menuActive);
   };
+
+  const handleSignOut = async () => {
+    try {
+      await signOut();
+      console.log('User signed out');
+    } catch (error) {
+      console.log('Error signing out: ', error);
+    }
+  };
+
 
     return (  
       <nav className="navbar">
@@ -27,6 +38,9 @@ export default function NavBar () {
             </li>
             <li className="navbar_item">
               <Link to="/language" className="navbar_links">Language Translator</Link>
+            </li>
+            <li className="navbar_item-btn">
+                <button onClick={handleSignOut}>Sign Out</button>
             </li>
           </ul>
         </div>
