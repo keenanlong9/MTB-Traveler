@@ -40,7 +40,7 @@ export default function NavBar () {
               <Link to="/language" className="navbar_links">Language Translator</Link>
             </li>
             <li className="navbar_item-btn">
-                <button onClick={handleSignOut}>Sign Out</button>
+                <button className="navbar_item-btn" onClick={handleSignOut}>Sign Out</button>
             </li>
           </ul>
         </div>

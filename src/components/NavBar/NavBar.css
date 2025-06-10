@@ -60,6 +60,13 @@
     height: 80px;
 }
 
+.navbar_item-btn button{
+    height: 20px;
+    width: 80px;
+    margin: 10px;
+    font-size: 1.0rem;
+}
+
 .navbar_links {
     color: white;
     display: flex;

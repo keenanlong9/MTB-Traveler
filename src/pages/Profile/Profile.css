@@ -1,0 +1,74 @@
+.profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile p {
+    color: white;
+}
+
+.profile h2 {
+    color: white
+}
+
+.profile_info {
+    border: black solid;
+    border-radius: 10px;
+    align-items: left;
+}
+
+.profile_text{
+    text-align: left;
+    width: 100%;
+    padding-left: 220px;
+    color: white;
+    margin: 10px;
+}
+
+.profile_columns {
+    display: grid;
+    align-items: center;
+    grid-template-columns: auto auto auto;
+    width: 1000px;
+    height: 50px;
+}
+
+.edit_profile_btn {
+    height: 20px;
+    width: 100px;
+    margin: 10px;
+    font-size: 1.0rem;
+}
+
+.add_destination_list_btn {
+    height: 20px;
+    width: 100px;
+    margin: 10px;
+    font-size: 1.0rem;
+}
+
+.destination_list {
+    border: black solid;
+    border-radius: 10px;
+}
+
+.destination_list_header {
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 680px;
+    color: white;
+    margin: 10px;
+}
+
+.destination_columns {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    column-gap: 20px;
+    width: 1000px;
+    height: 210px;
+}
+
+.destination_columns p {
+    padding-top: 10px;
+}

@@ -2,6 +2,7 @@ import NavBar from "../../components/NavBar/NavBar";
 import Footer from "../../components/Footer/Footer";
 import headshot from '../../assets/images/Headshot_2.jpg'
 import { withAuthenticator } from '@aws-amplify/ui-react';
+import "./Profile.css";
 
 const user = {
     name: 'Keenan Long',
@@ -32,28 +33,26 @@ function Profile () {
                 <img src={user.avatar} alt="Avatar" style={styles.avatar} />
                 <h2>{user.name}</h2> 
             </div>
-            <h3>Profile info:</h3>
+            <div className="profile_text">
+                <h3>Profile info:</h3>
+            </div>
             <div className="profile_info">
                 <div className="profile_columns">
-                    <div className="profile_column">
                         <p><strong>Location:</strong> {user.location}</p>
                         <p><strong>Language:</strong> {user.language}</p>
                         <p><strong>Currency:</strong> {user.currency}</p>
-                    </div>
                 </div>
             </div>
             <button className="edit_profile_btn">Edit Profile</button>
             <div className="destination_list_header">
                 <h3>Destinations Wish List:</h3>
-                <button className="add_destination_list_btn">Add destination</button>
+                <button className="add_destination_list_btn">Add +</button>
             </div>
             <div className="destination_list">
                 <div className="destination_columns">
-                    <div className="destination_column">
-                        <p><strong>Location</strong></p>
-                        <p><strong>Language</strong></p>
-                        <p><strong>Currency</strong></p>
-                    </div>
+                    <p><strong>Location</strong></p>
+                    <p><strong>Language</strong></p>
+                    <p><strong>Currency</strong></p>
                 </div>
             </div>
         </div>
@@ -80,12 +79,11 @@ const styles = {
         marginBottom: 16,
     },
     avatar: {
-        width: 80,
-        height: 80,
+        width: 150,
+        height: 150,
         borderRadius: '50%',
         marginRight: 20,
         objectFit: 'cover',
-        border: '2px solid #4caf50',
     },
     location: {
         color: '#888',
