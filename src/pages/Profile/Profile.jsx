@@ -2,6 +2,7 @@ import NavBar from "../../components/NavBar/NavBar";
 import Footer from "../../components/Footer/Footer";
 import headshot from '../../assets/images/Headshot_2.jpg'
 import { withAuthenticator } from '@aws-amplify/ui-react';
+import '@aws-amplify/ui-react/styles.css';
 import "./Profile.css";
 
 const user = {
@@ -15,17 +16,6 @@ const user = {
 
 function Profile () {
     return (
-    // <div style={styles.container}>
-    //     <div style={styles.header}>
-    //         <img src={user.avatar} alt="Avatar" style={styles.avatar} />
-    //         <div>
-    //             <h2>{user.name}</h2>
-    //             <p style={styles.location}>{user.location}</p>
-    //         </div>
-    //     </div>
-    //     <p style={styles.bio}>{user.bio}</p>
-    //     <button style={styles.button}>Edit Profile</button>
-    // </div>
     <div>
         <NavBar></NavBar>
         <div className="profile">

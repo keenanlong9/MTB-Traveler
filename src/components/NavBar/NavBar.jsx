@@ -1,16 +1,12 @@
 import { Link } from "react-router-dom"
 import { useState, useEffect } from "react"
-import { signOut, signIn, getCurrentUser } from '@aws-amplify/auth'
+import { signOut, getCurrentUser } from '@aws-amplify/auth'
+import ProfileIcon from '../../assets/images/Profile-Icon.png'
 import "./NavBar.css"
 
 export default function NavBar () {
   const [menuActive, setMenuActive] = useState(false);
   const [user, setUser] = useState(null);
-  const [form, setForm] = useState({ username: '', password: '' });
-
-const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
 
   // Fetch user on component mount
   useEffect(() => {
@@ -40,19 +36,6 @@ const handleChange = (e) => {
     }
   };
 
-  const handleSignIn = async () => {
-    try {
-      const signedInUser = await signIn({
-        username: form.username,
-        password: form.password,
-      });
-      setUser(signedInUser);
-      console.log('User signed in');
-    } catch (error) {
-      console.error('Sign-in error:', error);
-    }
-  };
-
     return (  
       <nav className="navbar">
         <div className="navbar_container">
@@ -72,25 +55,22 @@ const handleChange = (e) => {
             <li className="navbar_item">
               <Link to="/language" className="navbar_links">Language Translator</Link>
             </li>
+            <li>
+              <Link to="/profile" className="navbar_links"><img className="navbar_profile" src={ProfileIcon} alt="Profile Icon"></img></Link>
+            </li>
             <li className="navbar_item-btn">
               {user ? 
-              (<button className="navbar_item-btn" onClick={handleSignOut}>Sign Out</button> ) 
-              : (<div>
-                <input
-                  name="username"
-                  placeholder="Username"
-                  value={form.username}
-                  onChange={handleChange}
-                />
-                <input
-                  name="password"
-                  type="password"
-                  placeholder="Password"
-                  value={form.password}
-                  onChange={handleChange}
-                />
-              <button className="navbar_item-btn" onClick={handleSignIn}>Sign In</button>
-              </div>)}
+              (
+                <div>
+                  <p className="navbar_item-btn" onClick={handleSignOut}>Sign Out</p>
+                </div>  
+              ) 
+              : 
+              (
+                <div>
+                  <Link to="/profile" className="navbar_item-btn">Sign In</Link>
+                </div>
+              )}
             </li>
           </ul>
         </div>
