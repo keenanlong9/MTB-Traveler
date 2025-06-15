@@ -19,9 +19,9 @@
 }
 
 .profile_text{
-    text-align: left;
+    text-align: center;
     width: 100%;
-    padding-left: 220px;
+    padding-right: 900px;
     color: white;
     margin: 10px;
 }
