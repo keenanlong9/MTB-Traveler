@@ -121,7 +121,7 @@ export default function useAudioRecorder(transcriptionCallback) {
 
   const stopRecording = async () => {
     appendLog("🛑 Stopping test...");
-    await sleep(3000);
+    await sleep(3000);//Todo: Remove sleep??
     isStreamingRef.current = false;
     audioQueueRef.current.push(null); // Stop the audio generator
   
