@@ -89,10 +89,11 @@ export const createDestination = /* GraphQL */ `
   ) {
     createDestination(input: $input, condition: $condition) {
       id
-      name
       Location
       Language
       Currency
+      Image
+      Trails
       userProfileID
       createdAt
       updatedAt
@@ -111,10 +112,11 @@ export const updateDestination = /* GraphQL */ `
   ) {
     updateDestination(input: $input, condition: $condition) {
       id
-      name
       Location
       Language
       Currency
+      Image
+      Trails
       userProfileID
       createdAt
       updatedAt
@@ -133,10 +135,11 @@ export const deleteDestination = /* GraphQL */ `
   ) {
     deleteDestination(input: $input, condition: $condition) {
       id
-      name
       Location
       Language
       Currency
+      Image
+      Trails
       userProfileID
       createdAt
       updatedAt

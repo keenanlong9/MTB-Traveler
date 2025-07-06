@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
+import Select from "react-select";
 import NavBar from "../../components/NavBar/NavBar";
 import Footer from "../../components/Footer/Footer";
-import headshot from '../../assets/images/Headshot_2.jpg'
 import { withAuthenticator } from '@aws-amplify/ui-react';
 import { DataStore } from "aws-amplify/datastore";
 import { UserProfile, Destination } from "../../models";
@@ -13,6 +13,33 @@ import "./Profile.css";
 function Profile () {
     const [profile, setProfile] = useState(null);
     const [avatarUrl, setAvatarUrl] = useState(null);
+    const [optionsAdd, setOptionsAdd] = useState([]);
+
+    // const runAdd = async () => {
+    //     await DataStore.start();
+
+    //     const destinations = [
+    //         { Location: "Whistler, British Columbia", Language: "English", Currency: "CAD", Image: "", Trails: ["Dirt Merchant", "High Hopes", "Crank It Up", "Samurai Pizza Cat", "A-Line"] },
+    //         { Location: "Queenstown, New Zealand", Language: "English", Currency: "NZD", Image: "", Trails: ["Lazy Vertigo", "Rude Rock", "Thunder Goat", "Salmon Run", "Kachoong"] },
+    //         { Location: "Finale Ligure, Italy", Language: "Italian", Currency: "EUR", Image: "", Trails: ["Roller Coaster", "Ingegnere", "Madre Natura", "Base Nato", "DH Uomini"] },
+    //         { Location: "Bellingham, Washington", Language: "English", Currency: "USD", Image: "", Trails: ["Unemployment Line", "Atomic Dog", "Evolution", "Blue Steel", "Mabel's Monkey-Wrench"] },
+    //         { Location: "Jamaica", Language: "English", Currency: "JMD", Image: "", Trails: ["Jangalee Graveyard Trail", "Janky Jimmie's Duppy", "Janky Jimmie's Jackson Enduro", "Mount Airy DH", "Scruba'a'Dub DH"] },
+    //         { Location: "Loudenvielle, France", Language: "French", Currency: "EUR", Image: "", Trails: ["Black Sheep", "Lapade", "Dolmens", "Secrete Skyvall", "Pourticou"] },
+    //         { Location: "Oaxaca, Mexico", Language: "Spanish", Currency: "MXN", Image: "", Trails: ["Mil Rios", "Veredita", "Cruz de Estacas", "Veredita", "Tierre Blanca"] },
+    //         { Location: "South Africa", Language: "isZulu", Currency: "ZAR", Image: "", Trails: ["Poor Fool", "Cobra", "Why Singletrack", "Steve's Revenge", "Fireball"] },
+    //         { Location: "Tasmania, Australia", Language: "English", Currency: "AUD", Image: "", Trails: ["Deadly Bugga", "Flickity Sticks Upper", "Air Ya Gam", "Big Chook", "Helter Smelter"] },
+    //         { Location: "Zermatt, Switzerland", Language: "Swiss German", Currency: "CHF", Image: "", Trails: ["Ze Seewjinen - Borter", "Gornergrat", "Europaweg - Bidemjini", "Gruebje", "Brich"] },
+    //     ];
+
+    //     for (const dest of destinations) {
+    //         await DataStore.save(new Destination(dest));
+    //         console.log(`Seeded: ${dest.name}`);
+    //     }
+
+    //     console.log("Seeding complete!");
+    //     };
+
+
     // Upload image
     const uploadProfileImage = async (file) => {
         try {
@@ -60,7 +87,7 @@ function Profile () {
         }
     };
     fetchImage();
-    }, [profile]);
+    }, [profile?.profileImage]);
 
 
     useEffect(() => {
@@ -71,34 +98,34 @@ function Profile () {
 
         await DataStore.start();
 
-        // 1. Check if profile exists
-        const results = await DataStore.query(UserProfile, c => c.owner.eq(userId));
-        let existing = results[0];
-        console.log("Existing profile:", existing);
-        
-        // 2. If not, create one
-        if (!existing) {
-        console.log("No profile found, creating...");
-        const newProfile = {
-            owner: userId,
-            name: '',
-            Location: '',
-            Language: '',
-            Currency: '',
-            profileImage: '',
-        }
-        console.log("New profile data:", newProfile);
+        // Add a short delay to allow sync engine to warm up
+        await new Promise(resolve => setTimeout(resolve, 1000));
+
         try {
+        const results = await DataStore.query(UserProfile, c => c.owner.eq(userId));
+        let existing = results.length > 0 ? results[0] : null;
+        console.log("Existing profile:", existing);
+
+        if (!existing) {
+            console.log("No profile found, creating...");
+            const newProfile = {
+                owner: userId,
+                name: '',
+                Location: '',
+                Language: '',
+                Currency: '',
+                profileImage: '',
+            };
+            console.log("New profile data:", newProfile);
             existing = await DataStore.save(new UserProfile(newProfile));
             console.log("Profile created:", existing);
-        } catch (error) {
-            console.warn("Profile creation failed, maybe already exists:", error);
-            }
         }
 
-        // 3. Set profile state
         setProfile(existing);
         console.log("Profile set:", existing);
+    } catch (error) {
+        console.error("Failed to fetch or create profile:", error);
+    }
     };
 
     initProfile();
@@ -108,6 +135,7 @@ function Profile () {
         const user = await getCurrentUser();
         const userId = user.username.trim();
         console.log("Updating profile with data:", data);
+        if (!profile?.id) return;
         const current = await DataStore.query(UserProfile, profile.id);
         if (current.owner !== userId) {
             console.warn("Current user does not own this item");
@@ -125,13 +153,14 @@ function Profile () {
                 updated.profileImage = data.profileImage;
             })
         );
-        setProfile(updated);
-
+        const refreshed = await DataStore.query(UserProfile, updated.id);
+        setProfile(refreshed);
         console.log("Profile updated:", updated);
     };
 
     //Popup Test
     const [isOpen, setIsOpen] = useState(false);
+    const [isOpenAdd, setIsOpenAdd] = useState(false);
     const [userData, setUserData] = useState({
         name: '',
         location: '',
@@ -157,6 +186,26 @@ function Profile () {
         setIsOpen(true);
     }
     const closePopup = () => setIsOpen(false);
+
+    const openPopupAdd = async () => {
+        const current = await DataStore.query(Destination);
+        console.log("Current destinations:", current);
+        const options = current.map(dest => ({
+            value: dest.Location,
+            label: dest.Location
+        }));
+
+        setOptionsAdd(options);
+        console.log("Available destinations:", options);
+        if (profile) {
+            setFormData({
+                destinations: profile.destinations || ''
+            });
+            
+        }
+        setIsOpenAdd(true);
+        }
+        const closePopupAdd = () => setIsOpenAdd(false);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -276,14 +325,25 @@ function Profile () {
                     <button type="submit">Save</button>
                     <span   style={{ padding: '10px' }}></span>
                     <button type="button" onClick={closePopup}>Cancel</button>
+                    {/* <button type="butten" onClick={runAdd}>Add destions to DB</button> */}
                     </form>
+                </div>
+                </div>
+            )}
+
+            {isOpenAdd && (
+                <div style={popupStyle}>
+                <div style={popupContentStyle}>
+                    <h3>Add Destinations to Wishlist</h3>
+                    <Select options={optionsAdd} isMulti={true} className="destination_select"/>
+                    <button type="button" onClick={closePopupAdd}>Close</button>
                 </div>
                 </div>
             )}
 
             <div className="destination_list_header">
                 <h3>Destinations Wish List:</h3>
-                <button className="add_destination_list_btn">Add +</button>
+                <button className="add_destination_list_btn" onClick={openPopupAdd}>Add +</button>
             </div>
             <div className="destination_list">
                 <div className="destination_columns">

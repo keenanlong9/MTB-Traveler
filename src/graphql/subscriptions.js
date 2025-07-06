@@ -89,10 +89,11 @@ export const onCreateDestination = /* GraphQL */ `
   ) {
     onCreateDestination(filter: $filter, owner: $owner) {
       id
-      name
       Location
       Language
       Currency
+      Image
+      Trails
       userProfileID
       createdAt
       updatedAt
@@ -111,10 +112,11 @@ export const onUpdateDestination = /* GraphQL */ `
   ) {
     onUpdateDestination(filter: $filter, owner: $owner) {
       id
-      name
       Location
       Language
       Currency
+      Image
+      Trails
       userProfileID
       createdAt
       updatedAt
@@ -133,10 +135,11 @@ export const onDeleteDestination = /* GraphQL */ `
   ) {
     onDeleteDestination(filter: $filter, owner: $owner) {
       id
-      name
       Location
       Language
       Currency
+      Image
+      Trails
       userProfileID
       createdAt
       updatedAt

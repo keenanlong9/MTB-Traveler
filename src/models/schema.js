@@ -21,7 +21,7 @@ export const schema = {
                     "name": "name",
                     "isArray": false,
                     "type": "String",
-                    "isRequired": true,
+                    "isRequired": false,
                     "attributes": []
                 },
                 "Location": {
@@ -93,6 +93,16 @@ export const schema = {
                     "properties": {}
                 },
                 {
+                    "type": "key",
+                    "properties": {
+                        "name": "byOwner",
+                        "queryField": "userProfilesByOwner",
+                        "fields": [
+                            "owner"
+                        ]
+                    }
+                },
+                {
                     "type": "auth",
                     "properties": {
                         "rules": [
@@ -123,13 +133,6 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
-                "name": {
-                    "name": "name",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": true,
-                    "attributes": []
-                },
                 "Location": {
                     "name": "Location",
                     "isArray": false,
@@ -151,11 +154,26 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
+                "Image": {
+                    "name": "Image",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "Trails": {
+                    "name": "Trails",
+                    "isArray": true,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isArrayNullable": true
+                },
                 "userProfileID": {
                     "name": "userProfileID",
                     "isArray": false,
                     "type": "ID",
-                    "isRequired": true,
+                    "isRequired": false,
                     "attributes": []
                 },
                 "createdAt": {
@@ -217,5 +235,5 @@ export const schema = {
     "enums": {},
     "nonModels": {},
     "codegenVersion": "3.4.4",
-    "version": "e37bfad5e55d2ff9eba72ed87e2cd7b9"
+    "version": "13dca5ad8b7f55f07deff3a9c743a7c6"
 };

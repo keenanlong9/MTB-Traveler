@@ -4,8 +4,8 @@
 
 type UserProfile @model @auth(rules: [{ allow: owner }]) {
   id: ID!
-  owner: String!
-  name: String!
+  owner: String! @index(name: "byOwner", queryField: "userProfilesByOwner")
+  name: String
   Location: String
   Language: String
   Currency: String
@@ -16,9 +16,10 @@ type UserProfile @model @auth(rules: [{ allow: owner }]) {
 
 type Destination @model @auth(rules: [{ allow: owner }]) {
   id: ID!
-  name: String!
   Location: String
   Language: String
   Currency: String
-  userProfileID: ID! @index(name: "byUserProfile", sortKeyFields: ["Location"])
+  Image: String
+  Trails: [String]
+  userProfileID: ID @index(name: "byUserProfile", sortKeyFields: ["Location"])
 }

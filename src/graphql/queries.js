@@ -91,10 +91,11 @@ export const getDestination = /* GraphQL */ `
   query GetDestination($id: ID!) {
     getDestination(id: $id) {
       id
-      name
       Location
       Language
       Currency
+      Image
+      Trails
       userProfileID
       createdAt
       updatedAt
@@ -115,10 +116,11 @@ export const listDestinations = /* GraphQL */ `
     listDestinations(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        name
         Location
         Language
         Currency
+        Image
+        Trails
         userProfileID
         createdAt
         updatedAt
@@ -149,10 +151,11 @@ export const syncDestinations = /* GraphQL */ `
     ) {
       items {
         id
-        name
         Location
         Language
         Currency
+        Image
+        Trails
         userProfileID
         createdAt
         updatedAt
@@ -160,6 +163,42 @@ export const syncDestinations = /* GraphQL */ `
         _deleted
         _lastChangedAt
         owner
+        __typename
+      }
+      nextToken
+      startedAt
+      __typename
+    }
+  }
+`;
+export const userProfilesByOwner = /* GraphQL */ `
+  query UserProfilesByOwner(
+    $owner: String!
+    $sortDirection: ModelSortDirection
+    $filter: ModelUserProfileFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    userProfilesByOwner(
+      owner: $owner
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        owner
+        name
+        Location
+        Language
+        Currency
+        profileImage
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
         __typename
       }
       nextToken
@@ -187,10 +226,11 @@ export const destinationsByUserProfileIDAndLocation = /* GraphQL */ `
     ) {
       items {
         id
-        name
         Location
         Language
         Currency
+        Image
+        Trails
         userProfileID
         createdAt
         updatedAt

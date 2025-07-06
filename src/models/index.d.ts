@@ -13,7 +13,7 @@ type EagerUserProfile = {
   };
   readonly id: string;
   readonly owner: string;
-  readonly name: string;
+  readonly name?: string | null;
   readonly Location?: string | null;
   readonly Language?: string | null;
   readonly Currency?: string | null;
@@ -30,7 +30,7 @@ type LazyUserProfile = {
   };
   readonly id: string;
   readonly owner: string;
-  readonly name: string;
+  readonly name?: string | null;
   readonly Location?: string | null;
   readonly Language?: string | null;
   readonly Currency?: string | null;
@@ -52,11 +52,12 @@ type EagerDestination = {
     readOnlyFields: 'createdAt' | 'updatedAt';
   };
   readonly id: string;
-  readonly name: string;
   readonly Location?: string | null;
   readonly Language?: string | null;
   readonly Currency?: string | null;
-  readonly userProfileID: string;
+  readonly Image?: string | null;
+  readonly Trails?: (string | null)[] | null;
+  readonly userProfileID?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -67,11 +68,12 @@ type LazyDestination = {
     readOnlyFields: 'createdAt' | 'updatedAt';
   };
   readonly id: string;
-  readonly name: string;
   readonly Location?: string | null;
   readonly Language?: string | null;
   readonly Currency?: string | null;
-  readonly userProfileID: string;
+  readonly Image?: string | null;
+  readonly Trails?: (string | null)[] | null;
+  readonly userProfileID?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
