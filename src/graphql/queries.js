@@ -11,11 +11,7 @@ export const getUserProfile = /* GraphQL */ `
       Language
       Currency
       profileImage
-      Destinations {
-        nextToken
-        startedAt
-        __typename
-      }
+      Destinations
       createdAt
       updatedAt
       _version
@@ -40,6 +36,7 @@ export const listUserProfiles = /* GraphQL */ `
         Language
         Currency
         profileImage
+        Destinations
         createdAt
         updatedAt
         _version
@@ -74,6 +71,44 @@ export const syncUserProfiles = /* GraphQL */ `
         Language
         Currency
         profileImage
+        Destinations
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        __typename
+      }
+      nextToken
+      startedAt
+      __typename
+    }
+  }
+`;
+export const userProfilesByOwner = /* GraphQL */ `
+  query UserProfilesByOwner(
+    $owner: String!
+    $sortDirection: ModelSortDirection
+    $filter: ModelUserProfileFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    userProfilesByOwner(
+      owner: $owner
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        owner
+        name
+        Location
+        Language
+        Currency
+        profileImage
+        Destinations
         createdAt
         updatedAt
         _version
@@ -163,42 +198,6 @@ export const syncDestinations = /* GraphQL */ `
         _deleted
         _lastChangedAt
         owner
-        __typename
-      }
-      nextToken
-      startedAt
-      __typename
-    }
-  }
-`;
-export const userProfilesByOwner = /* GraphQL */ `
-  query UserProfilesByOwner(
-    $owner: String!
-    $sortDirection: ModelSortDirection
-    $filter: ModelUserProfileFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    userProfilesByOwner(
-      owner: $owner
-      sortDirection: $sortDirection
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-    ) {
-      items {
-        id
-        owner
-        name
-        Location
-        Language
-        Currency
-        profileImage
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         __typename
       }
       nextToken

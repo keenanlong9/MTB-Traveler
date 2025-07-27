@@ -14,11 +14,7 @@ export const createUserProfile = /* GraphQL */ `
       Language
       Currency
       profileImage
-      Destinations {
-        nextToken
-        startedAt
-        __typename
-      }
+      Destinations
       createdAt
       updatedAt
       _version
@@ -41,11 +37,7 @@ export const updateUserProfile = /* GraphQL */ `
       Language
       Currency
       profileImage
-      Destinations {
-        nextToken
-        startedAt
-        __typename
-      }
+      Destinations
       createdAt
       updatedAt
       _version
@@ -68,11 +60,7 @@ export const deleteUserProfile = /* GraphQL */ `
       Language
       Currency
       profileImage
-      Destinations {
-        nextToken
-        startedAt
-        __typename
-      }
+      Destinations
       createdAt
       updatedAt
       _version

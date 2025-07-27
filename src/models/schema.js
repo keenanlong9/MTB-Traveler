@@ -55,18 +55,10 @@ export const schema = {
                 "Destinations": {
                     "name": "Destinations",
                     "isArray": true,
-                    "type": {
-                        "model": "Destination"
-                    },
+                    "type": "String",
                     "isRequired": false,
                     "attributes": [],
-                    "isArrayNullable": true,
-                    "association": {
-                        "connectionType": "HAS_MANY",
-                        "associatedWith": [
-                            "userProfileID"
-                        ]
-                    }
+                    "isArrayNullable": true
                 },
                 "createdAt": {
                     "name": "createdAt",
@@ -225,6 +217,21 @@ export const schema = {
                                     "delete",
                                     "read"
                                 ]
+                            },
+                            {
+                                "allow": "private",
+                                "operations": [
+                                    "create",
+                                    "update",
+                                    "delete",
+                                    "read"
+                                ]
+                            },
+                            {
+                                "allow": "public",
+                                "operations": [
+                                    "read"
+                                ]
                             }
                         ]
                     }
@@ -235,5 +242,5 @@ export const schema = {
     "enums": {},
     "nonModels": {},
     "codegenVersion": "3.4.4",
-    "version": "13dca5ad8b7f55f07deff3a9c743a7c6"
+    "version": "3588e88da848addd65a7dab1a766c913"
 };

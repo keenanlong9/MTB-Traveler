@@ -10,11 +10,18 @@ type UserProfile @model @auth(rules: [{ allow: owner }]) {
   Language: String
   Currency: String
   profileImage: String
-  Destinations: [Destination]
-    @hasMany(indexName: "byUserProfile", fields: ["id"])
+  Destinations: [String]
 }
 
-type Destination @model @auth(rules: [{ allow: owner }]) {
+type Destination
+  @model
+  @auth(
+    rules: [
+      { allow: owner }
+      { allow: private }
+      { allow: public, operations: [read] }
+    ]
+  ) {
   id: ID!
   Location: String
   Language: String

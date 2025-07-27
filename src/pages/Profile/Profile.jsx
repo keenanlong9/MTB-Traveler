@@ -14,6 +14,7 @@ function Profile () {
     const [profile, setProfile] = useState(null);
     const [avatarUrl, setAvatarUrl] = useState(null);
     const [optionsAdd, setOptionsAdd] = useState([]);
+    const [selectedOptions, setSelectedOptions] = useState([]);
 
     // const runAdd = async () => {
     //     await DataStore.start();
@@ -87,7 +88,7 @@ function Profile () {
         }
     };
     fetchImage();
-    }, [profile?.profileImage]);
+    }, [profile]);
 
 
     useEffect(() => {
@@ -115,6 +116,7 @@ function Profile () {
                 Language: '',
                 Currency: '',
                 profileImage: '',
+                Destinations: [],
             };
             console.log("New profile data:", newProfile);
             existing = await DataStore.save(new UserProfile(newProfile));
@@ -151,11 +153,12 @@ function Profile () {
                 updated.Language = data.language;
                 updated.Currency = data.currency;
                 updated.profileImage = data.profileImage;
+                updated.Destinations = profile.Destinations || [];
             })
         );
         const refreshed = await DataStore.query(UserProfile, updated.id);
         setProfile(refreshed);
-        console.log("Profile updated:", updated);
+        console.log("Profile updated1:", updated);
     };
 
     //Popup Test
@@ -167,7 +170,7 @@ function Profile () {
         language: '',
         currency: '',
         profileImage: '',
-        destinations: [],
+        Destinations: [],
     });
 
     const [formData, setFormData] = useState(userData);
@@ -180,6 +183,7 @@ function Profile () {
                 language: profile.Language || '',
                 currency: profile.Currency || '',
                 profileImage: profile.profileImage || '',
+                Destinations: profile.Destinations || [],
             });
             
         }
@@ -199,13 +203,34 @@ function Profile () {
         console.log("Available destinations:", options);
         if (profile) {
             setFormData({
-                destinations: profile.destinations || ''
+                Destinations: profile.Destinations || []
             });
             
         }
         setIsOpenAdd(true);
         }
-        const closePopupAdd = () => setIsOpenAdd(false);
+
+    const closePopupAdd = async () => {
+        console.log("Selected options:", selectedOptions);
+
+        // Extract just the values (locations)
+        const destinationValues = selectedOptions.map(option => option.value);
+
+        // Update user profile with new destinations
+        const current = await DataStore.query(UserProfile, profile.id);
+        const updated = await DataStore.save(
+            UserProfile.copyOf(current, updated => {
+                updated.Destinations = destinationValues;
+            })
+        );
+
+        const refreshed = await DataStore.query(UserProfile, updated.id);
+        setProfile(refreshed);
+        console.log("Profile updated with destinations:", profile);
+        console.log("Profile updated2:", refreshed);
+
+        setIsOpenAdd(false);
+    }
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -222,6 +247,9 @@ function Profile () {
         closePopup();
     };
 
+   const handleChangeWishList = (options) => {
+        setSelectedOptions(options);
+    };
 
     return (
     <div>
@@ -335,8 +363,9 @@ function Profile () {
                 <div style={popupStyle}>
                 <div style={popupContentStyle}>
                     <h3>Add Destinations to Wishlist</h3>
-                    <Select options={optionsAdd} isMulti={true} className="destination_select"/>
-                    <button type="button" onClick={closePopupAdd}>Close</button>
+                    <Select options={optionsAdd} isMulti={true} className="destination_select" 
+                    onChange={handleChangeWishList}/>
+                    <button type="button" onClick={closePopupAdd}>Save</button>
                 </div>
                 </div>
             )}
@@ -350,6 +379,11 @@ function Profile () {
                     <p><strong>Location</strong></p>
                     <p><strong>Language</strong></p>
                     <p><strong>Currency</strong></p>
+                    <ul>
+                        {profile?.Destinations?.map((dest, index) => (
+                            <li key={index}>{dest}</li>
+                        ))}
+                    </ul>
                 </div>
             </div>
         </div>
