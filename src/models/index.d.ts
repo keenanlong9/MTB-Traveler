@@ -1,6 +1,6 @@
 import { ModelInit, MutableModel, __modelMeta__, ManagedIdentifier } from "@aws-amplify/datastore";
 // @ts-ignore
-import { LazyLoading, LazyLoadingDisabled } from "@aws-amplify/datastore";
+import { LazyLoading, LazyLoadingDisabled, AsyncCollection } from "@aws-amplify/datastore";
 
 
 
@@ -18,7 +18,7 @@ type EagerUserProfile = {
   readonly Language?: string | null;
   readonly Currency?: string | null;
   readonly profileImage?: string | null;
-  readonly Destinations?: (string | null)[] | null;
+  readonly Wishlist?: (Destination | null)[] | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -35,7 +35,7 @@ type LazyUserProfile = {
   readonly Language?: string | null;
   readonly Currency?: string | null;
   readonly profileImage?: string | null;
-  readonly Destinations?: (string | null)[] | null;
+  readonly Wishlist: AsyncCollection<Destination>;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }

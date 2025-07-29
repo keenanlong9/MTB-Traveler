@@ -52,13 +52,21 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
-                "Destinations": {
-                    "name": "Destinations",
+                "Wishlist": {
+                    "name": "Wishlist",
                     "isArray": true,
-                    "type": "String",
+                    "type": {
+                        "model": "Destination"
+                    },
                     "isRequired": false,
                     "attributes": [],
-                    "isArrayNullable": true
+                    "isArrayNullable": true,
+                    "association": {
+                        "connectionType": "HAS_MANY",
+                        "associatedWith": [
+                            "userProfileID"
+                        ]
+                    }
                 },
                 "createdAt": {
                     "name": "createdAt",
@@ -242,5 +250,5 @@ export const schema = {
     "enums": {},
     "nonModels": {},
     "codegenVersion": "3.4.4",
-    "version": "3588e88da848addd65a7dab1a766c913"
+    "version": "f3b6580d9aee8f8d4a072faead2cca3f"
 };

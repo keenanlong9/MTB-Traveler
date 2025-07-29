@@ -11,7 +11,11 @@ export const getUserProfile = /* GraphQL */ `
       Language
       Currency
       profileImage
-      Destinations
+      Wishlist {
+        nextToken
+        startedAt
+        __typename
+      }
       createdAt
       updatedAt
       _version
@@ -36,7 +40,6 @@ export const listUserProfiles = /* GraphQL */ `
         Language
         Currency
         profileImage
-        Destinations
         createdAt
         updatedAt
         _version
@@ -71,7 +74,6 @@ export const syncUserProfiles = /* GraphQL */ `
         Language
         Currency
         profileImage
-        Destinations
         createdAt
         updatedAt
         _version
@@ -108,7 +110,6 @@ export const userProfilesByOwner = /* GraphQL */ `
         Language
         Currency
         profileImage
-        Destinations
         createdAt
         updatedAt
         _version

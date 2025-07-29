@@ -16,31 +16,6 @@ function Profile () {
     const [optionsAdd, setOptionsAdd] = useState([]);
     const [selectedOptions, setSelectedOptions] = useState([]);
 
-    // const runAdd = async () => {
-    //     await DataStore.start();
-
-    //     const destinations = [
-    //         { Location: "Whistler, British Columbia", Language: "English", Currency: "CAD", Image: "", Trails: ["Dirt Merchant", "High Hopes", "Crank It Up", "Samurai Pizza Cat", "A-Line"] },
-    //         { Location: "Queenstown, New Zealand", Language: "English", Currency: "NZD", Image: "", Trails: ["Lazy Vertigo", "Rude Rock", "Thunder Goat", "Salmon Run", "Kachoong"] },
-    //         { Location: "Finale Ligure, Italy", Language: "Italian", Currency: "EUR", Image: "", Trails: ["Roller Coaster", "Ingegnere", "Madre Natura", "Base Nato", "DH Uomini"] },
-    //         { Location: "Bellingham, Washington", Language: "English", Currency: "USD", Image: "", Trails: ["Unemployment Line", "Atomic Dog", "Evolution", "Blue Steel", "Mabel's Monkey-Wrench"] },
-    //         { Location: "Jamaica", Language: "English", Currency: "JMD", Image: "", Trails: ["Jangalee Graveyard Trail", "Janky Jimmie's Duppy", "Janky Jimmie's Jackson Enduro", "Mount Airy DH", "Scruba'a'Dub DH"] },
-    //         { Location: "Loudenvielle, France", Language: "French", Currency: "EUR", Image: "", Trails: ["Black Sheep", "Lapade", "Dolmens", "Secrete Skyvall", "Pourticou"] },
-    //         { Location: "Oaxaca, Mexico", Language: "Spanish", Currency: "MXN", Image: "", Trails: ["Mil Rios", "Veredita", "Cruz de Estacas", "Veredita", "Tierre Blanca"] },
-    //         { Location: "South Africa", Language: "isZulu", Currency: "ZAR", Image: "", Trails: ["Poor Fool", "Cobra", "Why Singletrack", "Steve's Revenge", "Fireball"] },
-    //         { Location: "Tasmania, Australia", Language: "English", Currency: "AUD", Image: "", Trails: ["Deadly Bugga", "Flickity Sticks Upper", "Air Ya Gam", "Big Chook", "Helter Smelter"] },
-    //         { Location: "Zermatt, Switzerland", Language: "Swiss German", Currency: "CHF", Image: "", Trails: ["Ze Seewjinen - Borter", "Gornergrat", "Europaweg - Bidemjini", "Gruebje", "Brich"] },
-    //     ];
-
-    //     for (const dest of destinations) {
-    //         await DataStore.save(new Destination(dest));
-    //         console.log(`Seeded: ${dest.name}`);
-    //     }
-
-    //     console.log("Seeding complete!");
-    //     };
-
-
     // Upload image
     const uploadProfileImage = async (file) => {
         try {
@@ -116,7 +91,6 @@ function Profile () {
                 Language: '',
                 Currency: '',
                 profileImage: '',
-                Destinations: [],
             };
             console.log("New profile data:", newProfile);
             existing = await DataStore.save(new UserProfile(newProfile));
@@ -153,7 +127,6 @@ function Profile () {
                 updated.Language = data.language;
                 updated.Currency = data.currency;
                 updated.profileImage = data.profileImage;
-                updated.Destinations = profile.Destinations || [];
             })
         );
         const refreshed = await DataStore.query(UserProfile, updated.id);
@@ -170,7 +143,6 @@ function Profile () {
         language: '',
         currency: '',
         profileImage: '',
-        Destinations: [],
     });
 
     const [formData, setFormData] = useState(userData);
@@ -183,7 +155,6 @@ function Profile () {
                 language: profile.Language || '',
                 currency: profile.Currency || '',
                 profileImage: profile.profileImage || '',
-                Destinations: profile.Destinations || [],
             });
             
         }
@@ -200,37 +171,77 @@ function Profile () {
         }));
 
         setOptionsAdd(options);
-        console.log("Available destinations:", options);
-        if (profile) {
-            setFormData({
-                Destinations: profile.Destinations || []
-            });
-            
-        }
+        // Get previously selected destinations
+        const previouslySelected = current.filter(dest => dest.userProfileID === profile.id);
+
+        // Preselect them in react-select
+        const preselected = previouslySelected.map(dest => ({
+            value: dest.Location,
+            label: dest.Location
+        }));
+        setSelectedOptions(preselected); // this becomes the Select's `value`
         setIsOpenAdd(true);
         }
 
     const closePopupAdd = async () => {
         console.log("Selected options:", selectedOptions);
 
-        // Extract just the values (locations)
-        const destinationValues = selectedOptions.map(option => option.value);
+        const selectedDestinationNames = selectedOptions.map(option => option.value);
 
-        // Update user profile with new destinations
-        const current = await DataStore.query(UserProfile, profile.id);
-        const updated = await DataStore.save(
-            UserProfile.copyOf(current, updated => {
-                updated.Destinations = destinationValues;
-            })
+        const allDestinations = await DataStore.query(Destination);
+        const selectedDestinations = allDestinations.filter(dest =>
+            selectedDestinationNames.includes(dest.Location)
         );
 
-        const refreshed = await DataStore.query(UserProfile, updated.id);
-        setProfile(refreshed);
-        console.log("Profile updated with destinations:", profile);
-        console.log("Profile updated2:", refreshed);
+        console.log("Selected destinations:", selectedDestinations);
+
+        const currentProfile = await DataStore.query(UserProfile, profile.id);
+        const previouslySelected = allDestinations.filter(dest =>
+            dest.userProfileID === currentProfile.id
+        );
+
+        for (const dest of selectedDestinations) {
+            await DataStore.save(
+                Destination.copyOf(dest, updated => {
+                    updated.userProfileID = currentProfile.id;
+                })
+            );
+        }
+
+        for (const dest of previouslySelected) {
+        if (!selectedDestinationNames.includes(dest.Location)) {
+            await DataStore.save(
+                Destination.copyOf(dest, updated => {
+                    updated.userProfileID = null;
+                })
+            );
+        }
+    }
+
+        // Refetch wishlist
+        const updatedWishlist = await DataStore.query(Destination, d =>
+            d.userProfileID.eq(currentProfile.id)
+        );
+        setWishlist(updatedWishlist);
 
         setIsOpenAdd(false);
-    }
+    };
+
+    const [wishlist, setWishlist] = useState([]);
+
+    useEffect(() => {
+        const fetchWishlist = async () => {
+            if (profile?.id) {
+                const results = await DataStore.query(Destination, d =>
+                    d.userProfileID.eq(profile.id)
+                );
+                setWishlist(results);
+            }
+        };
+
+        fetchWishlist();
+    }, [profile]);
+
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -364,27 +375,34 @@ function Profile () {
                 <div style={popupContentStyle}>
                     <h3>Add Destinations to Wishlist</h3>
                     <Select options={optionsAdd} isMulti={true} className="destination_select" 
-                    onChange={handleChangeWishList}/>
+                    onChange={handleChangeWishList} value={selectedOptions}/>
                     <button type="button" onClick={closePopupAdd}>Save</button>
                 </div>
                 </div>
             )}
 
             <div className="destination_list_header">
-                <h3>Destinations Wish List:</h3>
+                <h3>Destination Wish List:</h3>
                 <button className="add_destination_list_btn" onClick={openPopupAdd}>Add +</button>
             </div>
             <div className="destination_list">
-                <div className="destination_columns">
-                    <p><strong>Location</strong></p>
-                    <p><strong>Language</strong></p>
-                    <p><strong>Currency</strong></p>
-                    <ul>
-                        {profile?.Destinations?.map((dest, index) => (
-                            <li key={index}>{dest}</li>
-                        ))}
-                    </ul>
+            <div className="destination_grid">
+                {/* Header row */}
+                <div className="grid-row header">
+                <div><strong>Location</strong></div>
+                <div><strong>Language</strong></div>
+                <div><strong>Currency</strong></div>
                 </div>
+
+                {/* Data rows */}
+                {wishlist.map((dest, index) => (
+                    <div key={index} className="grid-row">
+                    <div>{dest.Location}</div>
+                    <div>{dest.Language}</div>
+                    <div>{dest.Currency}</div>
+                    </div>
+                ))}
+            </div>
             </div>
         </div>
         <Footer></Footer>

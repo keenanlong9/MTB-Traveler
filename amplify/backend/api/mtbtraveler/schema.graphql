@@ -10,7 +10,7 @@ type UserProfile @model @auth(rules: [{ allow: owner }]) {
   Language: String
   Currency: String
   profileImage: String
-  Destinations: [String]
+  Wishlist: [Destination] @hasMany(indexName: "byUserProfile", fields: ["id"])
 }
 
 type Destination
