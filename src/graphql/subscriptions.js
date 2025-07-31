@@ -82,6 +82,153 @@ export const onDeleteUserProfile = /* GraphQL */ `
     }
   }
 `;
+export const onCreateUserProfileDestination = /* GraphQL */ `
+  subscription OnCreateUserProfileDestination(
+    $filter: ModelSubscriptionUserProfileDestinationFilterInput
+    $owner: String
+  ) {
+    onCreateUserProfileDestination(filter: $filter, owner: $owner) {
+      id
+      userProfileID
+      destinationID
+      userProfile {
+        id
+        owner
+        name
+        Location
+        Language
+        Currency
+        profileImage
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        __typename
+      }
+      destination {
+        id
+        Location
+        Language
+        Currency
+        Image
+        Trails
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+        __typename
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+      __typename
+    }
+  }
+`;
+export const onUpdateUserProfileDestination = /* GraphQL */ `
+  subscription OnUpdateUserProfileDestination(
+    $filter: ModelSubscriptionUserProfileDestinationFilterInput
+    $owner: String
+  ) {
+    onUpdateUserProfileDestination(filter: $filter, owner: $owner) {
+      id
+      userProfileID
+      destinationID
+      userProfile {
+        id
+        owner
+        name
+        Location
+        Language
+        Currency
+        profileImage
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        __typename
+      }
+      destination {
+        id
+        Location
+        Language
+        Currency
+        Image
+        Trails
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+        __typename
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+      __typename
+    }
+  }
+`;
+export const onDeleteUserProfileDestination = /* GraphQL */ `
+  subscription OnDeleteUserProfileDestination(
+    $filter: ModelSubscriptionUserProfileDestinationFilterInput
+    $owner: String
+  ) {
+    onDeleteUserProfileDestination(filter: $filter, owner: $owner) {
+      id
+      userProfileID
+      destinationID
+      userProfile {
+        id
+        owner
+        name
+        Location
+        Language
+        Currency
+        profileImage
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        __typename
+      }
+      destination {
+        id
+        Location
+        Language
+        Currency
+        Image
+        Trails
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+        __typename
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+      __typename
+    }
+  }
+`;
 export const onCreateDestination = /* GraphQL */ `
   subscription OnCreateDestination(
     $filter: ModelSubscriptionDestinationFilterInput
@@ -94,7 +241,11 @@ export const onCreateDestination = /* GraphQL */ `
       Currency
       Image
       Trails
-      userProfileID
+      wishlistedBy {
+        nextToken
+        startedAt
+        __typename
+      }
       createdAt
       updatedAt
       _version
@@ -117,7 +268,11 @@ export const onUpdateDestination = /* GraphQL */ `
       Currency
       Image
       Trails
-      userProfileID
+      wishlistedBy {
+        nextToken
+        startedAt
+        __typename
+      }
       createdAt
       updatedAt
       _version
@@ -140,7 +295,11 @@ export const onDeleteDestination = /* GraphQL */ `
       Currency
       Image
       Trails
-      userProfileID
+      wishlistedBy {
+        nextToken
+        startedAt
+        __typename
+      }
       createdAt
       updatedAt
       _version

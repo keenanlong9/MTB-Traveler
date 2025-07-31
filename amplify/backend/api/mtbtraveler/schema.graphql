@@ -10,7 +10,8 @@ type UserProfile @model @auth(rules: [{ allow: owner }]) {
   Language: String
   Currency: String
   profileImage: String
-  Wishlist: [Destination] @hasMany(indexName: "byUserProfile", fields: ["id"])
+  Wishlist: [UserProfileDestination]
+    @hasMany(indexName: "byUserProfile", fields: ["id"])
 }
 
 type Destination
@@ -28,5 +29,18 @@ type Destination
   Currency: String
   Image: String
   Trails: [String]
-  userProfileID: ID @index(name: "byUserProfile", sortKeyFields: ["Location"])
+  wishlistedBy: [UserProfileDestination]
+    @hasMany(indexName: "byDestination", fields: ["id"])
+}
+
+type UserProfileDestination
+  @model
+  @auth(rules: [{ allow: owner, operations: [create, read, delete] }]) {
+  id: ID!
+  userProfileID: ID!
+    @index(name: "byUserProfile", sortKeyFields: ["destinationID"])
+  destinationID: ID!
+    @index(name: "byDestination", sortKeyFields: ["userProfileID"])
+  userProfile: UserProfile @belongsTo(fields: ["userProfileID"])
+  destination: Destination @belongsTo(fields: ["destinationID"])
 }

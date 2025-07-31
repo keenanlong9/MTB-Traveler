@@ -87,6 +87,112 @@ export const syncUserProfiles = /* GraphQL */ `
     }
   }
 `;
+export const getUserProfileDestination = /* GraphQL */ `
+  query GetUserProfileDestination($id: ID!) {
+    getUserProfileDestination(id: $id) {
+      id
+      userProfileID
+      destinationID
+      userProfile {
+        id
+        owner
+        name
+        Location
+        Language
+        Currency
+        profileImage
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        __typename
+      }
+      destination {
+        id
+        Location
+        Language
+        Currency
+        Image
+        Trails
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+        __typename
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+      __typename
+    }
+  }
+`;
+export const listUserProfileDestinations = /* GraphQL */ `
+  query ListUserProfileDestinations(
+    $filter: ModelUserProfileDestinationFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listUserProfileDestinations(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        userProfileID
+        destinationID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+        __typename
+      }
+      nextToken
+      startedAt
+      __typename
+    }
+  }
+`;
+export const syncUserProfileDestinations = /* GraphQL */ `
+  query SyncUserProfileDestinations(
+    $filter: ModelUserProfileDestinationFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncUserProfileDestinations(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        userProfileID
+        destinationID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+        __typename
+      }
+      nextToken
+      startedAt
+      __typename
+    }
+  }
+`;
 export const userProfilesByOwner = /* GraphQL */ `
   query UserProfilesByOwner(
     $owner: String!
@@ -123,6 +229,76 @@ export const userProfilesByOwner = /* GraphQL */ `
     }
   }
 `;
+export const userProfileDestinationsByUserProfileIDAndDestinationID = /* GraphQL */ `
+  query UserProfileDestinationsByUserProfileIDAndDestinationID(
+    $userProfileID: ID!
+    $destinationID: ModelIDKeyConditionInput
+    $sortDirection: ModelSortDirection
+    $filter: ModelUserProfileDestinationFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    userProfileDestinationsByUserProfileIDAndDestinationID(
+      userProfileID: $userProfileID
+      destinationID: $destinationID
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        userProfileID
+        destinationID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+        __typename
+      }
+      nextToken
+      startedAt
+      __typename
+    }
+  }
+`;
+export const userProfileDestinationsByDestinationIDAndUserProfileID = /* GraphQL */ `
+  query UserProfileDestinationsByDestinationIDAndUserProfileID(
+    $destinationID: ID!
+    $userProfileID: ModelIDKeyConditionInput
+    $sortDirection: ModelSortDirection
+    $filter: ModelUserProfileDestinationFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    userProfileDestinationsByDestinationIDAndUserProfileID(
+      destinationID: $destinationID
+      userProfileID: $userProfileID
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        userProfileID
+        destinationID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+        __typename
+      }
+      nextToken
+      startedAt
+      __typename
+    }
+  }
+`;
 export const getDestination = /* GraphQL */ `
   query GetDestination($id: ID!) {
     getDestination(id: $id) {
@@ -132,7 +308,11 @@ export const getDestination = /* GraphQL */ `
       Currency
       Image
       Trails
-      userProfileID
+      wishlistedBy {
+        nextToken
+        startedAt
+        __typename
+      }
       createdAt
       updatedAt
       _version
@@ -157,7 +337,6 @@ export const listDestinations = /* GraphQL */ `
         Currency
         Image
         Trails
-        userProfileID
         createdAt
         updatedAt
         _version
@@ -192,46 +371,6 @@ export const syncDestinations = /* GraphQL */ `
         Currency
         Image
         Trails
-        userProfileID
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-        owner
-        __typename
-      }
-      nextToken
-      startedAt
-      __typename
-    }
-  }
-`;
-export const destinationsByUserProfileIDAndLocation = /* GraphQL */ `
-  query DestinationsByUserProfileIDAndLocation(
-    $userProfileID: ID!
-    $Location: ModelStringKeyConditionInput
-    $sortDirection: ModelSortDirection
-    $filter: ModelDestinationFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    destinationsByUserProfileIDAndLocation(
-      userProfileID: $userProfileID
-      Location: $Location
-      sortDirection: $sortDirection
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-    ) {
-      items {
-        id
-        Location
-        Language
-        Currency
-        Image
-        Trails
-        userProfileID
         createdAt
         updatedAt
         _version

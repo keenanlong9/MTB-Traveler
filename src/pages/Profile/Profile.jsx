@@ -4,7 +4,7 @@ import NavBar from "../../components/NavBar/NavBar";
 import Footer from "../../components/Footer/Footer";
 import { withAuthenticator } from '@aws-amplify/ui-react';
 import { DataStore } from "aws-amplify/datastore";
-import { UserProfile, Destination } from "../../models";
+import { UserProfile, Destination, UserProfileDestination } from "../../models";
 import { getCurrentUser } from "aws-amplify/auth";
 import { uploadData, getUrl } from 'aws-amplify/storage';
 import '@aws-amplify/ui-react/styles.css';
@@ -172,7 +172,13 @@ function Profile () {
 
         setOptionsAdd(options);
         // Get previously selected destinations
-        const previouslySelected = current.filter(dest => dest.userProfileID === profile.id);
+        const links = await DataStore.query(UserProfileDestination, c =>
+            c.userProfileID.eq(profile.id)
+        );
+        const previouslySelected = links.map(link =>
+            current.find(dest => dest.id === link.destinationID)
+        ).filter(Boolean);
+
 
         // Preselect them in react-select
         const preselected = previouslySelected.map(dest => ({
@@ -185,7 +191,6 @@ function Profile () {
 
     const closePopupAdd = async () => {
         console.log("Selected options:", selectedOptions);
-
         const selectedDestinationNames = selectedOptions.map(option => option.value);
 
         const allDestinations = await DataStore.query(Destination);
@@ -193,37 +198,42 @@ function Profile () {
             selectedDestinationNames.includes(dest.Location)
         );
 
-        console.log("Selected destinations:", selectedDestinations);
-
-        const currentProfile = await DataStore.query(UserProfile, profile.id);
-        const previouslySelected = allDestinations.filter(dest =>
-            dest.userProfileID === currentProfile.id
+        // Get existing links
+        const existingLinks = await DataStore.query(UserProfileDestination, c =>
+            c.userProfileID.eq(profile.id)
         );
 
-        for (const dest of selectedDestinations) {
-            await DataStore.save(
-                Destination.copyOf(dest, updated => {
-                    updated.userProfileID = currentProfile.id;
-                })
-            );
+        // Determine which links to add and which to remove
+        const existingDestinationIDs = new Set(existingLinks.map(link => link.destinationID));
+        const selectedDestinationIDs = new Set(selectedDestinations.map(dest => dest.id));
+
+        const toAdd = selectedDestinations.filter(dest => !existingDestinationIDs.has(dest.id));
+        const toRemove = existingLinks.filter(link => !selectedDestinationIDs.has(link.destinationID));
+
+        // Add new links
+        for (const dest of toAdd) {
+            await DataStore.save(new UserProfileDestination({
+                userProfileID: profile.id,
+                destinationID: dest.id,
+            }));
         }
 
-        for (const dest of previouslySelected) {
-        if (!selectedDestinationNames.includes(dest.Location)) {
-            await DataStore.save(
-                Destination.copyOf(dest, updated => {
-                    updated.userProfileID = null;
-                })
-            );
+        // Remove deselected links
+        for (const link of toRemove) {
+            await DataStore.delete(link);
         }
-    }
 
-        // Refetch wishlist
-        const updatedWishlist = await DataStore.query(Destination, d =>
-            d.userProfileID.eq(currentProfile.id)
+        // Refresh wishlist
+        const updatedLinks = await DataStore.query(UserProfileDestination, c =>
+            c.userProfileID.eq(profile.id)
         );
+        const updatedWishlist = [];
+        for (const link of updatedLinks) {
+            const destination = await DataStore.query(Destination, link.destinationID);
+            if (destination) updatedWishlist.push(destination);
+        }
+
         setWishlist(updatedWishlist);
-
         setIsOpenAdd(false);
     };
 
@@ -232,10 +242,15 @@ function Profile () {
     useEffect(() => {
         const fetchWishlist = async () => {
             if (profile?.id) {
-                const results = await DataStore.query(Destination, d =>
-                    d.userProfileID.eq(profile.id)
-                );
-                setWishlist(results);
+                const links = await DataStore.query(UserProfileDestination, c =>
+                c.userProfileID.eq(profile.id)
+            );
+            const results = [];
+            for (const link of links) {
+                const dest = await DataStore.query(Destination, link.destinationID);
+                if (dest) results.push(dest);
+            }
+            setWishlist(results);
             }
         };
 

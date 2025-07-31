@@ -94,7 +94,11 @@ export const createDestination = /* GraphQL */ `
       Currency
       Image
       Trails
-      userProfileID
+      wishlistedBy {
+        nextToken
+        startedAt
+        __typename
+      }
       createdAt
       updatedAt
       _version
@@ -117,7 +121,11 @@ export const updateDestination = /* GraphQL */ `
       Currency
       Image
       Trails
-      userProfileID
+      wishlistedBy {
+        nextToken
+        startedAt
+        __typename
+      }
       createdAt
       updatedAt
       _version
@@ -140,7 +148,158 @@ export const deleteDestination = /* GraphQL */ `
       Currency
       Image
       Trails
+      wishlistedBy {
+        nextToken
+        startedAt
+        __typename
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+      __typename
+    }
+  }
+`;
+export const createUserProfileDestination = /* GraphQL */ `
+  mutation CreateUserProfileDestination(
+    $input: CreateUserProfileDestinationInput!
+    $condition: ModelUserProfileDestinationConditionInput
+  ) {
+    createUserProfileDestination(input: $input, condition: $condition) {
+      id
       userProfileID
+      destinationID
+      userProfile {
+        id
+        owner
+        name
+        Location
+        Language
+        Currency
+        profileImage
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        __typename
+      }
+      destination {
+        id
+        Location
+        Language
+        Currency
+        Image
+        Trails
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+        __typename
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+      __typename
+    }
+  }
+`;
+export const updateUserProfileDestination = /* GraphQL */ `
+  mutation UpdateUserProfileDestination(
+    $input: UpdateUserProfileDestinationInput!
+    $condition: ModelUserProfileDestinationConditionInput
+  ) {
+    updateUserProfileDestination(input: $input, condition: $condition) {
+      id
+      userProfileID
+      destinationID
+      userProfile {
+        id
+        owner
+        name
+        Location
+        Language
+        Currency
+        profileImage
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        __typename
+      }
+      destination {
+        id
+        Location
+        Language
+        Currency
+        Image
+        Trails
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+        __typename
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+      __typename
+    }
+  }
+`;
+export const deleteUserProfileDestination = /* GraphQL */ `
+  mutation DeleteUserProfileDestination(
+    $input: DeleteUserProfileDestinationInput!
+    $condition: ModelUserProfileDestinationConditionInput
+  ) {
+    deleteUserProfileDestination(input: $input, condition: $condition) {
+      id
+      userProfileID
+      destinationID
+      userProfile {
+        id
+        owner
+        name
+        Location
+        Language
+        Currency
+        profileImage
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        __typename
+      }
+      destination {
+        id
+        Location
+        Language
+        Currency
+        Image
+        Trails
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+        __typename
+      }
       createdAt
       updatedAt
       _version

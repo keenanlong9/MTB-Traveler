@@ -1,6 +1,6 @@
 import { ModelInit, MutableModel, __modelMeta__, ManagedIdentifier } from "@aws-amplify/datastore";
 // @ts-ignore
-import { LazyLoading, LazyLoadingDisabled, AsyncCollection } from "@aws-amplify/datastore";
+import { LazyLoading, LazyLoadingDisabled, AsyncCollection, AsyncItem } from "@aws-amplify/datastore";
 
 
 
@@ -18,7 +18,7 @@ type EagerUserProfile = {
   readonly Language?: string | null;
   readonly Currency?: string | null;
   readonly profileImage?: string | null;
-  readonly Wishlist?: (Destination | null)[] | null;
+  readonly Wishlist?: (UserProfileDestination | null)[] | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -35,7 +35,7 @@ type LazyUserProfile = {
   readonly Language?: string | null;
   readonly Currency?: string | null;
   readonly profileImage?: string | null;
-  readonly Wishlist: AsyncCollection<Destination>;
+  readonly Wishlist: AsyncCollection<UserProfileDestination>;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -57,7 +57,7 @@ type EagerDestination = {
   readonly Currency?: string | null;
   readonly Image?: string | null;
   readonly Trails?: (string | null)[] | null;
-  readonly userProfileID?: string | null;
+  readonly wishlistedBy?: (UserProfileDestination | null)[] | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -73,7 +73,7 @@ type LazyDestination = {
   readonly Currency?: string | null;
   readonly Image?: string | null;
   readonly Trails?: (string | null)[] | null;
-  readonly userProfileID?: string | null;
+  readonly wishlistedBy: AsyncCollection<UserProfileDestination>;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -82,4 +82,38 @@ export declare type Destination = LazyLoading extends LazyLoadingDisabled ? Eage
 
 export declare const Destination: (new (init: ModelInit<Destination>) => Destination) & {
   copyOf(source: Destination, mutator: (draft: MutableModel<Destination>) => MutableModel<Destination> | void): Destination;
+}
+
+type EagerUserProfileDestination = {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<UserProfileDestination, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly userProfileID: string;
+  readonly destinationID: string;
+  readonly userProfile?: UserProfile | null;
+  readonly destination?: Destination | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+type LazyUserProfileDestination = {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<UserProfileDestination, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly userProfileID: string;
+  readonly destinationID: string;
+  readonly userProfile: AsyncItem<UserProfile | undefined>;
+  readonly destination: AsyncItem<Destination | undefined>;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+export declare type UserProfileDestination = LazyLoading extends LazyLoadingDisabled ? EagerUserProfileDestination : LazyUserProfileDestination
+
+export declare const UserProfileDestination: (new (init: ModelInit<UserProfileDestination>) => UserProfileDestination) & {
+  copyOf(source: UserProfileDestination, mutator: (draft: MutableModel<UserProfileDestination>) => MutableModel<UserProfileDestination> | void): UserProfileDestination;
 }

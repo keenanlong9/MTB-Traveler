@@ -56,7 +56,7 @@ export const schema = {
                     "name": "Wishlist",
                     "isArray": true,
                     "type": {
-                        "model": "Destination"
+                        "model": "UserProfileDestination"
                     },
                     "isRequired": false,
                     "attributes": [],
@@ -64,7 +64,7 @@ export const schema = {
                     "association": {
                         "connectionType": "HAS_MANY",
                         "associatedWith": [
-                            "userProfileID"
+                            "userProfile"
                         ]
                     }
                 },
@@ -169,12 +169,21 @@ export const schema = {
                     "attributes": [],
                     "isArrayNullable": true
                 },
-                "userProfileID": {
-                    "name": "userProfileID",
-                    "isArray": false,
-                    "type": "ID",
+                "wishlistedBy": {
+                    "name": "wishlistedBy",
+                    "isArray": true,
+                    "type": {
+                        "model": "UserProfileDestination"
+                    },
                     "isRequired": false,
-                    "attributes": []
+                    "attributes": [],
+                    "isArrayNullable": true,
+                    "association": {
+                        "connectionType": "HAS_MANY",
+                        "associatedWith": [
+                            "destination"
+                        ]
+                    }
                 },
                 "createdAt": {
                     "name": "createdAt",
@@ -199,16 +208,6 @@ export const schema = {
                 {
                     "type": "model",
                     "properties": {}
-                },
-                {
-                    "type": "key",
-                    "properties": {
-                        "name": "byUserProfile",
-                        "fields": [
-                            "userProfileID",
-                            "Location"
-                        ]
-                    }
                 },
                 {
                     "type": "auth",
@@ -245,10 +244,128 @@ export const schema = {
                     }
                 }
             ]
+        },
+        "UserProfileDestination": {
+            "name": "UserProfileDestination",
+            "fields": {
+                "id": {
+                    "name": "id",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "userProfileID": {
+                    "name": "userProfileID",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "destinationID": {
+                    "name": "destinationID",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "userProfile": {
+                    "name": "userProfile",
+                    "isArray": false,
+                    "type": {
+                        "model": "UserProfile"
+                    },
+                    "isRequired": false,
+                    "attributes": [],
+                    "association": {
+                        "connectionType": "BELONGS_TO",
+                        "targetNames": [
+                            "userProfileID"
+                        ]
+                    }
+                },
+                "destination": {
+                    "name": "destination",
+                    "isArray": false,
+                    "type": {
+                        "model": "Destination"
+                    },
+                    "isRequired": false,
+                    "attributes": [],
+                    "association": {
+                        "connectionType": "BELONGS_TO",
+                        "targetNames": [
+                            "destinationID"
+                        ]
+                    }
+                },
+                "createdAt": {
+                    "name": "createdAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
+                },
+                "updatedAt": {
+                    "name": "updatedAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
+                }
+            },
+            "syncable": true,
+            "pluralName": "UserProfileDestinations",
+            "attributes": [
+                {
+                    "type": "model",
+                    "properties": {}
+                },
+                {
+                    "type": "key",
+                    "properties": {
+                        "name": "byUserProfile",
+                        "fields": [
+                            "userProfileID",
+                            "destinationID"
+                        ]
+                    }
+                },
+                {
+                    "type": "key",
+                    "properties": {
+                        "name": "byDestination",
+                        "fields": [
+                            "destinationID",
+                            "userProfileID"
+                        ]
+                    }
+                },
+                {
+                    "type": "auth",
+                    "properties": {
+                        "rules": [
+                            {
+                                "provider": "userPools",
+                                "ownerField": "owner",
+                                "allow": "owner",
+                                "operations": [
+                                    "create",
+                                    "read",
+                                    "delete"
+                                ],
+                                "identityClaim": "cognito:username"
+                            }
+                        ]
+                    }
+                }
+            ]
         }
     },
     "enums": {},
     "nonModels": {},
     "codegenVersion": "3.4.4",
-    "version": "f3b6580d9aee8f8d4a072faead2cca3f"
+    "version": "1b020c29ff7b79c3e4eac220b1d0d2f1"
 };
