@@ -1,0 +1,46 @@
+# This "input" configures a global authorization rule to enable public access to
+# all models in this schema. Learn more about authorization rules here: https://docs.amplify.aws/cli/graphql/authorization-rules
+# input AMPLIFY { globalAuthRule: AuthRule = { allow: public } } # FOR TESTING ONLY!
+
+type UserProfile @model @auth(rules: [{ allow: owner }]) {
+  id: ID!
+  owner: String! @index(name: "byOwner", queryField: "userProfilesByOwner")
+  name: String
+  Location: String
+  Language: String
+  Currency: String
+  profileImage: String
+  Wishlist: [UserProfileDestination]
+    @hasMany(indexName: "byUserProfile", fields: ["id"])
+}
+
+type Destination
+  @model
+  @auth(
+    rules: [
+      { allow: owner }
+      { allow: private }
+      { allow: public, operations: [read] }
+    ]
+  ) {
+  id: ID!
+  Location: String
+  Language: String
+  Currency: String
+  Image: String
+  Trails: [String]
+  wishlistedBy: [UserProfileDestination]
+    @hasMany(indexName: "byDestination", fields: ["id"])
+}
+
+type UserProfileDestination
+  @model
+  @auth(rules: [{ allow: owner, operations: [create, read, delete] }]) {
+  id: ID!
+  userProfileID: ID!
+    @index(name: "byUserProfile", sortKeyFields: ["destinationID"])
+  destinationID: ID!
+    @index(name: "byDestination", sortKeyFields: ["userProfileID"])
+  userProfile: UserProfile @belongsTo(fields: ["userProfileID"])
+  destination: Destination @belongsTo(fields: ["destinationID"])
+}
