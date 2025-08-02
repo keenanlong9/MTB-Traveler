@@ -9,6 +9,8 @@ phases:
       - npm install
       - echo Downloading .env file from S3...
       - aws s3 cp s3://mtb-traveler/.env .env
+      - echo Downloading aws-exports.js file from S3...
+      - aws s3 cp s3://mtb-traveler/aws-exports.js src/aws-exports.js
 
   build:
     commands:
