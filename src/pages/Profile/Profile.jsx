@@ -282,7 +282,7 @@ function Profile () {
         <NavBar></NavBar>
         <div className="profile">
             <div className="profile_header">
-                <img src={avatarUrl} alt="Avatar" style={styles.avatar} />
+                <img src={avatarUrl} alt="Avatar" className="profile_avatar" />
                 <h2>{profile?.name}</h2>  
             </div>
             <div className="profile_text">
@@ -295,11 +295,11 @@ function Profile () {
                         <p><strong>Currency:</strong> {profile?.Currency}</p>
                 </div>
             </div>
-            <button className="edit_profile_btn" onClick={openPopup}>Edit Profile</button>
+            <button className="profile-btns" onClick={openPopup}>Edit Profile</button>
 
             {isOpen && (
-                <div style={popupStyle}>
-                <div style={popupContentStyle}>
+                <div className="popup_overlay">
+                <div className="popup_content">
                     <h3>Edit User</h3>
                     <form onSubmit={handleSubmit}>
                     <label>
@@ -379,15 +379,14 @@ function Profile () {
                     <button type="submit">Save</button>
                     <span   style={{ padding: '10px' }}></span>
                     <button type="button" onClick={closePopup}>Cancel</button>
-                    {/* <button type="butten" onClick={runAdd}>Add destions to DB</button> */}
                     </form>
                 </div>
                 </div>
             )}
 
             {isOpenAdd && (
-                <div style={popupStyle}>
-                <div style={popupContentStyle}>
+                <div className="popup_overlay">
+                <div className="popup_content">
                     <h3>Add Destinations to Wishlist</h3>
                     <Select options={optionsAdd} isMulti={true} className="destination_select" 
                     onChange={handleChangeWishList} value={selectedOptions}/>
@@ -398,95 +397,29 @@ function Profile () {
 
             <div className="destination_list_header">
                 <h3>Destination Wish List:</h3>
-                <button className="add_destination_list_btn" onClick={openPopupAdd}>Add +</button>
+                <button className="profile-btns" onClick={openPopupAdd}>Add +</button>
             </div>
-            <div className="destination_list">
             <div className="destination_grid">
                 {/* Header row */}
                 <div className="grid-row header">
-                <div><strong>Location</strong></div>
-                <div><strong>Language</strong></div>
-                <div><strong>Currency</strong></div>
+                <div><p><strong>Location</strong></p></div>
+                <div><p><strong>Language</strong></p></div>
+                <div><p><strong>Currency</strong></p></div>
                 </div>
 
                 {/* Data rows */}
                 {wishlist.map((dest, index) => (
                     <div key={index} className="grid-row">
-                    <div>{dest.Location}</div>
-                    <div>{dest.Language}</div>
-                    <div>{dest.Currency}</div>
+                    <div><p>{dest.Location}</p></div>
+                    <div><p>{dest.Language}</p></div>
+                    <div><p>{dest.Currency}</p></div>
                     </div>
                 ))}
-            </div>
             </div>
         </div>
         <Footer></Footer>
     </div>
 );
 }
-
-// Styling for the Profile component
-const styles = {
-    container: {
-        maxWidth: 400,
-        margin: '40px auto',
-        padding: 24,
-        borderRadius: 12,
-        background: '#fff',
-        boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
-        fontFamily: 'sans-serif',
-        color: '#3c4043',
-    },
-    header: {
-        display: 'flex',
-        alignItems: 'center',
-        marginBottom: 16,
-    },
-    avatar: {
-        width: 150,
-        height: 150,
-        borderRadius: '50%',
-        marginRight: 20,
-        objectFit: 'cover',
-    },
-    location: {
-        color: '#888',
-        margin: 0,
-    },
-    bio: {
-        margin: '16px 0',
-        color: '#444',
-    },
-    stats: {
-        display: 'flex',
-        justifyContent: 'space-between',
-        margin: '24px 0',
-        textAlign: 'center',
-    },
-    button: {
-        width: '100%',
-        padding: '10px 0',
-        background: '#4caf50',
-        color: '#fff',
-        border: 'none',
-        borderRadius: 6,
-        fontSize: 16,
-        cursor: 'pointer',
-    },
-};
-
-// Simple inline styles
-const popupStyle = {
-  position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
-  backgroundColor: 'rgba(0,0,0,0.5)',
-  display: 'flex', alignItems: 'center', justifyContent: 'center',
-};
-
-const popupContentStyle = {
-  background: 'white',
-  padding: '20px',
-  borderRadius: '8px',
-  minWidth: '300px',
-};
 
 export default withAuthenticator(Profile)

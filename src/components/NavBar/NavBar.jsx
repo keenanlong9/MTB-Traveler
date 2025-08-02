@@ -36,6 +36,15 @@ export default function NavBar () {
     }
   };
 
+  // const handleSignIn = async () => {
+  //   try {
+  //     await signInWithRedirect(); // This redirects to Cognito Hosted UI
+  //   } catch (error) {
+  //     console.log('Error during sign-in:', error);
+  //   }
+  // };
+
+
     return (  
       <nav className="navbar">
         <div className="navbar_container">
@@ -59,17 +68,16 @@ export default function NavBar () {
               <Link to="/profile" className="navbar_links"><img className="navbar_profile" src={ProfileIcon} alt="Profile Icon"></img></Link>
             </li>
             <li className="navbar_item-btn">
+              {/* TODO: Change this to only signin and not redirect to profile page */}
               {user ? 
               (
-                <div>
-                  <p className="navbar_item-btn" onClick={handleSignOut}>Sign Out</p>
-                </div>  
+                  <button className="navbar_item-btn" onClick={handleSignOut}>Sign Out</button>
               ) 
               : 
               (
-                <div>
                   <Link to="/profile" className="navbar_item-btn">Sign In</Link>
-                </div>
+                  // <button className="navbar_item-btn" onClick={handleSignIn}>Sign In</button>
+
               )}
             </li>
           </ul>
