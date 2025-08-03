@@ -1,70 +1,42 @@
-# Getting Started with Create React App
+# MTB-Traveler
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<img src="public/assets/images/README%20Photos/Home%20Page.jpg" width="900"/>
 
-## Available Scripts
+## Description
 
-In the project directory, you can run:
+A mountain biking-focused travel web application that showcases popular riding destinations around the world. Users can explore top trails, view the local language and currency, and access built-in tools for speech/text translation and currency conversion. The app also allows users to save destinations to a personal wishlist for future trip planning.
 
-### `npm start`
+https://mtb-traveler.com
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Technologies Used
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Javascript
+- React
+- CSS
+- AWS SDK (Translate, Transcribe, Polly, Amplify)
+- AWS Web Services (IAM, Cognito, S3, DynamoDB, CodePipeline, CodeBuild)
 
-### `npm test`
+## Challenges
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+One of the main challenges I faced was implementing the AWS SDK. Since this was my first web and cloud-based project, learning how to properly configure and bundle AWS resources and roles according to best practices involved a fair amount of trial and error.
 
-### `npm run build`
+Another key challenge was implementing user functionality. I had to ensure that user data remained secure, consistent, and isolated—preventing data overlap or conflicts between different users.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Follow-on Features
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Enable users to create and share new destinations for others to discover
+- Automatically detect and prepopulate currency and language settings based on the user’s location
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Usage
 
-### `npm run eject`
+- <p style="font-size:1.5rem">Language Page</p> 
+  <img src="public/assets/images/README%20Photos/Language%20Page.jpg" width="900"/>
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- <p style="font-size:1.5rem">Currency Page</p> 
+  <img src="public/assets/images/README%20Photos/Currency%20Page.jpg" width="900"/>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- <p style="font-size:1.5rem">Location Page</p> 
+  <img src="public/assets/images/README%20Photos/Location%20Page.jpg" width="900"/>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- <p style="font-size:1.5rem">Profile Page</p> 
+  <img src="public/assets/images/README%20Photos/Profile%20Page.jpg" width="900"/>
