@@ -282,7 +282,11 @@ function Profile () {
         <NavBar></NavBar>
         <div className="profile">
             <div className="profile_header">
-                <img src={avatarUrl} alt="Avatar" className="profile_avatar" />
+                {avatarUrl ? (
+                    <img src={avatarUrl} alt="Avatar" className="profile_avatar" />
+                ): (
+                  <div className="avatar_fallback">Avatar</div>  
+                )}
                 <h2>{profile?.name}</h2>  
             </div>
             <div className="profile_text">
